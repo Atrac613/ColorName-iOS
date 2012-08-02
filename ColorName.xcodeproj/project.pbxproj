@@ -61,6 +61,8 @@
 		6577011315CA0D0D00A36A85 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */; };
 		6577011415CA0D1E00A36A85 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4A915C6D58300397737 /* AVFoundation.framework */; };
 		6577011515CA0D3600A36A85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433C15C0301500A38E86 /* CoreGraphics.framework */; };
+		6577012015CA0FBB00A36A85 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6577011F15CA0FBB00A36A85 /* icon.png */; };
+		6577012215CA0FC000A36A85 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6577012115CA0FC000A36A85 /* icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,8 @@
 		065D439B15C6D38700A38E86 /* sqlite3_extension_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3_extension_functions.h; sourceTree = "<group>"; };
 		065D439C15C6D38700A38E86 /* UIColor_Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Categories.h; sourceTree = "<group>"; };
 		065D439D15C6D38700A38E86 /* UIColor_Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor_Categories.m; sourceTree = "<group>"; };
+		6577011F15CA0FBB00A36A85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		6577012115CA0FC000A36A85 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 		065D432915C0301400A38E86 = {
 			isa = PBXGroup;
 			children = (
+				6577012115CA0FC000A36A85 /* icon@2x.png */,
+				6577011F15CA0FBB00A36A85 /* icon.png */,
 				065D433E15C0301500A38E86 /* ColorName */,
 				065D435F15C0301500A38E86 /* ColorNameTests */,
 				065D433715C0301500A38E86 /* Frameworks */,
@@ -379,6 +385,8 @@
 				065D434C15C0301500A38E86 /* MainStoryboard.storyboard in Resources */,
 				065D439815C6D34700A38E86 /* color_names_ja.json in Resources */,
 				065D439915C6D34700A38E86 /* color_names_us.json in Resources */,
+				6577012015CA0FBB00A36A85 /* icon.png in Resources */,
+				6577012215CA0FC000A36A85 /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
