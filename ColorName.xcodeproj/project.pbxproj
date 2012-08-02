@@ -42,6 +42,25 @@
 		065D439915C6D34700A38E86 /* color_names_us.json in Resources */ = {isa = PBXBuildFile; fileRef = 065D439715C6D34700A38E86 /* color_names_us.json */; };
 		065D439E15C6D38700A38E86 /* sqlite3_extension_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 065D439A15C6D38700A38E86 /* sqlite3_extension_functions.c */; };
 		065D439F15C6D38700A38E86 /* UIColor_Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D439D15C6D38700A38E86 /* UIColor_Categories.m */; };
+		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
+		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
+		6577010515CA0CB800A36A85 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; };
+		6577010615CA0CB800A36A85 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437915C6D33D00A38E86 /* FMDatabaseQueue.m */; };
+		6577010715CA0CB800A36A85 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437B15C6D33D00A38E86 /* FMResultSet.m */; };
+		6577010815CA0CB800A36A85 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437F15C6D33D00A38E86 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010915CA0CB800A36A85 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438115C6D33D00A38E86 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010A15CA0CB800A36A85 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438315C6D33D00A38E86 /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010B15CA0CB800A36A85 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438515C6D33D00A38E86 /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010C15CA0CB800A36A85 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438715C6D33D00A38E86 /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010D15CA0CB800A36A85 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438915C6D33D00A38E86 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010E15CA0CB800A36A85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D434815C0301500A38E86 /* AppDelegate.m */; };
+		6577010F15CA0CB800A36A85 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D434E15C0301500A38E86 /* MasterViewController.m */; };
+		6577011015CA0CB800A36A85 /* ColorListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0629B4B215C6E84B00397737 /* ColorListCell.m */; };
+		6577011115CA0D0500A36A85 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AA15C6D58300397737 /* CoreMedia.framework */; };
+		6577011215CA0D0500A36A85 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AB15C6D58300397737 /* CoreVideo.framework */; };
+		6577011315CA0D0D00A36A85 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */; };
+		6577011415CA0D1E00A36A85 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4A915C6D58300397737 /* AVFoundation.framework */; };
+		6577011515CA0D3600A36A85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433C15C0301500A38E86 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +149,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6577011515CA0D3600A36A85 /* CoreGraphics.framework in Frameworks */,
+				6577011415CA0D1E00A36A85 /* AVFoundation.framework in Frameworks */,
+				6577011315CA0D0D00A36A85 /* libsqlite3.0.dylib in Frameworks */,
+				6577011115CA0D0500A36A85 /* CoreMedia.framework in Frameworks */,
+				6577011215CA0D0500A36A85 /* CoreVideo.framework in Frameworks */,
 				065D435A15C0301500A38E86 /* SenTestingKit.framework in Frameworks */,
 				065D435B15C0301500A38E86 /* UIKit.framework in Frameworks */,
 				065D435C15C0301500A38E86 /* Foundation.framework in Frameworks */,
@@ -413,6 +437,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */,
+				6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */,
+				6577010515CA0CB800A36A85 /* FMDatabasePool.m in Sources */,
+				6577010615CA0CB800A36A85 /* FMDatabaseQueue.m in Sources */,
+				6577010715CA0CB800A36A85 /* FMResultSet.m in Sources */,
+				6577010815CA0CB800A36A85 /* NSObject+SBJSON.m in Sources */,
+				6577010915CA0CB800A36A85 /* NSString+SBJSON.m in Sources */,
+				6577010A15CA0CB800A36A85 /* SBJSON.m in Sources */,
+				6577010B15CA0CB800A36A85 /* SBJsonBase.m in Sources */,
+				6577010C15CA0CB800A36A85 /* SBJsonParser.m in Sources */,
+				6577010D15CA0CB800A36A85 /* SBJsonWriter.m in Sources */,
+				6577010E15CA0CB800A36A85 /* AppDelegate.m in Sources */,
+				6577010F15CA0CB800A36A85 /* MasterViewController.m in Sources */,
+				6577011015CA0CB800A36A85 /* ColorListCell.m in Sources */,
 				065D436715C0301500A38E86 /* ColorNameTests.m in Sources */,
 				065D439E15C6D38700A38E86 /* sqlite3_extension_functions.c in Sources */,
 				065D439F15C6D38700A38E86 /* UIColor_Categories.m in Sources */,
@@ -561,6 +599,62 @@
 			};
 			name = Release;
 		};
+		657700FF15CA0C3500A36A85 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: paperboy&co., Inc.";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
+				SDKROOT = iphoneos;
+			};
+			name = Distribution;
+		};
+		6577010015CA0C3500A36A85 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: paperboy&co., Inc.";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
+				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
+		6577010115CA0C3500A36A85 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ColorName.app/ColorName";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
+				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -568,6 +662,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				065D436815C0301500A38E86 /* Debug */,
+				657700FF15CA0C3500A36A85 /* Distribution */,
 				065D436915C0301500A38E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -577,6 +672,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				065D436B15C0301500A38E86 /* Debug */,
+				6577010015CA0C3500A36A85 /* Distribution */,
 				065D436C15C0301500A38E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -586,6 +682,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				065D436E15C0301500A38E86 /* Debug */,
+				6577010115CA0C3500A36A85 /* Distribution */,
 				065D436F15C0301500A38E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
