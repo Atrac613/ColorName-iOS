@@ -42,6 +42,11 @@
 		065D439915C6D34700A38E86 /* color_names_us.json in Resources */ = {isa = PBXBuildFile; fileRef = 065D439715C6D34700A38E86 /* color_names_us.json */; };
 		065D439E15C6D38700A38E86 /* sqlite3_extension_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 065D439A15C6D38700A38E86 /* sqlite3_extension_functions.c */; };
 		065D439F15C6D38700A38E86 /* UIColor_Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D439D15C6D38700A38E86 /* UIColor_Categories.m */; };
+		0665C32A160EEDAF00C9EFC5 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0665C328160EEDAF00C9EFC5 /* pause.png */; };
+		0665C32B160EEDAF00C9EFC5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0665C329160EEDAF00C9EFC5 /* play.png */; };
+		0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C32F160EFAAC00C9EFC5 /* BaseDao.m */; };
+		0665C333160F01AA00C9EFC5 /* TbColorNameJa.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C332160F01AA00C9EFC5 /* TbColorNameJa.m */; };
+		0665C336160F044900C9EFC5 /* TbColorNameJaDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */; };
 		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
 		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
 		6577010515CA0CB800A36A85 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; };
@@ -130,6 +135,14 @@
 		065D439B15C6D38700A38E86 /* sqlite3_extension_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3_extension_functions.h; sourceTree = "<group>"; };
 		065D439C15C6D38700A38E86 /* UIColor_Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Categories.h; sourceTree = "<group>"; };
 		065D439D15C6D38700A38E86 /* UIColor_Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor_Categories.m; sourceTree = "<group>"; };
+		0665C328160EEDAF00C9EFC5 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		0665C329160EEDAF00C9EFC5 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		0665C32E160EFAAC00C9EFC5 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseDao.h; path = Dao/BaseDao.h; sourceTree = "<group>"; };
+		0665C32F160EFAAC00C9EFC5 /* BaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseDao.m; path = Dao/BaseDao.m; sourceTree = "<group>"; };
+		0665C331160F01AA00C9EFC5 /* TbColorNameJa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameJa.h; path = Dto/TbColorNameJa.h; sourceTree = "<group>"; };
+		0665C332160F01AA00C9EFC5 /* TbColorNameJa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameJa.m; path = Dto/TbColorNameJa.m; sourceTree = "<group>"; };
+		0665C334160F044900C9EFC5 /* TbColorNameJaDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameJaDao.h; path = Dao/TbColorNameJaDao.h; sourceTree = "<group>"; };
+		0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameJaDao.m; path = Dao/TbColorNameJaDao.m; sourceTree = "<group>"; };
 		6577011F15CA0FBB00A36A85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		6577012115CA0FC000A36A85 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +266,8 @@
 		065D437015C6D33D00A38E86 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				0665C32D160EFA5E00C9EFC5 /* Dto */,
+				0665C32C160EFA5700C9EFC5 /* Dao */,
 				065D439A15C6D38700A38E86 /* sqlite3_extension_functions.c */,
 				065D439B15C6D38700A38E86 /* sqlite3_extension_functions.h */,
 				065D439C15C6D38700A38E86 /* UIColor_Categories.h */,
@@ -303,11 +318,41 @@
 		065D439515C6D34700A38E86 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0665C327160EEDAF00C9EFC5 /* images */,
 				065D439615C6D34700A38E86 /* color_names_ja.json */,
 				065D439715C6D34700A38E86 /* color_names_us.json */,
 			);
 			name = Resources;
 			path = ColorName/Resources;
+			sourceTree = "<group>";
+		};
+		0665C327160EEDAF00C9EFC5 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0665C328160EEDAF00C9EFC5 /* pause.png */,
+				0665C329160EEDAF00C9EFC5 /* play.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		0665C32C160EFA5700C9EFC5 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				0665C32E160EFAAC00C9EFC5 /* BaseDao.h */,
+				0665C32F160EFAAC00C9EFC5 /* BaseDao.m */,
+				0665C334160F044900C9EFC5 /* TbColorNameJaDao.h */,
+				0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */,
+			);
+			name = Dao;
+			sourceTree = "<group>";
+		};
+		0665C32D160EFA5E00C9EFC5 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				0665C331160F01AA00C9EFC5 /* TbColorNameJa.h */,
+				0665C332160F01AA00C9EFC5 /* TbColorNameJa.m */,
+			);
+			name = Dto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +432,8 @@
 				065D439915C6D34700A38E86 /* color_names_us.json in Resources */,
 				6577012015CA0FBB00A36A85 /* icon.png in Resources */,
 				6577012215CA0FC000A36A85 /* icon@2x.png in Resources */,
+				0665C32A160EEDAF00C9EFC5 /* pause.png in Resources */,
+				0665C32B160EEDAF00C9EFC5 /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +485,9 @@
 				065D439315C6D33D00A38E86 /* SBJsonParser.m in Sources */,
 				065D439415C6D33D00A38E86 /* SBJsonWriter.m in Sources */,
 				0629B4B315C6E84B00397737 /* ColorListCell.m in Sources */,
+				0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */,
+				0665C333160F01AA00C9EFC5 /* TbColorNameJa.m in Sources */,
+				0665C336160F044900C9EFC5 /* TbColorNameJaDao.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +574,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "71509653-F102-4018-8BF9-7F3F672BFF16";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B821FC8-E174-4FF7-B34F-329CA19CB28B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -557,7 +607,7 @@
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "71509653-F102-4018-8BF9-7F3F672BFF16";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B821FC8-E174-4FF7-B34F-329CA19CB28B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

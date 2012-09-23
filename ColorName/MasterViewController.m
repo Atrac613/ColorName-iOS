@@ -14,6 +14,7 @@
 #import "JSON.h"
 #import "UIColor_Categories.h"
 #import "ColorListCell.h"
+#import "TbColorNameJa.h"
 
 @interface MasterViewController () {
 }
@@ -26,6 +27,11 @@
 @synthesize currentColor;
 @synthesize colorList;
 @synthesize tableView;
+@synthesize stateButton;
+@synthesize isPlay;
+@synthesize session;
+@synthesize timer;
+@synthesize colorNameJaDao;
 
 - (void)awakeFromNib
 {
@@ -37,18 +43,16 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"Color Name"];
+    
+    isPlay = YES;
+    colorNameJaDao = [[TbColorNameJaDao alloc] init];
 
     [self createDB];
     [self initDB];
     
     [self setupAVCapture];
     
-    [NSTimer scheduledTimerWithTimeInterval:1 
-                                     target:self 
-                                   selector:@selector(getColorList) 
-                                   userInfo:nil
-                                    repeats:YES];
-
+    [self timerToggle];
 }
 
 - (void)viewDidUnload
@@ -62,62 +66,38 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+#pragma mark - IBActions
+
+- (IBAction)stateButtonPressed:(id)sender {
+    [self videoController:isPlay];
+}
+
 - (void)createDB {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *dir = [paths objectAtIndex:0];
-    FMDatabase *db = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:@"app.db"]];
-    
-    NSString *sql = @"CREATE TABLE IF NOT EXISTS color_name_ja (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, name_yomi TEXT, red INTEGER, green INTEGER, blue INTEGER);";
-    
-    [db open];
-    [db executeUpdate:sql];
-    [db close];
+    [colorNameJaDao createTable];
 }
 
 - (void)initDB {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *dir = [paths objectAtIndex:0];
-    FMDatabase *db = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:@"app.db"]];
+    if ([colorNameJaDao countAll] > 0) {
+        return;
+    }
     
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"color_names_ja" ofType:@"json"]];
-    
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
     NSArray *jsonArray = [jsonString JSONValue];
-    
-    [db open];
-    
-    NSString *sql = @"SELECT count(*) FROM color_name_ja;";
-    FMResultSet *results = [db executeQuery:sql];
-    while([results next]){
-        if ([[results stringForColumn:@"count(*)"] intValue] > 0) {
-            [db close];
-            
-            return;
-        }
-    }
     
     for (int i = 0; i < [jsonArray count]; i++) {
         NSDictionary *dict = [jsonArray objectAtIndex:i];
         NSString *name = [dict valueForKey:@"kanji"];
-        NSString *name_yomi = [dict valueForKey:@"yomi"];
+        NSString *nameYomi = [dict valueForKey:@"yomi"];
         NSString *hex = [dict valueForKey:@"hex"];
         
         UIColor *color = [UIColor colorWithHexString:hex];
         const CGFloat *rgba = CGColorGetComponents(color.CGColor);
         
-        sql = @"SELECT count(*) FROM color_name_ja WHERE name = ? AND name_yomi = ? AND red = ? AND green = ? AND blue = ?;";
-        
-        results = [db executeQuery:sql, name, name_yomi, [NSNumber numberWithFloat:rgba[0]], [NSNumber numberWithFloat:rgba[1]], [NSNumber numberWithFloat:rgba[2]]];
-        
-        while([results next]){
-            if ([[results stringForColumn:@"count(*)"] intValue] == 0) {
-                sql = @"INSERT INTO color_name_ja (name, name_yomi, red, green, blue) VALUES (?, ?, ?, ?, ?)";
-                [db executeUpdate:sql, name, name_yomi, [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255]];
-            }
+        if ([colorNameJaDao countWithName:name nameYomi:nameYomi red:rgba[0] * 255 green:rgba[1] * 255 blue:rgba[2] * 255] == 0) {
+            [colorNameJaDao insertWithName:name nameYomi:nameYomi red:rgba[0] * 255 green:rgba[1] * 255 blue:rgba[2] * 255];
         }
     }
-    [db close];
 }
 
 - (NSMutableArray*)findColorName:(UIColor*)color {
@@ -127,35 +107,7 @@
         return _colorList;
     }
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *dir = [paths objectAtIndex:0];
-    FMDatabase *db = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:@"app.db"]];
-    
-    const CGFloat *rgba = CGColorGetComponents(color.CGColor);
-    
-    NSString *sql = @"SELECT name, name_yomi, red, green, blue, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM color_name_ja ORDER BY difference;";
-    
-    [db open];
-    
-    FMResultSet *results = [db executeQuery:sql, [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255]];
-    
-    while([results next]){
-        if ([results intForColumn:@"difference"] < 2000) {
-            NSString *name = [results stringForColumn:@"name"];
-            NSString *name_yomi = [results stringForColumn:@"name_yomi"];
-            NSNumber *red = [NSNumber numberWithInt:[results intForColumn:@"red"]];
-            NSNumber *green = [NSNumber numberWithInt:[results intForColumn:@"green"]];
-            NSNumber *blue = [NSNumber numberWithInt:[results intForColumn:@"blue"]];
-            [_colorList addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                  name, @"name",
-                                  name_yomi, @"name_yomi",
-                                  red, @"red",
-                                  green, @"green",
-                                  blue, @"blue",nil]];
-        }
-    }
-    
-    [db close];
+    _colorList = [colorNameJaDao findColorNameWithColor:color];
     
     return _colorList;
 }
@@ -168,7 +120,7 @@
 
 - (void)setupAVCapture
 {
-    AVCaptureSession *session = [AVCaptureSession new];
+    session = [AVCaptureSession new];
     [session setSessionPreset:AVCaptureSessionPresetLow];
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -188,7 +140,7 @@
     
     previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     [previewLayer setBackgroundColor:[[UIColor blackColor] CGColor]];
-    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
+    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     CALayer *rootLayer = [previewView layer];
     [rootLayer setMasksToBounds:YES];
@@ -198,7 +150,7 @@
 }
 
 - (void)getCenterColor:(UIImage*)image {
-    UIColor *color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.height/2 - 20, image.size.width/2)];
+    UIColor *color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.height/2 - 10, image.size.width/2)];
     
     if (!color) {
         return;
@@ -296,14 +248,16 @@
         cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    float red = [[[colorList objectAtIndex:indexPath.row] objectForKey:@"red"] intValue] / 255.f;
-    float green = [[[colorList objectAtIndex:indexPath.row] objectForKey:@"green"] intValue] / 255.f;
-    float blue = [[[colorList objectAtIndex:indexPath.row] objectForKey:@"blue"] intValue] / 255.f;
+    TbColorNameJa *colorNameJa = (TbColorNameJa*)[colorList objectAtIndex:indexPath.row];
+    
+    float red = [colorNameJa red] / 255.f;
+    float green = [colorNameJa green] / 255.f;
+    float blue = [colorNameJa blue] / 255.f;
     NSLog(@"%f %f %f", red, green, blue);
     UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
     
-    [cell.colorNameLabel setText:[[colorList objectAtIndex:indexPath.row] objectForKey:@"name"]];
-    [cell.colorNameYomiLabel setText:[[colorList objectAtIndex:indexPath.row] objectForKey:@"name_yomi"]];
+    [cell.colorNameLabel setText:[colorNameJa name]];
+    [cell.colorNameYomiLabel setText:[colorNameJa nameYomi]];
     [cell.colorView setBackgroundColor:color];
     
     return cell;
@@ -311,6 +265,35 @@
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tv deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)videoController:(BOOL)state {
+    if (state) {
+        isPlay = NO;
+        [stateButton setImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
+        
+        [session stopRunning];
+    } else {
+        isPlay = YES;
+        [stateButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
+        
+        [session startRunning];
+    }
+    
+    [self timerToggle];
+}
+
+- (void)timerToggle {
+    if (isPlay) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                 target:self
+                                               selector:@selector(getColorList)
+                                               userInfo:nil
+                                                repeats:YES];
+    } else {
+        [timer invalidate];
+        timer = nil;
+    }
 }
 
 @end

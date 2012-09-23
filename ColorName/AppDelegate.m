@@ -11,10 +11,14 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize db;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    if (![self initDatabase]) {
+        NSLog(@"Failed to init database.");
+    }
+    
     return YES;
 }
 							
@@ -43,6 +47,27 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)initDatabase {
+    BOOL success;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [paths objectAtIndex:0];
+    NSString *dbPath = [documentsDir stringByAppendingPathComponent:@"app.db"];
+    
+    db = [FMDatabase databaseWithPath:dbPath];
+    if ([db open]) {
+        success = YES;
+    } else {
+        NSLog(@"Failed to open database.");
+        success = NO;
+    }
+    
+    return success;
+}
+
+- (void)closeDatabase {
+    [db close];
 }
 
 @end
