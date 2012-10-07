@@ -14,7 +14,9 @@
 #import "JSON.h"
 #import "UIColor_Categories.h"
 #import "ColorListCell.h"
-#import "TbColorNameJa.h"
+#import "TbColorName.h"
+#import "ColorDetailViewController.h"
+#import "FavoritesColorViewController.h"
 
 @interface MasterViewController () {
 }
@@ -44,6 +46,8 @@
     
     [self.navigationItem setTitle:@"Color Name"];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Favorites" style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)];
+    
     isPlay = YES;
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
 
@@ -51,14 +55,24 @@
     [self initDB];
     
     [self setupAVCapture];
-    
-    [self timerToggle];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self videoController:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self videoController:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -70,6 +84,11 @@
 
 - (IBAction)stateButtonPressed:(id)sender {
     [self videoController:isPlay];
+}
+
+- (void)favoritesColorButtonPressed {
+    FavoritesColorViewController *favoritesColorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritesColorViewController"];
+    [self.navigationController pushViewController:favoritesColorViewController animated:YES];
 }
 
 - (void)createDB {
@@ -232,7 +251,7 @@
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"日本語";
+    return @"Japanese";
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
@@ -248,16 +267,16 @@
         cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    TbColorNameJa *colorNameJa = (TbColorNameJa*)[colorList objectAtIndex:indexPath.row];
+    TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
     
-    float red = [colorNameJa red] / 255.f;
-    float green = [colorNameJa green] / 255.f;
-    float blue = [colorNameJa blue] / 255.f;
-    NSLog(@"%f %f %f", red, green, blue);
+    float red = [colorName red] / 255.f;
+    float green = [colorName green] / 255.f;
+    float blue = [colorName blue] / 255.f;
+    
     UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
     
-    [cell.colorNameLabel setText:[colorNameJa name]];
-    [cell.colorNameYomiLabel setText:[colorNameJa nameYomi]];
+    [cell.colorNameLabel setText:[colorName name]];
+    [cell.colorNameYomiLabel setText:[colorName nameYomi]];
     [cell.colorView setBackgroundColor:color];
     
     return cell;
@@ -265,6 +284,12 @@
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tv deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
+    
+    ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
+    colorDetailViewController.colorName = colorName;
+    [self.navigationController pushViewController:colorDetailViewController animated:YES];
 }
 
 - (void)videoController:(BOOL)state {
@@ -293,6 +318,14 @@
     } else {
         [timer invalidate];
         timer = nil;
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint point = [[touches anyObject] locationInView:self.view];
+    
+    if ([previewLayer containsPoint:point]) {
+        [self videoController:isPlay];
     }
 }
 

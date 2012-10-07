@@ -45,8 +45,11 @@
 		0665C32A160EEDAF00C9EFC5 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0665C328160EEDAF00C9EFC5 /* pause.png */; };
 		0665C32B160EEDAF00C9EFC5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0665C329160EEDAF00C9EFC5 /* play.png */; };
 		0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C32F160EFAAC00C9EFC5 /* BaseDao.m */; };
-		0665C333160F01AA00C9EFC5 /* TbColorNameJa.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C332160F01AA00C9EFC5 /* TbColorNameJa.m */; };
+		0665C333160F01AA00C9EFC5 /* TbColorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C332160F01AA00C9EFC5 /* TbColorName.m */; };
 		0665C336160F044900C9EFC5 /* TbColorNameJaDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */; };
+		06A3F685162174F200833A22 /* TbFavoriteColorNameDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */; };
+		06A3F6881621A6A400833A22 /* FavoritesColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */; };
+		06EC7CB0162155F5002F1B8F /* ColorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */; };
 		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
 		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
 		6577010515CA0CB800A36A85 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; };
@@ -139,10 +142,16 @@
 		0665C329160EEDAF00C9EFC5 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		0665C32E160EFAAC00C9EFC5 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseDao.h; path = Dao/BaseDao.h; sourceTree = "<group>"; };
 		0665C32F160EFAAC00C9EFC5 /* BaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseDao.m; path = Dao/BaseDao.m; sourceTree = "<group>"; };
-		0665C331160F01AA00C9EFC5 /* TbColorNameJa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameJa.h; path = Dto/TbColorNameJa.h; sourceTree = "<group>"; };
-		0665C332160F01AA00C9EFC5 /* TbColorNameJa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameJa.m; path = Dto/TbColorNameJa.m; sourceTree = "<group>"; };
+		0665C331160F01AA00C9EFC5 /* TbColorName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorName.h; path = Dto/TbColorName.h; sourceTree = "<group>"; };
+		0665C332160F01AA00C9EFC5 /* TbColorName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorName.m; path = Dto/TbColorName.m; sourceTree = "<group>"; };
 		0665C334160F044900C9EFC5 /* TbColorNameJaDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameJaDao.h; path = Dao/TbColorNameJaDao.h; sourceTree = "<group>"; };
 		0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameJaDao.m; path = Dao/TbColorNameJaDao.m; sourceTree = "<group>"; };
+		06A3F683162174F200833A22 /* TbFavoriteColorNameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbFavoriteColorNameDao.h; path = Dao/TbFavoriteColorNameDao.h; sourceTree = "<group>"; };
+		06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbFavoriteColorNameDao.m; path = Dao/TbFavoriteColorNameDao.m; sourceTree = "<group>"; };
+		06A3F6861621A6A300833A22 /* FavoritesColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesColorViewController.h; sourceTree = "<group>"; };
+		06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesColorViewController.m; sourceTree = "<group>"; };
+		06EC7CAE162155F5002F1B8F /* ColorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDetailViewController.h; sourceTree = "<group>"; };
+		06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorDetailViewController.m; sourceTree = "<group>"; };
 		6577011F15CA0FBB00A36A85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		6577012115CA0FC000A36A85 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,6 +235,10 @@
 				065D434A15C0301500A38E86 /* MainStoryboard.storyboard */,
 				065D434D15C0301500A38E86 /* MasterViewController.h */,
 				065D434E15C0301500A38E86 /* MasterViewController.m */,
+				06EC7CAE162155F5002F1B8F /* ColorDetailViewController.h */,
+				06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */,
+				06A3F6861621A6A300833A22 /* FavoritesColorViewController.h */,
+				06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */,
 				0629B4B115C6E84B00397737 /* ColorListCell.h */,
 				0629B4B215C6E84B00397737 /* ColorListCell.m */,
 				065D433F15C0301500A38E86 /* Supporting Files */,
@@ -342,6 +355,8 @@
 				0665C32F160EFAAC00C9EFC5 /* BaseDao.m */,
 				0665C334160F044900C9EFC5 /* TbColorNameJaDao.h */,
 				0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */,
+				06A3F683162174F200833A22 /* TbFavoriteColorNameDao.h */,
+				06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */,
 			);
 			name = Dao;
 			sourceTree = "<group>";
@@ -349,8 +364,8 @@
 		0665C32D160EFA5E00C9EFC5 /* Dto */ = {
 			isa = PBXGroup;
 			children = (
-				0665C331160F01AA00C9EFC5 /* TbColorNameJa.h */,
-				0665C332160F01AA00C9EFC5 /* TbColorNameJa.m */,
+				0665C331160F01AA00C9EFC5 /* TbColorName.h */,
+				0665C332160F01AA00C9EFC5 /* TbColorName.m */,
 			);
 			name = Dto;
 			sourceTree = "<group>";
@@ -486,8 +501,11 @@
 				065D439415C6D33D00A38E86 /* SBJsonWriter.m in Sources */,
 				0629B4B315C6E84B00397737 /* ColorListCell.m in Sources */,
 				0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */,
-				0665C333160F01AA00C9EFC5 /* TbColorNameJa.m in Sources */,
+				0665C333160F01AA00C9EFC5 /* TbColorName.m in Sources */,
 				0665C336160F044900C9EFC5 /* TbColorNameJaDao.m in Sources */,
+				06EC7CB0162155F5002F1B8F /* ColorDetailViewController.m in Sources */,
+				06A3F685162174F200833A22 /* TbFavoriteColorNameDao.m in Sources */,
+				06A3F6881621A6A400833A22 /* FavoritesColorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

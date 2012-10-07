@@ -7,7 +7,7 @@
 //
 
 #import "TbColorNameJaDao.h"
-#import "TbColorNameJa.h"
+#import "TbColorName.h"
 
 @implementation TbColorNameJaDao
 
@@ -78,7 +78,7 @@
     
     while([resultSet next]){
         if ([resultSet intForColumn:@"difference"] < 2000) {
-            TbColorNameJa *result = [[TbColorNameJa alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"]];
+            TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:@"ja_JP"];
             [results addObject:result];
         }
     }
@@ -86,6 +86,26 @@
     [resultSet close];
     
     return results;
+}
+
+- (TbColorName*)findColorNameWithColor:(UIColor *)color colorName:(NSString *)colorName {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    TbColorName *result;
+    
+    const CGFloat *rgba = CGColorGetComponents(color.CGColor);
+    
+    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM %@  WHERE name = ? ORDER BY difference;"], [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255], colorName];
+    
+    while([resultSet next]){
+        if ([resultSet intForColumn:@"difference"] < 2000) {
+            result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:@"ja_JP"];
+        }
+    }
+    
+    [resultSet close];
+    
+    return result;
 }
 
 @end
