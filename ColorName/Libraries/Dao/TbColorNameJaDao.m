@@ -78,7 +78,7 @@
     
     while([resultSet next]){
         if ([resultSet intForColumn:@"difference"] < 2000) {
-            TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:@"ja_JP"];
+            TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] language:@"ja_JP"];
             [results addObject:result];
         }
     }
@@ -99,7 +99,7 @@
     
     while([resultSet next]){
         if ([resultSet intForColumn:@"difference"] < 2000) {
-            result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:@"ja_JP"];
+            result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] language:@"ja_JP"];
         }
     }
     

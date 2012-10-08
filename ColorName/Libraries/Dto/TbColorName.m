@@ -15,9 +15,9 @@
 @synthesize red;
 @synthesize green;
 @synthesize blue;
-@synthesize langage;
+@synthesize language;
 
-- (id)initWithIndex:(int)_index name:(NSString *)_name nameYomi:(NSString *)_nameYomi red:(NSInteger)_red green:(NSInteger)_green blue:(NSInteger)_blue langage:(NSString*)_langage {
+- (id)initWithIndex:(int)_index name:(NSString *)_name nameYomi:(NSString *)_nameYomi red:(NSInteger)_red green:(NSInteger)_green blue:(NSInteger)_blue language:(NSString*)_language {
     if (self = [super init]) {
         self.index = _index;
         self.name = _name;
@@ -25,7 +25,7 @@
         self.red = _red;
         self.green = _green;
         self.blue = _blue;
-        self.langage = _langage;
+        self.language = _language;
     }
     
     return self;

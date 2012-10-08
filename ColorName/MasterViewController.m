@@ -418,4 +418,11 @@
     }
 }
 
++ (void)initialize {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"enabled_lang_japanese"];
+    [defaults setBool:YES forKey:@"enabled_lang_english"];
+    [defaults synchronize];
+}
+
 @end

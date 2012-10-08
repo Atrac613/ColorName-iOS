@@ -15,7 +15,7 @@
     NSInteger red;
     NSInteger green;
     NSInteger blue;
-    NSString *langage;
+    NSString *language;
 }
 
 @property (nonatomic) int index;
@@ -24,8 +24,8 @@
 @property (nonatomic) NSInteger red;
 @property (nonatomic) NSInteger green;
 @property (nonatomic) NSInteger blue;
-@property (strong, nonatomic) NSString *langage;
+@property (strong, nonatomic) NSString *language;
 
-- (id)initWithIndex:(int)_index name:(NSString*)_name nameYomi:(NSString*)_nameYomi red:(NSInteger)_red green:(NSInteger)_green blue:(NSInteger)_blue langage:(NSString*)_langage;
+- (id)initWithIndex:(int)_index name:(NSString*)_name nameYomi:(NSString*)_nameYomi red:(NSInteger)_red green:(NSInteger)_green blue:(NSInteger)_blue language:(NSString*)_language;
 
 @end

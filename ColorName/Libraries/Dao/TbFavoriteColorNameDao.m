@@ -18,7 +18,7 @@
 - (void)createTable {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
-    [db executeUpdate:[self setTable:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, name_yomi TEXT, red INTEGER, green INTEGER, blue INTEGER, rank INTEGER, langage TEXT);"]];
+    [db executeUpdate:[self setTable:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, name_yomi TEXT, red INTEGER, green INTEGER, blue INTEGER, rank INTEGER, language TEXT);"]];
     
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
@@ -131,11 +131,11 @@
     
     const CGFloat *rgba = CGColorGetComponents(color.CGColor);
     
-    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, langage, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM %@ ORDER BY difference;"], [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255]];
+    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, language, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM %@ ORDER BY difference;"], [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255]];
     
     while([resultSet next]){
         if ([resultSet intForColumn:@"difference"] < 2000) {
-            TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:[resultSet stringForColumn:@"langage"]];
+            TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] language:[resultSet stringForColumn:@"language"]];
             [results addObject:result];
         }
     }
@@ -150,10 +150,10 @@
     
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:0];
     
-    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, rank, langage FROM %@ ORDER BY rank;"]];
+    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, rank, language FROM %@ ORDER BY rank;"]];
     
     while([resultSet next]){
-        TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:[resultSet stringForColumn:@"langage"]];
+        TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] language:[resultSet stringForColumn:@"language"]];
         [results addObject:result];
     }
     
@@ -169,11 +169,11 @@
     
     const CGFloat *rgba = CGColorGetComponents(color.CGColor);
     
-    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, langage, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM %@  WHERE name = ? ORDER BY difference;"], [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255], colorName];
+    FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, name_yomi, red, green, blue, language, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM %@  WHERE name = ? ORDER BY difference;"], [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255], colorName];
     
     while([resultSet next]){
         if ([resultSet intForColumn:@"difference"] < 2000) {
-            result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] langage:[resultSet stringForColumn:@"langage"]];
+            result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:[resultSet stringForColumn:@"name_yomi"] red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] language:[resultSet stringForColumn:@"language"]];
         }
     }
     
