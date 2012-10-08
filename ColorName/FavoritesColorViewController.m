@@ -61,7 +61,7 @@
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Japanese";
+    return @"";
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
@@ -88,6 +88,7 @@
     [cell.colorNameLabel setText:[colorName name]];
     [cell.colorNameYomiLabel setText:[colorName nameYomi]];
     [cell.colorView setBackgroundColor:color];
+    [cell checkNameYomiLength];
     
     return cell;
 }

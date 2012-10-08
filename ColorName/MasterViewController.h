@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "TbColorNameJaDao.h"
+#import "TbColorNameEnDao.h"
 
 @interface MasterViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate, UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UIView *previewView;
@@ -21,11 +22,13 @@
     NSTimer *timer;
     
     UIColor *currentColor;
-    NSMutableArray *colorList;
+    NSMutableArray *colorListJa;
+    NSMutableArray *colorListEn;
     
     BOOL isPlay;
     
     TbColorNameJaDao *colorNameJaDao;
+    TbColorNameEnDao *colorNameEnDao;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *previewView;
@@ -36,8 +39,10 @@
 @property (nonatomic, retain) AVCaptureSession *session;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) UIColor *currentColor;
-@property (nonatomic, retain) NSMutableArray *colorList;
+@property (nonatomic, retain) NSMutableArray *colorListJa;
+@property (nonatomic, retain) NSMutableArray *colorListEn;
 @property (nonatomic) BOOL isPlay;
 @property (nonatomic, retain) TbColorNameJaDao *colorNameJaDao;
+@property (nonatomic, retain) TbColorNameEnDao *colorNameEnDao;
 
 @end

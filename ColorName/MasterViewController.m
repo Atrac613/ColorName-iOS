@@ -27,13 +27,15 @@
 @synthesize previewView;
 @synthesize colorView;
 @synthesize currentColor;
-@synthesize colorList;
+@synthesize colorListJa;
+@synthesize colorListEn;
 @synthesize tableView;
 @synthesize stateButton;
 @synthesize isPlay;
 @synthesize session;
 @synthesize timer;
 @synthesize colorNameJaDao;
+@synthesize colorNameEnDao;
 
 - (void)awakeFromNib
 {
@@ -50,9 +52,11 @@
     
     isPlay = YES;
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
+    colorNameEnDao = [[TbColorNameEnDao alloc] init];
 
     [self createDB];
-    [self initDB];
+    [self initDBJa];
+    [self initDBEn];
     
     [self setupAVCapture];
 }
@@ -93,9 +97,10 @@
 
 - (void)createDB {
     [colorNameJaDao createTable];
+    [colorNameEnDao createTable];
 }
 
-- (void)initDB {
+- (void)initDBJa {
     if ([colorNameJaDao countAll] > 0) {
         return;
     }
@@ -119,20 +124,47 @@
     }
 }
 
-- (NSMutableArray*)findColorName:(UIColor*)color {
-    NSMutableArray *_colorList = [[NSMutableArray alloc] init];
-    
-    if (!color) {
-        return _colorList;
+- (void)initDBEn {
+    if ([colorNameEnDao countAll] > 0) {
+        return;
     }
     
-    _colorList = [colorNameJaDao findColorNameWithColor:color];
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"color_names_us" ofType:@"json"]];
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSArray *jsonArray = [jsonString JSONValue];
     
-    return _colorList;
+    for (int i = 0; i < [jsonArray count]; i++) {
+        NSDictionary *dict = [jsonArray objectAtIndex:i];
+        NSString *name = [dict valueForKey:@"name"];
+        NSString *hex = [dict valueForKey:@"hex"];
+        
+        UIColor *color = [UIColor colorWithHexString:hex];
+        const CGFloat *rgba = CGColorGetComponents(color.CGColor);
+        
+        if ([colorNameEnDao countWithName:name red:rgba[0] * 255 green:rgba[1] * 255 blue:rgba[2] * 255] == 0) {
+            [colorNameEnDao insertWithName:name red:rgba[0] * 255 green:rgba[1] * 255 blue:rgba[2] * 255];
+        }
+    }
 }
 
 - (void)getColorList {
-    colorList = [self findColorName:currentColor];
+    if (!currentColor) {
+        return;
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+        colorListJa = [colorNameJaDao findColorNameWithColor:currentColor];
+    }
+    
+    if ([defaults boolForKey:@"enabled_lang_english"]) {
+        colorListEn = [colorNameEnDao findColorNameWithColor:currentColor];
+    }
+    
+    if (![defaults boolForKey:@"enabled_lang_japanese"] && ![defaults boolForKey:@"enabled_lang_english"]) {
+        colorListEn = [colorNameEnDao findColorNameWithColor:currentColor];
+    }
     
     [tableView reloadData];
 }
@@ -243,15 +275,45 @@
 #pragma mark - TableView delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
+        return 2;
+    }
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [colorList count];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
+        if (section == 0) {
+            return [colorListJa count];
+        }
+        
+        return [colorListEn count];
+    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+        return [colorListJa count];
+    } else {
+        return [colorListEn count];
+    }
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Japanese";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
+        if (section == 0) {
+            return @"Japanese";
+        }
+        
+        return @"English";
+    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+        return @"Japanese";
+    } else {
+        return @"English";
+    }
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
@@ -266,8 +328,21 @@
     if (cell == nil) {
         cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+
+    TbColorName *colorName;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
+    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
+        if (indexPath.section == 0) {
+            colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
+        } else {
+            colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
+        }
+    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+        colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
+    } else {
+        colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
+    }
     
     float red = [colorName red] / 255.f;
     float green = [colorName green] / 255.f;
@@ -278,6 +353,7 @@
     [cell.colorNameLabel setText:[colorName name]];
     [cell.colorNameYomiLabel setText:[colorName nameYomi]];
     [cell.colorView setBackgroundColor:color];
+    [cell checkNameYomiLength];
     
     return cell;
 }
@@ -285,7 +361,20 @@
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
-    TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
+    TbColorName *colorName;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
+        if (indexPath.section == 0) {
+            colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
+        } else {
+            colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
+        }
+    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+        colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
+    } else {
+        colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
+    }
     
     ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
     colorDetailViewController.colorName = colorName;

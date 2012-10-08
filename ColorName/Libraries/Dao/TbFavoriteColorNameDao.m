@@ -100,7 +100,7 @@
     }
 }
 
-- (void)removeWithFrom:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
+- (void)removeFromName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"DELETE FROM %@ WHERE name = ? AND name_yomi = ? AND red = ? AND green = ? AND blue = ?"], name, nameYomi, [NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue]];

@@ -35,6 +35,17 @@
     return self;
 }
 
+- (void)checkNameYomiLength {
+    if ([colorNameYomiLabel.text length] > 0) {
+        [colorNameLabel setFrame:CGRectMake(50, 7, 300, 20)];
+        [colorNameYomiLabel setFrame:CGRectMake(50, 30, 300, 10)];
+        [colorNameYomiLabel setHidden:NO];
+    } else {
+        [colorNameLabel setFrame:CGRectMake(50, 12, 300, 20)];
+        [colorNameYomiLabel setHidden:YES];
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

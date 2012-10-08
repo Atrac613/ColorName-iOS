@@ -18,4 +18,6 @@
 @property (nonatomic, retain) UILabel *colorNameYomiLabel;
 @property (nonatomic, retain) UIView *colorView;
 
+- (void)checkNameYomiLength;
+
 @end
