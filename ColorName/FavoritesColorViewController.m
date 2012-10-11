@@ -9,6 +9,7 @@
 #import "FavoritesColorViewController.h"
 #import "ColorDetailViewController.h"
 #import "ColorListCell.h"
+#import "JSON.h"
 
 @interface FavoritesColorViewController ()
 
@@ -18,6 +19,7 @@
 
 @synthesize tableView;
 @synthesize colorList;
+@synthesize httpResponseData;
 @synthesize favoriteColorNameDao;
 
 - (void)viewDidLoad
@@ -134,6 +136,87 @@
         [colorList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+#pragma mark - IBActions
+
+- (IBAction)syncButtonPressed:(id)sender {
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[colorList count]];
+    
+    int rank = 1;
+    for (TbColorName *colorName in colorList) {
+        NSArray *keys = [NSArray arrayWithObjects:@"name", @"name_yomi", @"red", @"green", @"blue", @"rank", nil];
+        NSArray *objects = [NSArray arrayWithObjects:colorName.name, colorName.nameYomi, [NSNumber numberWithInt:colorName.red], [NSNumber numberWithInt:colorName.green], [NSNumber numberWithInt:colorName.blue], [NSNumber numberWithInt:rank], nil];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [array addObject:dict];
+        
+        rank++;
+    }
+    
+    [self uploadAction:[array JSONRepresentation]];
+}
+
+#pragma mark - Upload Action
+
+- (void)uploadAction:(NSString*)jsonData {
+    NSString *urlString;
+    if (TARGET_IPHONE_SIMULATOR) {
+        urlString = @"http://localhost:8093/api/v1/save_with_multiple";
+    } else {
+        urlString = @"https://color-name-app.appspot.com/api/v1/save_with_multiple";
+    }
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPShouldHandleCookies:YES];
+    
+    NSString *boundary = @"---------------------------14737809831466499882746641449";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    NSMutableData *body = [NSMutableData data];
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", @"raw_data"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@", jsonData] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setHTTPBody:body];
+    
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    int statusCode = [((NSHTTPURLResponse *)response) statusCode];
+    if (statusCode != 200) {
+        NSLog(@"ErrorCode: %d", statusCode);
+    } else {
+        httpResponseData = [NSMutableData data];
+    }
+}
+
+- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
+    [httpResponseData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection*)connection {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)connection:(NSURLConnection*)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+
+}
+
+- (NSString*)data2str:(NSData*)data {
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 @end

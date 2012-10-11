@@ -13,12 +13,16 @@
     IBOutlet UITableView *tableView;
     
     NSMutableArray *colorList;
+    NSMutableData *httpResponseData;
     
     TbFavoriteColorNameDao *favoriteColorNameDao;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *colorList;
+@property (nonatomic, retain) NSMutableData *httpResponseData;
 @property (nonatomic, strong) TbFavoriteColorNameDao *favoriteColorNameDao;
+
+- (IBAction)syncButtonPressed:(id)sender;
 
 @end
