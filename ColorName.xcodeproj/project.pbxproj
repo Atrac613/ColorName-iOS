@@ -51,6 +51,8 @@
 		06A3F6881621A6A400833A22 /* FavoritesColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */; };
 		06A3F68B1622738200833A22 /* TbColorNameEnDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F68A1622738200833A22 /* TbColorNameEnDao.m */; };
 		06A3F68D16227EDF00833A22 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06A3F68C16227EDF00833A22 /* Settings.bundle */; };
+		06A3F6961629A99200833A22 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06A3F6931629A99200833A22 /* SVProgressHUD.bundle */; };
+		06A3F6971629A99200833A22 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F6951629A99200833A22 /* SVProgressHUD.m */; };
 		06EC7CB0162155F5002F1B8F /* ColorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */; };
 		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
 		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
@@ -155,6 +157,9 @@
 		06A3F6891622738200833A22 /* TbColorNameEnDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameEnDao.h; path = Dao/TbColorNameEnDao.h; sourceTree = "<group>"; };
 		06A3F68A1622738200833A22 /* TbColorNameEnDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameEnDao.m; path = Dao/TbColorNameEnDao.m; sourceTree = "<group>"; };
 		06A3F68C16227EDF00833A22 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		06A3F6931629A99200833A22 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		06A3F6941629A99200833A22 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		06A3F6951629A99200833A22 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		06EC7CAE162155F5002F1B8F /* ColorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDetailViewController.h; sourceTree = "<group>"; };
 		06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorDetailViewController.m; sourceTree = "<group>"; };
 		6577011F15CA0FBB00A36A85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -284,14 +289,15 @@
 		065D437015C6D33D00A38E86 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				06A3F6921629A99200833A22 /* SVProgressHUD */,
 				0665C32D160EFA5E00C9EFC5 /* Dto */,
 				0665C32C160EFA5700C9EFC5 /* Dao */,
+				065D437115C6D33D00A38E86 /* FMDB */,
+				065D437C15C6D33D00A38E86 /* JSON */,
 				065D439A15C6D38700A38E86 /* sqlite3_extension_functions.c */,
 				065D439B15C6D38700A38E86 /* sqlite3_extension_functions.h */,
 				065D439C15C6D38700A38E86 /* UIColor_Categories.h */,
 				065D439D15C6D38700A38E86 /* UIColor_Categories.m */,
-				065D437115C6D33D00A38E86 /* FMDB */,
-				065D437C15C6D33D00A38E86 /* JSON */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -378,6 +384,16 @@
 			name = Dto;
 			sourceTree = "<group>";
 		};
+		06A3F6921629A99200833A22 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				06A3F6931629A99200833A22 /* SVProgressHUD.bundle */,
+				06A3F6941629A99200833A22 /* SVProgressHUD.h */,
+				06A3F6951629A99200833A22 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,6 +474,7 @@
 				0665C32A160EEDAF00C9EFC5 /* pause.png in Resources */,
 				0665C32B160EEDAF00C9EFC5 /* play.png in Resources */,
 				06A3F68D16227EDF00833A22 /* Settings.bundle in Resources */,
+				06A3F6961629A99200833A22 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +533,7 @@
 				06A3F685162174F200833A22 /* TbFavoriteColorNameDao.m in Sources */,
 				06A3F6881621A6A400833A22 /* FavoritesColorViewController.m in Sources */,
 				06A3F68B1622738200833A22 /* TbColorNameEnDao.m in Sources */,
+				06A3F6971629A99200833A22 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

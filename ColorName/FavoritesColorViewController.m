@@ -10,6 +10,7 @@
 #import "ColorDetailViewController.h"
 #import "ColorListCell.h"
 #import "JSON.h"
+#import "SVProgressHUD.h"
 
 @interface FavoritesColorViewController ()
 
@@ -18,7 +19,9 @@
 @implementation FavoritesColorViewController
 
 @synthesize tableView;
+@synthesize syncButton;
 @synthesize colorList;
+@synthesize connection;
 @synthesize httpResponseData;
 @synthesize favoriteColorNameDao;
 
@@ -98,11 +101,13 @@
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
-    TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
-    
-    ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
-    colorDetailViewController.colorName = colorName;
-    [self.navigationController pushViewController:colorDetailViewController animated:YES];
+    if (![SVProgressHUD isVisible]) {
+        TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
+        
+        ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
+        colorDetailViewController.colorName = colorName;
+        [self.navigationController pushViewController:colorDetailViewController animated:YES];
+    }
 }
 
 - (void)tableView:(UITableView *)tv moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
@@ -141,19 +146,38 @@
 #pragma mark - IBActions
 
 - (IBAction)syncButtonPressed:(id)sender {
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[colorList count]];
-    
-    int rank = 1;
-    for (TbColorName *colorName in colorList) {
-        NSArray *keys = [NSArray arrayWithObjects:@"name", @"name_yomi", @"red", @"green", @"blue", @"rank", nil];
-        NSArray *objects = [NSArray arrayWithObjects:colorName.name, colorName.nameYomi, [NSNumber numberWithInt:colorName.red], [NSNumber numberWithInt:colorName.green], [NSNumber numberWithInt:colorName.blue], [NSNumber numberWithInt:rank], nil];
-        NSDictionary *dict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-        [array addObject:dict];
+    if ([SVProgressHUD isVisible]) {
+        [connection cancel];
         
-        rank++;
+        [syncButton setStyle:UIBarButtonItemStyleDone];
+        [syncButton setTitle:@"Sync"];
+        
+        [self.navigationItem setHidesBackButton:NO animated:YES];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        
+        [SVProgressHUD dismiss];
+    } else {
+        [syncButton setStyle:UIBarButtonItemStyleBordered];
+        [syncButton setTitle:@"Cancel"];
+        
+        [self.navigationItem setHidesBackButton:YES animated:YES];
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        [SVProgressHUD showWithStatus:@"Uploading"];
+        
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[colorList count]];
+        
+        int rank = 1;
+        for (TbColorName *colorName in colorList) {
+            NSArray *keys = [NSArray arrayWithObjects:@"name", @"name_yomi", @"red", @"green", @"blue", @"rank", nil];
+            NSArray *objects = [NSArray arrayWithObjects:colorName.name, colorName.nameYomi, [NSNumber numberWithInt:colorName.red], [NSNumber numberWithInt:colorName.green], [NSNumber numberWithInt:colorName.blue], [NSNumber numberWithInt:rank], nil];
+            NSDictionary *dict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+            [array addObject:dict];
+            
+            rank++;
+        }
+        
+        [self uploadAction:[array JSONRepresentation]];
     }
-    
-    [self uploadAction:[array JSONRepresentation]];
 }
 
 #pragma mark - Upload Action
@@ -185,7 +209,7 @@
     
     [request setHTTPBody:body];
     
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    connection = [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response {
@@ -205,10 +229,26 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    [syncButton setStyle:UIBarButtonItemStyleDone];
+    [syncButton setTitle:@"Sync"];
+    
+    [self.navigationItem setHidesBackButton:NO animated:YES];
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    
+    [SVProgressHUD showSuccessWithStatus:@"Success!"];
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    [syncButton setStyle:UIBarButtonItemStyleDone];
+    [syncButton setTitle:@"Sync"];
+    
+    [self.navigationItem setHidesBackButton:NO animated:YES];
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    
+    [SVProgressHUD showErrorWithStatus:@"Failed"];
 }
 
 - (void)connection:(NSURLConnection*)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {

@@ -245,6 +245,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="syncButton" destination="JmG-WM-7NE" id="hm0-8s-AE9"/>
                         <outlet property="tableView" destination="rbe-YR-VMy" id="A2v-Xj-Z0a"/>
                     </connections>
                 </viewController>
@@ -278,12 +279,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesColorViewController.h"/>
             <relationships>
                 <relationship kind="action" name="syncButtonPressed:"/>
+                <relationship kind="outlet" name="syncButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="MasterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
             <relationships>
+                <relationship kind="action" name="stateButtonPressed:"/>
                 <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="previewView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="stateButton" candidateClass="UIButton"/>

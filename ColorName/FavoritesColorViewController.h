@@ -11,15 +11,20 @@
 
 @interface FavoritesColorViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
+    IBOutlet UIBarButtonItem *syncButton;
     
     NSMutableArray *colorList;
+    
+    NSURLConnection *connection;
     NSMutableData *httpResponseData;
     
     TbFavoriteColorNameDao *favoriteColorNameDao;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *syncButton;
 @property (nonatomic, retain) NSMutableArray *colorList;
+@property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSMutableData *httpResponseData;
 @property (nonatomic, strong) TbFavoriteColorNameDao *favoriteColorNameDao;
 
