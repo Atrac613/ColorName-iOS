@@ -11,9 +11,11 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     FMDatabase *db;
+    BOOL isAuthenticated;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) FMDatabase *db;
+@property (nonatomic) BOOL isAuthenticated;
 
 @end

@@ -12,9 +12,12 @@
 
 @synthesize window = _window;
 @synthesize db;
+@synthesize isAuthenticated;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    isAuthenticated = NO;
+    
     if (![self initDatabase]) {
         NSLog(@"Failed to init database.");
     }

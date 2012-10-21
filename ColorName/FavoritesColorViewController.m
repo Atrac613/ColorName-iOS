@@ -11,6 +11,8 @@
 #import "ColorListCell.h"
 #import "JSON.h"
 #import "SVProgressHUD.h"
+#import "WebViewViewController.h"
+#import "AppDelegate.h"
 
 @interface FavoritesColorViewController ()
 
@@ -39,8 +41,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
     colorList = [favoriteColorNameDao getAll];
     [tableView reloadData];
+    
+    if (appDelegate.isAuthenticated) {
+        appDelegate.isAuthenticated = NO;
+        
+        [self syncAction];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,27 +167,33 @@
         
         [SVProgressHUD dismiss];
     } else {
-        [syncButton setStyle:UIBarButtonItemStyleBordered];
-        [syncButton setTitle:@"Cancel"];
-        
-        [self.navigationItem setHidesBackButton:YES animated:YES];
-        [self.navigationItem.rightBarButtonItem setEnabled:NO];
-        [SVProgressHUD showWithStatus:@"Uploading"];
-        
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[colorList count]];
-        
-        int rank = 1;
-        for (TbColorName *colorName in colorList) {
-            NSArray *keys = [NSArray arrayWithObjects:@"name", @"name_yomi", @"red", @"green", @"blue", @"rank", nil];
-            NSArray *objects = [NSArray arrayWithObjects:colorName.name, colorName.nameYomi, [NSNumber numberWithInt:colorName.red], [NSNumber numberWithInt:colorName.green], [NSNumber numberWithInt:colorName.blue], [NSNumber numberWithInt:rank], nil];
-            NSDictionary *dict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-            [array addObject:dict];
-            
-            rank++;
-        }
-        
-        [self uploadAction:[array JSONRepresentation]];
+        WebViewViewController *webViewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewController"];
+        webViewViewController.signIn = YES;
+        [self presentModalViewController:webViewViewController animated:YES];
     }
+}
+
+- (void)syncAction {
+    [syncButton setStyle:UIBarButtonItemStyleBordered];
+    [syncButton setTitle:@"Cancel"];
+    
+    [self.navigationItem setHidesBackButton:YES animated:YES];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    [SVProgressHUD showWithStatus:@"Uploading"];
+    
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[colorList count]];
+    
+    int rank = 1;
+    for (TbColorName *colorName in colorList) {
+        NSArray *keys = [NSArray arrayWithObjects:@"name", @"name_yomi", @"red", @"green", @"blue", @"rank", nil];
+        NSArray *objects = [NSArray arrayWithObjects:colorName.name, colorName.nameYomi, [NSNumber numberWithInt:colorName.red], [NSNumber numberWithInt:colorName.green], [NSNumber numberWithInt:colorName.blue], [NSNumber numberWithInt:rank], nil];
+        NSDictionary *dict = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [array addObject:dict];
+        
+        rank++;
+    }
+    
+    [self uploadAction:[array JSONRepresentation]];
 }
 
 #pragma mark - Upload Action
