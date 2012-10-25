@@ -247,6 +247,7 @@
                     <connections>
                         <outlet property="syncButton" destination="JmG-WM-7NE" id="hm0-8s-AE9"/>
                         <outlet property="tableView" destination="rbe-YR-VMy" id="A2v-Xj-Z0a"/>
+                        <outlet property="toolBar" destination="BIY-AX-uMN" id="I8x-Cr-8fG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Lr-UA-Q9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,50 +293,6 @@
     <resources>
         <image name="pause.png" width="100" height="100"/>
     </resources>
-    <classes>
-        <class className="ColorDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="likeButtonPressed:"/>
-                <relationship kind="outlet" name="blueLevelBar" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="blueLevelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="colorNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="colorNameYomiLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="greenLevelBar" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="greenLevelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hexLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="redLevelBar" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="redLevelLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FavoritesColorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesColorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="syncButtonPressed:"/>
-                <relationship kind="outlet" name="syncButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="stateButtonPressed:"/>
-                <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="previewView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="stateButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="WebViewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

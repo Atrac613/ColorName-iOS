@@ -35,7 +35,9 @@
     [self.navigationItem setTitle:@"Authentication"];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)]];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     NSString *urlString;
     if (signIn) {
         if (TARGET_IPHONE_SIMULATOR) {
@@ -100,6 +102,7 @@
 
 - (void)rightButtonIsBusy {
     BOOL isBusy = NO;
+    
     for (UIView *view in [self.view subviews]) {
         if ([view isKindOfClass:[UIActivityIndicatorView class]]) {
             isBusy = YES;

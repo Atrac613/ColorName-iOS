@@ -22,9 +22,11 @@
 
 @synthesize tableView;
 @synthesize syncButton;
+@synthesize toolBar;
 @synthesize colorList;
 @synthesize connection;
 @synthesize httpResponseData;
+@synthesize userId;
 @synthesize favoriteColorNameDao;
 
 - (void)viewDidLoad
@@ -35,6 +37,8 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
+    userId = @"";
+    
     favoriteColorNameDao = [[TbFavoriteColorNameDao alloc] init];
 }
 
@@ -196,6 +200,35 @@
     [self uploadAction:[array JSONRepresentation]];
 }
 
+- (void)showViewButton {
+    NSMutableArray *toolBarItems = [toolBar.items mutableCopy];
+    
+    if ([toolBarItems count] <= 3) {
+        UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"View" style:UIBarButtonItemStyleBordered target:self action:@selector(viewButtonPressed)];
+        
+        [toolBarItems insertObject:item0 atIndex:0];
+        [toolBarItems insertObject:item1 atIndex:1];
+        
+        [toolBar setItems:toolBarItems animated:YES];
+    }
+}
+
+- (void)viewButtonPressed {
+    if ([userId length] > 0) {
+        NSString *urlString;
+        if (TARGET_IPHONE_SIMULATOR) {
+            urlString = @"http://localhost:8093/%@";
+        } else {
+            urlString = @"http://color-name-app.appspot.com/%@";
+        }
+        
+        urlString = [NSString stringWithFormat:urlString, userId];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    }
+}
+
 #pragma mark - Upload Action
 
 - (void)uploadAction:(NSString*)jsonData {
@@ -246,6 +279,10 @@
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
+    NSString *jsonString = [[NSString alloc] initWithData:httpResponseData encoding:NSUTF8StringEncoding];
+    NSDictionary *result = [NSDictionary dictionaryWithDictionary:[jsonString JSONValue]];
+    userId = [result valueForKey:@"user_id"];
+    
     [syncButton setStyle:UIBarButtonItemStyleDone];
     [syncButton setTitle:@"Sync"];
     
@@ -253,6 +290,8 @@
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
     
     [SVProgressHUD showSuccessWithStatus:@"Success!"];
+    
+    [self performSelector:@selector(showViewButton) withObject:nil afterDelay:1.f];
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {

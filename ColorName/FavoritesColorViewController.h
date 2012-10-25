@@ -12,20 +12,25 @@
 @interface FavoritesColorViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
     IBOutlet UIBarButtonItem *syncButton;
+    IBOutlet UIToolbar *toolBar;
     
     NSMutableArray *colorList;
     
     NSURLConnection *connection;
     NSMutableData *httpResponseData;
     
+    NSString *userId;
+    
     TbFavoriteColorNameDao *favoriteColorNameDao;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *syncButton;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolBar;
 @property (nonatomic, retain) NSMutableArray *colorList;
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSMutableData *httpResponseData;
+@property (nonatomic, retain) NSString *userId;
 @property (nonatomic, strong) TbFavoriteColorNameDao *favoriteColorNameDao;
 
 - (IBAction)syncButtonPressed:(id)sender;
