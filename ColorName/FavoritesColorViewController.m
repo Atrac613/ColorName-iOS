@@ -279,31 +279,21 @@
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
-    NSString *jsonString = [[NSString alloc] initWithData:httpResponseData encoding:NSUTF8StringEncoding];
-    NSDictionary *result = [NSDictionary dictionaryWithDictionary:[jsonString JSONValue]];
-    userId = [result valueForKey:@"user_id"];
-    
-    [syncButton setStyle:UIBarButtonItemStyleDone];
-    [syncButton setTitle:@"Sync"];
-    
-    [self.navigationItem setHidesBackButton:NO animated:YES];
-    [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    
-    [SVProgressHUD showSuccessWithStatus:@"Success!"];
-    
-    [self performSelector:@selector(showViewButton) withObject:nil afterDelay:1.f];
+    if ([httpResponseData length] > 0) {
+        NSString *jsonString = [[NSString alloc] initWithData:httpResponseData encoding:NSUTF8StringEncoding];
+        NSDictionary *result = [NSDictionary dictionaryWithDictionary:[jsonString JSONValue]];
+        userId = [result valueForKey:@"user_id"];
+        
+        [self syncFinishWithResult:YES];
+    } else {
+        [self syncFinishWithResult:NO];
+    }
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
-    [syncButton setStyle:UIBarButtonItemStyleDone];
-    [syncButton setTitle:@"Sync"];
-    
-    [self.navigationItem setHidesBackButton:NO animated:YES];
-    [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    
-    [SVProgressHUD showErrorWithStatus:@"Failed"];
+    [self syncFinishWithResult:NO];
 }
 
 - (void)connection:(NSURLConnection*)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
@@ -312,6 +302,28 @@
 
 - (NSString*)data2str:(NSData*)data {
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
+- (void)syncFinishWithResult:(BOOL)result {
+    if (result) {
+        [syncButton setStyle:UIBarButtonItemStyleDone];
+        [syncButton setTitle:@"Sync"];
+        
+        [self.navigationItem setHidesBackButton:NO animated:YES];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        
+        [SVProgressHUD showSuccessWithStatus:@"Success!"];
+        
+        [self performSelector:@selector(showViewButton) withObject:nil afterDelay:1.f];
+    } else {
+        [syncButton setStyle:UIBarButtonItemStyleDone];
+        [syncButton setTitle:@"Sync"];
+        
+        [self.navigationItem setHidesBackButton:NO animated:YES];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        
+        [SVProgressHUD showErrorWithStatus:@"Failed"];
+    }
 }
 
 @end
