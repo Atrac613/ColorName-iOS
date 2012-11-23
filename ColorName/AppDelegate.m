@@ -13,6 +13,7 @@
 @synthesize window = _window;
 @synthesize db;
 @synthesize isAuthenticated;
+@synthesize userId;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -21,6 +22,8 @@
     if (![self initDatabase]) {
         NSLog(@"Failed to init database.");
     }
+    
+    userId = @"";
     
     return YES;
 }

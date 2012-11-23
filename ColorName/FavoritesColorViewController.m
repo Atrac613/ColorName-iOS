@@ -11,7 +11,8 @@
 #import "ColorListCell.h"
 #import "JSON.h"
 #import "SVProgressHUD.h"
-#import "WebViewViewController.h"
+#import "AuthViewController.h"
+#import "UserPageViewController.h"
 #import "AppDelegate.h"
 
 @interface FavoritesColorViewController ()
@@ -26,7 +27,6 @@
 @synthesize colorList;
 @synthesize connection;
 @synthesize httpResponseData;
-@synthesize userId;
 @synthesize favoriteColorNameDao;
 
 - (void)viewDidLoad
@@ -36,8 +36,6 @@
     [self.navigationItem setTitle:@"Favorites"];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
-    userId = @"";
     
     favoriteColorNameDao = [[TbFavoriteColorNameDao alloc] init];
 }
@@ -45,13 +43,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
     colorList = [favoriteColorNameDao getAll];
     [tableView reloadData];
     
-    if (appDelegate.isAuthenticated) {
-        appDelegate.isAuthenticated = NO;
+    if (SharedAppDelegate.isAuthenticated) {
+        SharedAppDelegate.isAuthenticated = NO;
         
         [self syncAction];
     }
@@ -171,9 +167,9 @@
         
         [SVProgressHUD dismiss];
     } else {
-        WebViewViewController *webViewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewController"];
-        webViewViewController.signIn = YES;
-        [self presentModalViewController:webViewViewController animated:YES];
+        AuthViewController *authViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
+        authViewController.signIn = YES;
+        [self presentModalViewController:authViewController animated:YES];
     }
 }
 
@@ -215,17 +211,9 @@
 }
 
 - (void)viewButtonPressed {
-    if ([userId length] > 0) {
-        NSString *urlString;
-        if (TARGET_IPHONE_SIMULATOR) {
-            urlString = @"http://localhost:8093/%@";
-        } else {
-            urlString = @"http://color-name-app.appspot.com/%@";
-        }
-        
-        urlString = [NSString stringWithFormat:urlString, userId];
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    if ([SharedAppDelegate.userId length] > 0) {
+        UserPageViewController *userPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserPageViewController"];
+        [self presentModalViewController:userPageViewController animated:YES];
     }
 }
 
@@ -282,7 +270,8 @@
     if ([httpResponseData length] > 0) {
         NSString *jsonString = [[NSString alloc] initWithData:httpResponseData encoding:NSUTF8StringEncoding];
         NSDictionary *result = [NSDictionary dictionaryWithDictionary:[jsonString JSONValue]];
-        userId = [result valueForKey:@"user_id"];
+
+        SharedAppDelegate.userId = [result valueForKey:@"user_id"];
         
         [self syncFinishWithResult:YES];
     } else {

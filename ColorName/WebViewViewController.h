@@ -11,12 +11,14 @@
 @interface WebViewViewController : UIViewController<UIWebViewDelegate> {
     IBOutlet UINavigationItem *navigationItem;
     IBOutlet UIWebView *webView;
-    
-    BOOL signIn;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic) BOOL signIn;
+
+- (void)rightButtonIsBusy;
+- (void)rightButtonIsNormal;
+- (void)leftButtonIsBusy;
+- (void)leftButtonIsNormal;
 
 @end

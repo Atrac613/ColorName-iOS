@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
 
+#define SharedAppDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     FMDatabase *db;
     BOOL isAuthenticated;
+    NSString *userId;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) FMDatabase *db;
 @property (nonatomic) BOOL isAuthenticated;
+@property (strong, nonatomic) NSString *userId;
 
 @end

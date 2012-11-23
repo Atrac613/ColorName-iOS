@@ -55,6 +55,10 @@
 		06A3F6971629A99200833A22 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F6951629A99200833A22 /* SVProgressHUD.m */; };
 		06A3F73216340EE400833A22 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F73116340EE400833A22 /* WebViewViewController.m */; };
 		06D7950616500069004396FB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D7950516500069004396FB /* Default-568h@2x.png */; };
+		06D79509165F3074004396FB /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D79508165F3074004396FB /* AuthViewController.m */; };
+		06D7950C165F32A3004396FB /* UserPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D7950B165F32A3004396FB /* UserPageViewController.m */; };
+		06D79519165F4EE4004396FB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D79517165F4EE4004396FB /* Accounts.framework */; };
+		06D7951A165F4EE4004396FB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D79518165F4EE4004396FB /* Social.framework */; };
 		06EC7CB0162155F5002F1B8F /* ColorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */; };
 		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
 		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
@@ -165,6 +169,12 @@
 		06A3F73016340EE400833A22 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		06A3F73116340EE400833A22 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		06D7950516500069004396FB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		06D79507165F3074004396FB /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		06D79508165F3074004396FB /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		06D7950A165F32A3004396FB /* UserPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPageViewController.h; sourceTree = "<group>"; };
+		06D7950B165F32A3004396FB /* UserPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPageViewController.m; sourceTree = "<group>"; };
+		06D79517165F4EE4004396FB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		06D79518165F4EE4004396FB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		06EC7CAE162155F5002F1B8F /* ColorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDetailViewController.h; sourceTree = "<group>"; };
 		06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorDetailViewController.m; sourceTree = "<group>"; };
 		6577011F15CA0FBB00A36A85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -183,6 +193,8 @@
 				0629B4AD15C6D58300397737 /* CoreMedia.framework in Frameworks */,
 				0629B4AE15C6D58300397737 /* CoreVideo.framework in Frameworks */,
 				0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */,
+				06D79519165F4EE4004396FB /* Accounts.framework in Frameworks */,
+				06D7951A165F4EE4004396FB /* Social.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +242,8 @@
 		065D433715C0301500A38E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06D79517165F4EE4004396FB /* Accounts.framework */,
+				06D79518165F4EE4004396FB /* Social.framework */,
 				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
 				0629B4A915C6D58300397737 /* AVFoundation.framework */,
 				0629B4AA15C6D58300397737 /* CoreMedia.framework */,
@@ -257,6 +271,10 @@
 				06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */,
 				06A3F73016340EE400833A22 /* WebViewViewController.h */,
 				06A3F73116340EE400833A22 /* WebViewViewController.m */,
+				06D79507165F3074004396FB /* AuthViewController.h */,
+				06D79508165F3074004396FB /* AuthViewController.m */,
+				06D7950A165F32A3004396FB /* UserPageViewController.h */,
+				06D7950B165F32A3004396FB /* UserPageViewController.m */,
 				0629B4B115C6E84B00397737 /* ColorListCell.h */,
 				0629B4B215C6E84B00397737 /* ColorListCell.m */,
 				065D433F15C0301500A38E86 /* Supporting Files */,
@@ -544,6 +562,8 @@
 				06A3F68B1622738200833A22 /* TbColorNameEnDao.m in Sources */,
 				06A3F6971629A99200833A22 /* SVProgressHUD.m in Sources */,
 				06A3F73216340EE400833A22 /* WebViewViewController.m in Sources */,
+				06D79509165F3074004396FB /* AuthViewController.m in Sources */,
+				06D7950C165F32A3004396FB /* UserPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
