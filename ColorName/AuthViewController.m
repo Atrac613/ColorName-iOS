@@ -51,7 +51,7 @@
         if (TARGET_IPHONE_SIMULATOR) {
             urlString = @"http://localhost:8093/api/v1/logout";
         } else {
-            urlString = @"https://color-name-app.appspot.com/api/v1/logiut";
+            urlString = @"https://color-name-app.appspot.com/api/v1/logout";
         }
     }
     

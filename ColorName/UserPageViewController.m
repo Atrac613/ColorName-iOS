@@ -61,7 +61,7 @@
     if (TARGET_IPHONE_SIMULATOR) {
         urlString = [NSString stringWithFormat:@"http://localhost:8093/%@", SharedAppDelegate.userId];
     } else {
-        urlString = [NSString stringWithFormat:@"https://color-name-app.appspot.com/%@", SharedAppDelegate.userId];
+        urlString = [NSString stringWithFormat:@"http://color-name.atrac613.io/%@", SharedAppDelegate.userId];
     }
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
@@ -150,6 +150,16 @@
     [pickerToolbar sizeToFit];
     
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    
+    UILabel *toolBarTitle = [[UILabel alloc] init];
+    [toolBarTitle setBackgroundColor:[UIColor clearColor]];
+    [toolBarTitle setTextColor:[UIColor whiteColor]];
+    [toolBarTitle setFont:[UIFont boldSystemFontOfSize:12.f]];
+    [toolBarTitle setText:@"Update profile from Twitter"];
+    [toolBarTitle sizeToFit];
+    
+    UIBarButtonItem *toolBarTitleButton = [[UIBarButtonItem alloc] initWithCustomView:toolBarTitle];
+    [barItems addObject:toolBarTitleButton];
     
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     [barItems addObject:flexSpace];
