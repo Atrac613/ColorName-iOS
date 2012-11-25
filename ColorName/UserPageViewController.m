@@ -43,7 +43,7 @@
 {
     [super viewDidLoad];
 	
-    [self.navigationItem setTitle:@"User Page"];
+    [self.navigationItem setTitle:@"My Page"];
 }
 
 - (void)didReceiveMemoryWarning

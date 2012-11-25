@@ -16,6 +16,7 @@
 @property (nonatomic, retain) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 
+- (void)cancelButtonPressed;
 - (void)rightButtonIsBusy;
 - (void)rightButtonIsNormal;
 - (void)leftButtonIsBusy;

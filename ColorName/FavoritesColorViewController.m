@@ -196,12 +196,12 @@
     [self uploadAction:[array JSONRepresentation]];
 }
 
-- (void)showViewButton {
+- (void)showMyPageButton {
     NSMutableArray *toolBarItems = [toolBar.items mutableCopy];
     
     if ([toolBarItems count] <= 3) {
         UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"View" style:UIBarButtonItemStyleBordered target:self action:@selector(viewButtonPressed)];
+        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"My Page" style:UIBarButtonItemStyleBordered target:self action:@selector(myPageButtonPressed)];
         
         [toolBarItems insertObject:item0 atIndex:0];
         [toolBarItems insertObject:item1 atIndex:1];
@@ -210,9 +210,10 @@
     }
 }
 
-- (void)viewButtonPressed {
+- (void)myPageButtonPressed {
     if ([SharedAppDelegate.userId length] > 0) {
         UserPageViewController *userPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserPageViewController"];
+        [userPageViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
         [self presentModalViewController:userPageViewController animated:YES];
     }
 }
@@ -303,7 +304,7 @@
         
         [SVProgressHUD showSuccessWithStatus:@"Success!"];
         
-        [self performSelector:@selector(showViewButton) withObject:nil afterDelay:1.f];
+        [self performSelector:@selector(showMyPageButton) withObject:nil afterDelay:1.f];
     } else {
         [syncButton setStyle:UIBarButtonItemStyleDone];
         [syncButton setTitle:@"Sync"];

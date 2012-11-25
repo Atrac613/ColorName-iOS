@@ -67,7 +67,7 @@
         if ([[url path] isEqualToString:@"/login/successful"]) {
             appDelegate.isAuthenticated = YES;
             
-            [self dismissModalViewControllerAnimated:YES];
+            [self performSelector:@selector(cancelButtonPressed) withObject:nil afterDelay:1.f];
             
             return NO;
         }
@@ -75,7 +75,7 @@
         if ([[url path] isEqualToString:@"/logout/successful"]) {
             appDelegate.isAuthenticated = NO;
             
-            [self dismissModalViewControllerAnimated:YES];
+            [self performSelector:@selector(cancelButtonPressed) withObject:nil afterDelay:1.f];
             
             return NO;
         }
