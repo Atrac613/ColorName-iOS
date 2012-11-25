@@ -26,6 +26,7 @@
     NSMutableArray *colorListEn;
     
     BOOL isPlay;
+    BOOL isInitializing;
     
     TbColorNameJaDao *colorNameJaDao;
     TbColorNameEnDao *colorNameEnDao;
@@ -42,6 +43,7 @@
 @property (nonatomic, retain) NSMutableArray *colorListJa;
 @property (nonatomic, retain) NSMutableArray *colorListEn;
 @property (nonatomic) BOOL isPlay;
+@property (nonatomic) BOOL isInitializing;
 @property (nonatomic, retain) TbColorNameJaDao *colorNameJaDao;
 @property (nonatomic, retain) TbColorNameEnDao *colorNameEnDao;
 

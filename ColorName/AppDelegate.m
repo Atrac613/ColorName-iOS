@@ -11,13 +11,23 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize colorNmaeService;
 @synthesize db;
 @synthesize isAuthenticated;
+@synthesize canBeMerge;
 @synthesize userId;
+@synthesize operationQueue;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // operation queue
+    self.operationQueue = [[NSOperationQueue alloc] init];
+    [self.operationQueue setMaxConcurrentOperationCount:1];
+    
+    colorNmaeService = [[ColorNameService alloc] init];
+    
     isAuthenticated = NO;
+    canBeMerge = NO;
     
     if (![self initDatabase]) {
         NSLog(@"Failed to init database.");

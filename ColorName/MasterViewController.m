@@ -17,6 +17,7 @@
 #import "TbColorName.h"
 #import "ColorDetailViewController.h"
 #import "FavoritesColorViewController.h"
+#import "SVProgressHUD.h"
 
 @interface MasterViewController () {
 }
@@ -32,6 +33,7 @@
 @synthesize tableView;
 @synthesize stateButton;
 @synthesize isPlay;
+@synthesize isInitializing;
 @synthesize session;
 @synthesize timer;
 @synthesize colorNameJaDao;
@@ -51,12 +53,12 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Favorites" style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)];
     
     isPlay = YES;
+    isInitializing = NO;
+    
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
     colorNameEnDao = [[TbColorNameEnDao alloc] init];
-
-    [self createDB];
-    [self initDBJa];
-    [self initDBEn];
+    
+    [self performSelectorInBackground:@selector(operationInitializationTask) withObject:nil];
     
     [self setupAVCapture];
 }
@@ -93,6 +95,39 @@
 - (void)favoritesColorButtonPressed {
     FavoritesColorViewController *favoritesColorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritesColorViewController"];
     [self.navigationController pushViewController:favoritesColorViewController animated:YES];
+}
+
+#pragma mark - Background Task
+
+- (void)showInitializingProgressView {
+    [SVProgressHUD showWithStatus:@"Initializing"];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+}
+
+- (void)hideInitializingProgressView {
+    [SVProgressHUD dismiss];
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
+}
+
+- (void)operationInitializationTask {
+    [self createDB];
+    
+    if ([colorNameJaDao countAll] <= 0 || [colorNameEnDao countAll] <= 0) {
+        [self performSelectorOnMainThread:@selector(showInitializingProgressView) withObject:nil waitUntilDone:NO];
+        
+        isInitializing = YES;
+    }
+    
+    [self initDBJa];
+    [self initDBEn];
+    
+    [self performSelectorOnMainThread:@selector(completeInitializationTask) withObject:nil waitUntilDone:NO];
+}
+
+- (void)completeInitializationTask {
+    [SVProgressHUD dismiss];
+    
+    isInitializing = NO;
 }
 
 - (void)createDB {
@@ -148,7 +183,7 @@
 }
 
 - (void)getColorList {
-    if (!currentColor) {
+    if (!currentColor || isInitializing) {
         return;
     }
     
@@ -277,6 +312,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    if (isInitializing) {
+        return 1;
+    }
+    
     if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
         return 2;
     }
@@ -286,6 +325,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (isInitializing) {
+        return 1;
+    }
     
     if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
         if (section == 0) {
@@ -302,6 +345,10 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (isInitializing) {
+        return @"";
+    }
     
     if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
         if (section == 0) {
@@ -320,42 +367,65 @@
     return  @"";
 }
 
-- (UITableViewCell*)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"TableViewCell";
-    
-    ColorListCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+- (float)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (isInitializing) {
+        return tableView.frame.size.height;
+    } else {
+        return 45.f;
     }
+}
 
-    TbColorName *colorName;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-        if (indexPath.section == 0) {
+- (UITableViewCell*)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (isInitializing) {
+        NSString *cellIdentifier = @"EmptyTableViewCell";
+        UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        
+        [cell.textLabel setText:@"Please wait."];
+        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        return cell;
+    } else {
+        NSString *cellIdentifier = @"TableViewCell";
+        
+        ColorListCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        
+        TbColorName *colorName;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
+            if (indexPath.section == 0) {
+                colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
+            } else {
+                colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
+            }
+        } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
             colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
         } else {
             colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
         }
-    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-        colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
-    } else {
-        colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
+        
+        float red = [colorName red] / 255.f;
+        float green = [colorName green] / 255.f;
+        float blue = [colorName blue] / 255.f;
+        
+        UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
+        
+        [cell.colorNameLabel setText:[colorName name]];
+        [cell.colorNameYomiLabel setText:[colorName nameYomi]];
+        [cell.colorView setBackgroundColor:color];
+        [cell checkNameYomiLength];
+        
+        return cell;
     }
-    
-    float red = [colorName red] / 255.f;
-    float green = [colorName green] / 255.f;
-    float blue = [colorName blue] / 255.f;
-    
-    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
-    
-    [cell.colorNameLabel setText:[colorName name]];
-    [cell.colorNameYomiLabel setText:[colorName nameYomi]];
-    [cell.colorView setBackgroundColor:color];
-    [cell checkNameYomiLength];
-    
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

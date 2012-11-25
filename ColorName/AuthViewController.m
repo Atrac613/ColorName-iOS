@@ -62,10 +62,16 @@
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     NSURL *url = [request URL];
-    
+
     if (signIn) {
         if ([[url path] isEqualToString:@"/login/successful"]) {
             appDelegate.isAuthenticated = YES;
+            
+            if ([[url query] isEqualToString:@"merge=true"]) {
+                appDelegate.canBeMerge = YES;
+            } else {
+                appDelegate.canBeMerge = NO;
+            }
             
             [self performSelector:@selector(cancelButtonPressed) withObject:nil afterDelay:1.f];
             

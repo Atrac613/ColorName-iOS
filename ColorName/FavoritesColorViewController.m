@@ -14,6 +14,7 @@
 #import "AuthViewController.h"
 #import "UserPageViewController.h"
 #import "AppDelegate.h"
+#import <Social/Social.h>
 
 @interface FavoritesColorViewController ()
 
@@ -25,6 +26,9 @@
 @synthesize syncButton;
 @synthesize toolBar;
 @synthesize colorList;
+@synthesize remoteColorList;
+@synthesize addedColorNameList;
+@synthesize alertMode;
 @synthesize connection;
 @synthesize httpResponseData;
 @synthesize favoriteColorNameDao;
@@ -49,7 +53,14 @@
     if (SharedAppDelegate.isAuthenticated) {
         SharedAppDelegate.isAuthenticated = NO;
         
-        [self syncAction];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        if (SharedAppDelegate.canBeMerge && ![defaults boolForKey:@"MERGE_DIALOG"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Merge" message:@"This account is data exists. Do you want to merge from exists data?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+            [alert show];
+        } else {
+            [self syncAction];
+        }
     }
 }
 
@@ -274,7 +285,18 @@
 
         SharedAppDelegate.userId = [result valueForKey:@"user_id"];
         
+        NSArray *newColorList = [result valueForKey:@"new"];
+        addedColorNameList = [[NSMutableArray alloc]initWithCapacity:[newColorList count]];
+        for (NSDictionary *new in newColorList) {
+            [addedColorNameList addObject:[new valueForKey:@"name"]];
+        }
+        
         [self syncFinishWithResult:YES];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:@"MERGE_DIALOG"];
+
+        [self performSelector:@selector(showTweetConfirmDialog) withObject:nil afterDelay:1.f];
     } else {
         [self syncFinishWithResult:NO];
     }
@@ -314,6 +336,153 @@
         
         [SVProgressHUD showErrorWithStatus:@"Failed"];
     }
+}
+
+- (void)showTweetConfirmDialog {
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter] && [addedColorNameList count] > 0) {
+        alertMode = @"tweet";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Do you want to tweet about new color?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        [alert show];
+    } else {
+        [self showFacebookConfirmDialog];
+    }
+}
+
+- (void)showTweetBox:(NSArray*)colors {
+    if ([colors count] > 0) {
+        NSString *newColorName = [colors componentsJoinedByString:@", "];
+        
+        NSString *message = [NSString stringWithFormat:@"New favorite color! %@", newColorName];
+        
+        SLComposeViewController *twitterPostViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [twitterPostViewController setInitialText:message];
+        [twitterPostViewController addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://color-name.atrac613.io/%@", SharedAppDelegate.userId]]];
+        
+        [twitterPostViewController setCompletionHandler:^(SLComposeViewControllerResult result){
+            switch (result) {
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"Cancelled");
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"Done");
+                    
+                default:
+                    break;
+            }
+            
+            [self dismissModalViewControllerAnimated:YES];
+            [self performSelector:@selector(showFacebookConfirmDialog) withObject:nil afterDelay:1.f];
+        }];
+        
+        [self presentViewController:twitterPostViewController animated:YES completion:nil];
+    }
+}
+
+- (void)showFacebookConfirmDialog {
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] && [addedColorNameList count] > 0) {
+        alertMode = @"facebook";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Do you want to share about new color to facebook?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        [alert show];
+    }
+}
+
+- (void)showFacebookBox:(NSArray*)colors {
+    if ([colors count] > 0) {
+        NSString *newColorName = [colors componentsJoinedByString:@", "];
+
+        NSString *message = [NSString stringWithFormat:@"New favorite color! %@", newColorName];
+        
+        SLComposeViewController *facebookPostViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [facebookPostViewController setInitialText:message];
+        [facebookPostViewController addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://color-name.atrac613.io/%@", SharedAppDelegate.userId]]];
+        
+        [facebookPostViewController setCompletionHandler:^(SLComposeViewControllerResult result){
+            switch (result) {
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"Cancelled");
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"Done");
+                    
+                default:
+                    break;
+            }
+        }];
+        
+        [self presentViewController:facebookPostViewController animated:YES completion:nil];
+    }
+}
+
+#pragma mark - UIAlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([alertMode isEqualToString:@"tweet"]) {
+        if (buttonIndex == 1) {
+            [self performSelector:@selector(showTweetBox:) withObject:addedColorNameList afterDelay:1.f];
+        } else {
+            [self performSelector:@selector(showFacebookConfirmDialog) withObject:nil afterDelay:1.f];
+        }
+        
+        alertMode = @"";
+    } else if ([alertMode isEqualToString:@"facebook"]) {
+        if (buttonIndex == 1) {
+            [self performSelector:@selector(showFacebookBox:) withObject:addedColorNameList afterDelay:1.f];
+        }
+        
+        alertMode = @"";
+    } else {
+        if (buttonIndex == 1) {
+            [self.navigationItem setHidesBackButton:YES animated:YES];
+            [self.navigationItem.rightBarButtonItem setEnabled:NO];
+            [SVProgressHUD showWithStatus:@"Merging"];
+            
+            NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationGetFavoriteColor) object:nil];
+            [operation setQueuePriority:NSOperationQueuePriorityHigh];
+            [SharedAppDelegate.operationQueue addOperation:operation];
+            
+        } else {
+            [self syncAction];
+        }
+    }
+}
+
+#pragma mark - Operation
+
+- (void)operationGetFavoriteColor {
+    @try {
+        remoteColorList = [SharedAppDelegate.colorNmaeService getFavoriteColor];
+        
+        [favoriteColorNameDao createTable];
+        
+        for (NSDictionary *colorName in remoteColorList) {
+            NSString *name = [colorName valueForKey:@"name"];
+            NSString *nameYomi = [colorName valueForKey:@"name_yomi"];
+            NSInteger red = [[colorName valueForKey:@"red"] intValue];
+            NSInteger green = [[colorName valueForKey:@"green"] intValue];
+            NSInteger blue = [[colorName valueForKey:@"blue"] intValue];
+            NSInteger rank = [[colorName valueForKey:@"rank"] intValue];
+
+            if ([favoriteColorNameDao countWithName:name nameYomi:nameYomi red:red green:green blue:blue] <= 0) {
+                [favoriteColorNameDao insertWithName:name nameYomi:nameYomi red:red green:green blue:blue rank:rank];
+            }
+        }
+        
+        colorList = [favoriteColorNameDao getAll];
+        
+        [self performSelectorOnMainThread:@selector(completeGetFavoriteColor) withObject:nil waitUntilDone:NO];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error: %@", exception);
+    }
+}
+
+- (void)completeGetFavoriteColor {
+    [self syncFinishWithResult:YES];
+    [tableView reloadData];
+    
+    [self syncAction];
 }
 
 @end

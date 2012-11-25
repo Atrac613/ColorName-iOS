@@ -12,6 +12,7 @@
 @implementation TbFavoriteColorNameDao
 
 - (NSString*)setTable:(NSString *)sql {
+    NSLog(@"%@", [NSString stringWithFormat:sql, @"favorite_color_name"]);
     return [NSString stringWithFormat:sql, @"favorite_color_name"];
 }
 
@@ -89,9 +90,16 @@
 - (void)insertWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
-    [self sortAll];
+    [self insertWithName:name nameYomi:nameYomi red:red green:green blue:blue rank:0];
+}
+
+- (void)insertWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue rank:(NSInteger)rank {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
     
-    int rank = [self countAll] + 1;
+    if (!rank || rank == 0) {
+        [self sortAll];
+        rank = [self countAll] + 1;
+    }
     
     [db executeUpdate:[self setTable:@"INSERT INTO %@ (name, name_yomi, red, green, blue, rank) VALUES (?, ?, ?, ?, ?, ?)"], name, nameYomi, [NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue], [NSNumber numberWithInt:rank]];
     

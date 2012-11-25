@@ -59,6 +59,7 @@
 		06D7950C165F32A3004396FB /* UserPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D7950B165F32A3004396FB /* UserPageViewController.m */; };
 		06D79519165F4EE4004396FB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D79517165F4EE4004396FB /* Accounts.framework */; };
 		06D7951A165F4EE4004396FB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D79518165F4EE4004396FB /* Social.framework */; };
+		06D7951E1661FF12004396FB /* ColorNameService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D7951D1661FF12004396FB /* ColorNameService.m */; };
 		06EC7CB0162155F5002F1B8F /* ColorDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */; };
 		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
 		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
@@ -175,6 +176,8 @@
 		06D7950B165F32A3004396FB /* UserPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPageViewController.m; sourceTree = "<group>"; };
 		06D79517165F4EE4004396FB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		06D79518165F4EE4004396FB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		06D7951C1661FF12004396FB /* ColorNameService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorNameService.h; path = Service/ColorNameService.h; sourceTree = "<group>"; };
+		06D7951D1661FF12004396FB /* ColorNameService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorNameService.m; path = Service/ColorNameService.m; sourceTree = "<group>"; };
 		06EC7CAE162155F5002F1B8F /* ColorDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDetailViewController.h; sourceTree = "<group>"; };
 		06EC7CAF162155F5002F1B8F /* ColorDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorDetailViewController.m; sourceTree = "<group>"; };
 		6577011F15CA0FBB00A36A85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -315,6 +318,7 @@
 		065D437015C6D33D00A38E86 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				06D7951B1661FEE3004396FB /* Service */,
 				06A3F6921629A99200833A22 /* SVProgressHUD */,
 				0665C32D160EFA5E00C9EFC5 /* Dto */,
 				0665C32C160EFA5700C9EFC5 /* Dao */,
@@ -418,6 +422,15 @@
 				06A3F6951629A99200833A22 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		06D7951B1661FEE3004396FB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				06D7951C1661FF12004396FB /* ColorNameService.h */,
+				06D7951D1661FF12004396FB /* ColorNameService.m */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +577,7 @@
 				06A3F73216340EE400833A22 /* WebViewViewController.m in Sources */,
 				06D79509165F3074004396FB /* AuthViewController.m in Sources */,
 				06D7950C165F32A3004396FB /* UserPageViewController.m in Sources */,
+				06D7951E1661FF12004396FB /* ColorNameService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
