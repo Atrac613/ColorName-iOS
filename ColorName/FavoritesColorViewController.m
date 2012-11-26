@@ -353,11 +353,11 @@
     if ([colors count] > 0) {
         NSString *newColorName = [colors componentsJoinedByString:@", "];
         
-        NSString *message = [NSString stringWithFormat:@"New favorite color! %@", newColorName];
+        NSString *message = [NSString stringWithFormat:@"New color! %@ #MyFavoriteColor", newColorName];
         
         SLComposeViewController *twitterPostViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [twitterPostViewController setInitialText:message];
-        [twitterPostViewController addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://color-name.atrac613.io/%@", SharedAppDelegate.userId]]];
+        [twitterPostViewController addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://color-name.atrac613.io/u/%@", SharedAppDelegate.userId]]];
         
         [twitterPostViewController setCompletionHandler:^(SLComposeViewControllerResult result){
             switch (result) {
@@ -396,7 +396,7 @@
         
         SLComposeViewController *facebookPostViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [facebookPostViewController setInitialText:message];
-        [facebookPostViewController addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://color-name.atrac613.io/%@", SharedAppDelegate.userId]]];
+        [facebookPostViewController addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://color-name.atrac613.io/u/%@", SharedAppDelegate.userId]]];
         
         [facebookPostViewController setCompletionHandler:^(SLComposeViewControllerResult result){
             switch (result) {

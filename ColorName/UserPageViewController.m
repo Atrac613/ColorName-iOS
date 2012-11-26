@@ -59,9 +59,9 @@
 - (void)loadProfilePage {
     NSString *urlString;
     if (TARGET_IPHONE_SIMULATOR) {
-        urlString = [NSString stringWithFormat:@"http://localhost:8093/%@", SharedAppDelegate.userId];
+        urlString = [NSString stringWithFormat:@"http://localhost:8093/u/%@", SharedAppDelegate.userId];
     } else {
-        urlString = [NSString stringWithFormat:@"http://color-name.atrac613.io/%@", SharedAppDelegate.userId];
+        urlString = [NSString stringWithFormat:@"http://color-name.atrac613.io/u/%@", SharedAppDelegate.userId];
     }
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
