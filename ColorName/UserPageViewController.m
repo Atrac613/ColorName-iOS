@@ -44,6 +44,8 @@
     [super viewDidLoad];
 	
     [self.navigationItem setTitle:@"My Page"];
+    
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
 }
 
 - (void)didReceiveMemoryWarning

@@ -18,6 +18,7 @@
 #import "ColorDetailViewController.h"
 #import "FavoritesColorViewController.h"
 #import "SVProgressHUD.h"
+#import "AboutViewController.h"
 
 @interface MasterViewController () {
 }
@@ -49,6 +50,8 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"Color Name"];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonPressed)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Favorites" style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)];
     
@@ -88,6 +91,8 @@
 
 #pragma mark - IBActions
 
+- (IBAction)Back01:(UIStoryboardSegue*)segue {}
+
 - (IBAction)stateButtonPressed:(id)sender {
     [self videoController:isPlay];
 }
@@ -95,6 +100,10 @@
 - (void)favoritesColorButtonPressed {
     FavoritesColorViewController *favoritesColorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritesColorViewController"];
     [self.navigationController pushViewController:favoritesColorViewController animated:YES];
+}
+
+- (void)aboutButtonPressed {
+    [self performSegueWithIdentifier:@"AboutViewFromMasterView" sender:self];
 }
 
 #pragma mark - Background Task
