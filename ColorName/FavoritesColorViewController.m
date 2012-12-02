@@ -285,7 +285,7 @@
 
         SharedAppDelegate.userId = [result valueForKey:@"user_id"];
         
-        NSArray *newColorList = [result valueForKey:@"new"];
+        NSArray *newColorList = [result valueForKey:@"new_color"];
         addedColorNameList = [[NSMutableArray alloc]initWithCapacity:[newColorList count]];
         for (NSDictionary *new in newColorList) {
             [addedColorNameList addObject:[new valueForKey:@"name"]];
@@ -349,7 +349,7 @@
     }
 }
 
-- (void)showTweetBox:(NSArray*)colors {
+- (void)showTweetDialog:(NSArray*)colors {
     if ([colors count] > 0) {
         NSString *newColorName = [colors componentsJoinedByString:@", "];
         
@@ -388,7 +388,7 @@
     }
 }
 
-- (void)showFacebookBox:(NSArray*)colors {
+- (void)showFacebookDialog:(NSArray*)colors {
     if ([colors count] > 0) {
         NSString *newColorName = [colors componentsJoinedByString:@", "];
 
@@ -420,7 +420,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([alertMode isEqualToString:@"tweet"]) {
         if (buttonIndex == 1) {
-            [self performSelector:@selector(showTweetBox:) withObject:addedColorNameList afterDelay:1.f];
+            [self performSelector:@selector(showTweetDialog:) withObject:addedColorNameList afterDelay:1.f];
         } else {
             [self performSelector:@selector(showFacebookConfirmDialog) withObject:nil afterDelay:1.f];
         }
@@ -428,7 +428,7 @@
         alertMode = @"";
     } else if ([alertMode isEqualToString:@"facebook"]) {
         if (buttonIndex == 1) {
-            [self performSelector:@selector(showFacebookBox:) withObject:addedColorNameList afterDelay:1.f];
+            [self performSelector:@selector(showFacebookDialog:) withObject:addedColorNameList afterDelay:1.f];
         }
         
         alertMode = @"";
