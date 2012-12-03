@@ -22,14 +22,14 @@
     NSTimer *timer;
     
     UIColor *currentColor;
-    NSMutableArray *colorListJa;
-    NSMutableArray *colorListEn;
-    
-    BOOL isPlay;
-    BOOL isInitializing;
+    NSMutableArray *tableSectionArray;
+    NSMutableArray *tableContentArray;
     
     TbColorNameJaDao *colorNameJaDao;
     TbColorNameEnDao *colorNameEnDao;
+    
+    BOOL isPlay;
+    BOOL isInitializing;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *previewView;
@@ -40,11 +40,11 @@
 @property (nonatomic, retain) AVCaptureSession *session;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) UIColor *currentColor;
-@property (nonatomic, retain) NSMutableArray *colorListJa;
-@property (nonatomic, retain) NSMutableArray *colorListEn;
-@property (nonatomic) BOOL isPlay;
-@property (nonatomic) BOOL isInitializing;
+@property (nonatomic, retain) NSMutableArray *tableSectionArray;
+@property (nonatomic, retain) NSMutableArray *tableContentArray;
 @property (nonatomic, retain) TbColorNameJaDao *colorNameJaDao;
 @property (nonatomic, retain) TbColorNameEnDao *colorNameEnDao;
+@property (nonatomic) BOOL isPlay;
+@property (nonatomic) BOOL isInitializing;
 
 @end

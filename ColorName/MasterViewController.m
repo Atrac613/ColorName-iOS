@@ -29,16 +29,16 @@
 @synthesize previewView;
 @synthesize colorView;
 @synthesize currentColor;
-@synthesize colorListJa;
-@synthesize colorListEn;
 @synthesize tableView;
 @synthesize stateButton;
-@synthesize isPlay;
-@synthesize isInitializing;
 @synthesize session;
 @synthesize timer;
 @synthesize colorNameJaDao;
 @synthesize colorNameEnDao;
+@synthesize tableSectionArray;
+@synthesize tableContentArray;
+@synthesize isPlay;
+@synthesize isInitializing;
 
 - (void)awakeFromNib
 {
@@ -60,6 +60,9 @@
     
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
     colorNameEnDao = [[TbColorNameEnDao alloc] init];
+    
+    tableSectionArray = [[NSMutableArray alloc] init];
+    tableContentArray = [[NSMutableArray alloc] init];
     
     [self performSelectorInBackground:@selector(operationInitializationTask) withObject:nil];
     
@@ -86,7 +89,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - IBActions
@@ -197,19 +200,38 @@
     if (!currentColor || isInitializing) {
         return;
     }
+
+    tableSectionArray = [[NSMutableArray alloc] init];
+    tableContentArray = [[NSMutableArray alloc] init];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-        colorListJa = [colorNameJaDao findColorNameWithColor:currentColor];
-    }
-    
-    if ([defaults boolForKey:@"enabled_lang_english"]) {
-        colorListEn = [colorNameEnDao findColorNameWithColor:currentColor];
-    }
-    
-    if (![defaults boolForKey:@"enabled_lang_japanese"] && ![defaults boolForKey:@"enabled_lang_english"]) {
-        colorListEn = [colorNameEnDao findColorNameWithColor:currentColor];
+    if ([defaults boolForKey:@"enabled_lang_japanese"] || [defaults boolForKey:@"enabled_lang_english"]) {
+        NSString *lang = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+        
+        if ([lang isEqualToString:@"ja"]) {
+            if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+                [tableSectionArray addObject:@"Japanese"];
+                [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
+            }
+            
+            if ([defaults boolForKey:@"enabled_lang_english"]) {
+                [tableSectionArray addObject:@"English"];
+                [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
+            }
+        } else {
+            if ([defaults boolForKey:@"enabled_lang_english"]) {
+                [tableSectionArray addObject:@"English"];
+                [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
+            }
+            
+            if ([defaults boolForKey:@"enabled_lang_japanese"]) {
+                [tableSectionArray addObject:@"Japanese"];
+                [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
+            }
+        }
+    } else {
+        [tableSectionArray addObject:@"English"];
+        [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
     }
     
     [tableView reloadData];
@@ -321,73 +343,33 @@
 #pragma mark - TableView delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     if (isInitializing) {
         return 1;
     }
     
-    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-        return 2;
-    }
-    
-    return 1;
+    return [tableSectionArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     if (isInitializing) {
         return 1;
     }
     
-    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-        if (section == 0) {
-            if ([colorListJa count] <= 0) {
-                return 1;
-            } else {
-                return [colorListJa count];
-            }
-        }
-        
-        if ([colorListEn count] <= 0) {
-            return 1;
-        } else {
-            return [colorListEn count];
-        }
-    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-        if ([colorListJa count] <= 0) {
-            return 1;
-        } else {
-            return [colorListJa count];
-        }
+    NSInteger count = [[tableContentArray objectAtIndex:section] count];
+    
+    if (count > 0) {
+        return count;
     } else {
-        if ([colorListEn count] <= 0) {
-            return 1;
-        } else {
-            return [colorListEn count];
-        }
+        return 1;
     }
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     if (isInitializing) {
         return @"";
     }
     
-    if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-        if (section == 0) {
-            return @"Japanese";
-        }
-        
-        return @"English";
-    } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-        return @"Japanese";
-    } else {
-        return @"English";
-    }
+    return [tableSectionArray objectAtIndex:section];
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
@@ -417,61 +399,32 @@
         
         return cell;
     } else {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-            if (indexPath.section == 0) {
-                if ([colorListJa count] <= 0) {
-                    return [self createNotFoundCell:tv];
-                }
-            } else {
-                if ([colorListEn count] <= 0) {
-                    return [self createNotFoundCell:tv];
-                }
+        if ([[tableContentArray objectAtIndex:indexPath.section] count] > 0) {
+            NSString *cellIdentifier = @"TableViewCell";
+            
+            ColorListCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
+            
+            if (cell == nil) {
+                cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
-        } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-            if ([colorListJa count] <= 0) {
-                return [self createNotFoundCell:tv];
-            }
+            
+            TbColorName *colorName = [[tableContentArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            
+            float red = [colorName red] / 255.f;
+            float green = [colorName green] / 255.f;
+            float blue = [colorName blue] / 255.f;
+            
+            UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
+            
+            [cell.colorNameLabel setText:[colorName name]];
+            [cell.colorNameYomiLabel setText:[colorName nameYomi]];
+            [cell.colorView setBackgroundColor:color];
+            [cell checkNameYomiLength];
+            
+            return cell;
         } else {
-            if ([colorListEn count] <= 0) {
-                return [self createNotFoundCell:tv];
-            }
+            return [self createNotFoundCell:tv];
         }
-        
-        NSString *cellIdentifier = @"TableViewCell";
-        
-        ColorListCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
-        
-        if (cell == nil) {
-            cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        }
-        
-        TbColorName *colorName;
-        
-        if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-            if (indexPath.section == 0) {
-                colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
-            } else {
-                colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
-            }
-        } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-            colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
-        } else {
-            colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
-        }
-        
-        float red = [colorName red] / 255.f;
-        float green = [colorName green] / 255.f;
-        float blue = [colorName blue] / 255.f;
-        
-        UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
-        
-        [cell.colorNameLabel setText:[colorName name]];
-        [cell.colorNameYomiLabel setText:[colorName nameYomi]];
-        [cell.colorView setBackgroundColor:color];
-        [cell checkNameYomiLength];
-        
-        return cell;
     }
 }
 
@@ -494,30 +447,9 @@
     [tv deselectRowAtIndexPath:indexPath animated:YES];
     
     if (!isInitializing) {
-        TbColorName *colorName;
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        if ([defaults boolForKey:@"enabled_lang_japanese"] && [defaults boolForKey:@"enabled_lang_english"]) {
-            if (indexPath.section == 0) {
-                if ([colorListJa count] > 0) {
-                    colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
-                }
-            } else {
-                if ([colorListEn count] > 0) {
-                    colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
-                }
-            }
-        } else if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-            if ([colorListJa count] > 0) {
-                colorName = (TbColorName*)[colorListJa objectAtIndex:indexPath.row];
-            }
-        } else {
-            if ([colorListEn count] > 0) {
-                colorName = (TbColorName*)[colorListEn objectAtIndex:indexPath.row];
-            }
-        }
-        
-        if (colorName != nil) {
+        if ([[tableContentArray objectAtIndex:indexPath.section] count] > 0) {
+            TbColorName *colorName = [[tableContentArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+            
             ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
             colorDetailViewController.colorName = colorName;
             [self.navigationController pushViewController:colorDetailViewController animated:YES];
