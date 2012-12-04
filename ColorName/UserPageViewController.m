@@ -43,9 +43,11 @@
 {
     [super viewDidLoad];
 	
-    [self.navigationItem setTitle:@"My Page"];
+    [self.navigationItem setTitle:NSLocalizedString(@"MY_PAGE", @"")];
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLOSE", @"") style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
+    
+    [updateProfileButton setTitle:NSLocalizedString(@"UPDATE_PROFILE", @"")];
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,18 +100,18 @@
             } else if ([accountsArray count] > 1) {
                 [self selectTwitterAccount:accountsArray];
             } else {
-                NSArray *params = [NSArray arrayWithObjects:@"Update Profile", @"Please add a twitter account at ios settings and allow granting of permission to this application.", nil];
+                NSArray *params = [NSArray arrayWithObjects:NSLocalizedString(@"UPDATE_PROFILE_ALERT_TITLE", @""), NSLocalizedString(@"UPDATE_PROFILE_ERROR_MESSAGE", @""), nil];
                 [self performSelectorOnMainThread:@selector(showAlertDialog:) withObject:params waitUntilDone:YES];
             }
         } else {
-            NSArray *params = [NSArray arrayWithObjects:@"Update Profile", @"Please add a twitter account at ios settings and allow granting of permission to this application.", nil];
+            NSArray *params = [NSArray arrayWithObjects:NSLocalizedString(@"UPDATE_PROFILE_ALERT_TITLE", @""), NSLocalizedString(@"UPDATE_PROFILE_ERROR_MESSAGE", @""), nil];
             [self performSelectorOnMainThread:@selector(showAlertDialog:) withObject:params waitUntilDone:YES];
         }
     }];
 }
 
 - (void)showAlertDialog:(NSArray*)params {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[params objectAtIndex:0] message:[params objectAtIndex:1] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Close", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[params objectAtIndex:0] message:[params objectAtIndex:1] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"CLOSE", @""), nil];
     [alert show];
 }
 
@@ -157,7 +159,7 @@
     [toolBarTitle setBackgroundColor:[UIColor clearColor]];
     [toolBarTitle setTextColor:[UIColor whiteColor]];
     [toolBarTitle setFont:[UIFont boldSystemFontOfSize:12.f]];
-    [toolBarTitle setText:@"Update profile from Twitter"];
+    [toolBarTitle setText:NSLocalizedString(@"UPDATE_PROFILE_PICKER_TITLE", @"")];
     [toolBarTitle sizeToFit];
     
     UIBarButtonItem *toolBarTitleButton = [[UIBarButtonItem alloc] initWithCustomView:toolBarTitle];
@@ -274,7 +276,7 @@
 }
 
 - (void)showEditProfileDialog:(NSDictionary*)params {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Update Profile" message:@"\n\n\n" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Update", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UPDATE_PROFILE_ALERT_TITLE", @"") message:@"\n\n\n" delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL", @"") otherButtonTitles:NSLocalizedString(@"UPDATE", @""), nil];
     
     avatarView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[params valueForKey:@"avatar"]]];
     [avatarView setFrame:CGRectMake(15, 55, 50, 50)];
@@ -317,7 +319,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [updateProfileButton setEnabled:NO];
-        [SVProgressHUD showWithStatus:@"Uploading"];
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"UPLOADING", @"")];
         [self uploadAction];
     } else {
         // Unlock update button
@@ -444,7 +446,7 @@
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
         [self.navigationItem.leftBarButtonItem setEnabled:YES];
         
-        [SVProgressHUD showSuccessWithStatus:@"Success!"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SUCCESS", @"")];
     } else {
         [updateProfileButton setEnabled:YES];
         
@@ -452,7 +454,7 @@
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
         [self.navigationItem.leftBarButtonItem setEnabled:YES];
         
-        [SVProgressHUD showErrorWithStatus:@"Failed"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"FAILED", @"")];
     }
 }
 

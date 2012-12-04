@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
 	
-    [self.navigationItem setTitle:@"Authentication"];
+    [self.navigationItem setTitle:NSLocalizedString(@"AUTHENTICATION", @"")];
 }
 
 - (void)didReceiveMemoryWarning

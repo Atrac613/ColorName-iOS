@@ -32,7 +32,7 @@
 	
     [self.navigationItem setTitle:NSLocalizedString(@"LICENSE", @"")];
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLOSE", @"") style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
     
     [webView setDelegate:self];
     

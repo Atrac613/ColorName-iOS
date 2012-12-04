@@ -403,12 +403,12 @@
 		065D439515C6D34700A38E86 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				06C660B2166506A7003CC7C2 /* third_party_notices.html */,
 				06C660AB16650558003CC7C2 /* ja.lproj */,
 				06C660AA1665054D003CC7C2 /* en.lproj */,
 				0665C327160EEDAF00C9EFC5 /* images */,
 				065D439615C6D34700A38E86 /* color_names_ja.json */,
 				065D439715C6D34700A38E86 /* color_names_us.json */,
+				06C660B2166506A7003CC7C2 /* third_party_notices.html */,
 				06A3F68C16227EDF00833A22 /* Settings.bundle */,
 			);
 			name = Resources;

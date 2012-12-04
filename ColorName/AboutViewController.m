@@ -31,9 +31,9 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"About"];
+    [self.navigationItem setTitle:NSLocalizedString(@"ABOUT", @"")];
     
-    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLOSE", @"") style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
 }
 
 - (void)didReceiveMemoryWarning

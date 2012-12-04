@@ -1,14 +1,51 @@
 "COLORNAME" = "ColorName";
+
+"ABOUT" = "アプリについて";
+"FAVORITES" = "お気に入り";
+"INITIALIZING" = "初期化中";
+"JAPANESE" = "日本語";
+"ENGLISH" = "英語";
+"PLEASE_WAIT" = "お待ちください";
+"NOT_FOUND" = "見つかりません";
+
+"DETAIL" = "詳細";
+
+"MERGE" = "結合";
+"INFO" = "お知らせ";
+"CONFIRM_MERGE_MESSAGE" = "このアカウントには以前保存したデータがあります。現在のデータと結合しますか？";
+"CONFIRM_TWEET_MESSAGE" = "新しく追加した色をツイートしますか？";
+"CONFIRM_FACEBOOK_SHARE_MESSAGE" = "新しく追加色を Facebook でシェアしますか？";
+"SYNC" = "同期";
+"CANCEL" = "キャンセル";
+"UPLOADING" = "アップロード中";
+"MY_PAGE" = "マイページ";
+"SUCCESS" = "成功";
+"FAILED" = "失敗";
+
+"TWEET_MESSAGE" = "%@ #MyFavoriteColor";
+"FACEBOOK_SHARE_MESSAGE" = "新しいお気に入りの色。 %@";
+
+"MERGING" = "結合中";
+
+"AUTHENTICATION" = "認証";
+
+"UPDATE_PROFILE_PICKER_TITLE" = "Twitter からプロフィールを更新";
+"UPDATE_PROFILE_ALERT_TITLE" = "プロフィールを更新";
+"UPDATE_PROFILE" = "プロフィールを更新";
+"UPDATE" = "更新";
+"CLOSE" = "閉じる";
+"CANCEL" = "キャンセル";
+
+"UPDATE_PROFILE_ERROR_MESSAGE" = "Please add a twitter account at ios settings and allow granting of permission to this application.";
+
+"YES" = "はい";
+"NO" = "いいえ";
+
 "VERSION" = "バージョン";
 "AUTHOR" = "作者";
-
 "SOURCE_CODE_REPOSITORY" = "ソースコードを入手";
 "MORE_APPS" = "作者のアプリをもっと見る";
-
 "THIRD_PARTY_NOTICES" = "ライセンス";
-
 "CLEAR_CACHE" = "キャッシュを消す";
-
 "LICENSE" = "ライセンス";
-
 "RATE_THIS_APP" = "このアプリを評価";

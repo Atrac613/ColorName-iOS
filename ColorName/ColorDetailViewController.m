@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"Detail"];
+    [self.navigationItem setTitle:NSLocalizedString(@"DETAIL", @"")];
     
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
     favoriteColorNameDao = [[TbFavoriteColorNameDao alloc] init];
@@ -71,20 +71,25 @@
 }
 
 - (IBAction)likeButtonPressed:(id)sender {
-    if ([favoriteColorNameDao countWithName:colorName.name nameYomi:colorName.nameYomi red:colorName.red green:colorName.green blue:colorName.blue] <= 0) {
-        [favoriteColorNameDao insertWithName:colorName.name nameYomi:colorName.nameYomi red:colorName.red green:colorName.green blue:colorName.blue];
-        
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        likeButton.highlighted = YES;
+    }];
+    
+    if ([favoriteColorNameDao countWithColorName:colorName] <= 0) {
+        [favoriteColorNameDao insertWithColorName:colorName];
     } else {
-        [favoriteColorNameDao removeFromId:colorName.index];
+        [favoriteColorNameDao removeFromColorName:colorName];
     }
     
-    [self performSelector:@selector(checkLikeButtonState) withObject:nil afterDelay:0.1f];
+    [self performSelector:@selector(checkLikeButtonState) withObject:nil afterDelay:0.f];
 }
 
 - (void)checkLikeButtonState {
-    if ([favoriteColorNameDao countWithName:colorName.name nameYomi:colorName.nameYomi red:colorName.red green:colorName.green blue:colorName.blue] > 0) {
+    if ([favoriteColorNameDao countWithColorName:colorName] > 0) {
+        [likeButton setTitle:@"Liked" forState:UIControlStateNormal];
         [likeButton setHighlighted:YES];
     } else {
+        [likeButton setTitle:@"Like" forState:UIControlStateNormal];
         [likeButton setHighlighted:NO];
     }
 }

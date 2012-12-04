@@ -20,10 +20,13 @@
 - (void)sortAll;
 - (void)updateRank:(int)rank favorite_id:(int)favorite_id;
 - (int)countWithName:(NSString*)name nameYomi:(NSString*)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue;
+- (int)countWithColorName:(TbColorName*)colorName;
 - (void)insertWithName:(NSString*)name nameYomi:(NSString*)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue;
 - (void)insertWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue rank:(NSInteger)rank;
-- (void)removeFromId:(int)favorite_id;
+- (void)insertWithColorName:(TbColorName*)colorName;
 - (void)removeFromName:(NSString*)name nameYomi:(NSString*)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue;
+- (void)removeFromColorName:(TbColorName*)colorName;
+- (void)removeFromId:(int)favorite_id;
 - (NSMutableArray*)findColorNameWithColor:(UIColor*)color;
 - (TbColorName*)findColorNameWithColor:(UIColor*)color colorName:(NSString*)colorName;
 

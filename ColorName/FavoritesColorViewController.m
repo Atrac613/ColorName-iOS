@@ -37,9 +37,10 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"Favorites"];
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem setTitle:NSLocalizedString(@"FAVORITES", @"")];
+    [self.navigationItem setRightBarButtonItem:self.editButtonItem];
+
+    [syncButton setTitle:NSLocalizedString(@"SYNC", @"")];
     
     favoriteColorNameDao = [[TbFavoriteColorNameDao alloc] init];
 }
@@ -56,7 +57,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         if (SharedAppDelegate.canBeMerge && ![defaults boolForKey:@"MERGE_DIALOG"]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Merge" message:@"This account is data exists. Do you want to merge from exists data?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"INFO", @"") message:NSLocalizedString(@"CONFIRM_MERGE_MESSAGE", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
             [alert show];
         } else {
             [self syncAction];
@@ -157,7 +158,7 @@
 - (void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
-        [favoriteColorNameDao removeFromId:colorName.index];
+        [favoriteColorNameDao removeFromColorName:colorName];
         
         [colorList removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -171,7 +172,7 @@
         [connection cancel];
         
         [syncButton setStyle:UIBarButtonItemStyleDone];
-        [syncButton setTitle:@"Sync"];
+        [syncButton setTitle:NSLocalizedString(@"SYNC", @"")];
         
         [self.navigationItem setHidesBackButton:NO animated:YES];
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
@@ -186,11 +187,11 @@
 
 - (void)syncAction {
     [syncButton setStyle:UIBarButtonItemStyleBordered];
-    [syncButton setTitle:@"Cancel"];
+    [syncButton setTitle:NSLocalizedString(@"CANCEL", @"")];
     
     [self.navigationItem setHidesBackButton:YES animated:YES];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
-    [SVProgressHUD showWithStatus:@"Uploading"];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"UPLOADING", @"")];
     
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[colorList count]];
     
@@ -212,7 +213,7 @@
     
     if ([toolBarItems count] <= 3) {
         UIBarButtonItem *item0 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"My Page" style:UIBarButtonItemStyleBordered target:self action:@selector(myPageButtonPressed)];
+        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"MY_PAGE", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(myPageButtonPressed)];
         
         [toolBarItems insertObject:item0 atIndex:0];
         [toolBarItems insertObject:item1 atIndex:1];
@@ -319,22 +320,22 @@
 - (void)syncFinishWithResult:(BOOL)result {
     if (result) {
         [syncButton setStyle:UIBarButtonItemStyleDone];
-        [syncButton setTitle:@"Sync"];
+        [syncButton setTitle:NSLocalizedString(@"SYNC", @"")];
         
         [self.navigationItem setHidesBackButton:NO animated:YES];
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
         
-        [SVProgressHUD showSuccessWithStatus:@"Success!"];
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"SUCCESS", @"")];
         
         [self performSelector:@selector(showMyPageButton) withObject:nil afterDelay:1.f];
     } else {
         [syncButton setStyle:UIBarButtonItemStyleDone];
-        [syncButton setTitle:@"Sync"];
+        [syncButton setTitle:NSLocalizedString(@"SYNC", @"")];
         
         [self.navigationItem setHidesBackButton:NO animated:YES];
         [self.navigationItem.rightBarButtonItem setEnabled:YES];
         
-        [SVProgressHUD showErrorWithStatus:@"Failed"];
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"FAILED", @"")];
     }
 }
 
@@ -342,7 +343,7 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter] && [addedColorNameList count] > 0) {
         alertMode = @"tweet";
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Do you want to tweet about new color?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CONFIRM_TWEET_MESSAGE", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
         [alert show];
     } else {
         [self showFacebookConfirmDialog];
@@ -353,7 +354,7 @@
     if ([colors count] > 0) {
         NSString *newColorName = [colors componentsJoinedByString:@", "];
         
-        NSString *message = [NSString stringWithFormat:@"New color! %@ #MyFavoriteColor", newColorName];
+        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"TWEET_MESSAGE", @""), newColorName];
         
         SLComposeViewController *twitterPostViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [twitterPostViewController setInitialText:message];
@@ -383,7 +384,7 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] && [addedColorNameList count] > 0) {
         alertMode = @"facebook";
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm" message:@"Do you want to share about new color to facebook?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CONFIRM_FACEBOOK_SHARE_MESSAGE", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
         [alert show];
     }
 }
@@ -392,7 +393,7 @@
     if ([colors count] > 0) {
         NSString *newColorName = [colors componentsJoinedByString:@", "];
 
-        NSString *message = [NSString stringWithFormat:@"New favorite color! %@", newColorName];
+        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"FACEBOOK_SHARE_MESSAGE", @""), newColorName];
         
         SLComposeViewController *facebookPostViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [facebookPostViewController setInitialText:message];
@@ -436,7 +437,7 @@
         if (buttonIndex == 1) {
             [self.navigationItem setHidesBackButton:YES animated:YES];
             [self.navigationItem.rightBarButtonItem setEnabled:NO];
-            [SVProgressHUD showWithStatus:@"Merging"];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"MERGING", @"")];
             
             NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationGetFavoriteColor) object:nil];
             [operation setQueuePriority:NSOperationQueuePriorityHigh];

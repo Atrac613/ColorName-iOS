@@ -49,11 +49,11 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"Color Name"];
+    [self.navigationItem setTitle:NSLocalizedString(@"COLORNAME", @"")];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonPressed)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ABOUT", @"") style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonPressed)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Favorites" style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FAVORITES", @"") style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)];
     
     isPlay = YES;
     isInitializing = NO;
@@ -110,7 +110,7 @@
 #pragma mark - Background Task
 
 - (void)showInitializingProgressView {
-    [SVProgressHUD showWithStatus:@"Initializing"];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"INITIALIZING", @"")];
     
     [self.navigationItem.leftBarButtonItem setEnabled:NO];
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
@@ -210,27 +210,27 @@
         
         if ([lang isEqualToString:@"ja"]) {
             if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-                [tableSectionArray addObject:@"Japanese"];
+                [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
                 [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
             }
             
             if ([defaults boolForKey:@"enabled_lang_english"]) {
-                [tableSectionArray addObject:@"English"];
+                [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
                 [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
             }
         } else {
             if ([defaults boolForKey:@"enabled_lang_english"]) {
-                [tableSectionArray addObject:@"English"];
+                [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
                 [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
             }
             
             if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-                [tableSectionArray addObject:@"Japanese"];
+                [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
                 [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
             }
         }
     } else {
-        [tableSectionArray addObject:@"English"];
+        [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
         [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
     }
     
@@ -393,7 +393,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
         
-        [cell.textLabel setText:@"Please wait."];
+        [cell.textLabel setText:NSLocalizedString(@"PLEASE_WAIT", @"")];
         [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
@@ -436,7 +436,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    [cell.textLabel setText:@"Not Found"];
+    [cell.textLabel setText:NSLocalizedString(@"NOT_FOUND", @"")];
     [cell.textLabel setFont:[UIFont boldSystemFontOfSize:18.f]];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     

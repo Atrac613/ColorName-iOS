@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Langage</string>
+			<string>Languages</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

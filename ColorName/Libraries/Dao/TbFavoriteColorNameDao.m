@@ -71,6 +71,10 @@
     }
 }
 
+- (int)countWithColorName:(TbColorName *)colorName {
+    return [self countWithName:colorName.name nameYomi:colorName.nameYomi red:colorName.red green:colorName.green blue:colorName.blue];
+}
+
 - (int)countWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
@@ -108,6 +112,10 @@
     }
 }
 
+- (void)insertWithColorName:(TbColorName *)colorName {
+    [self insertWithName:colorName.name nameYomi:colorName.nameYomi red:colorName.red green:colorName.green blue:colorName.blue];
+}
+
 - (void)removeFromName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
@@ -118,6 +126,10 @@
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
     }
+}
+
+- (void)removeFromColorName:(TbColorName *)colorName {
+    [self removeFromName:colorName.name nameYomi:colorName.nameYomi red:colorName.red green:colorName.green blue:colorName.blue];
 }
 
 - (void)removeFromId:(int)favorite_id {
