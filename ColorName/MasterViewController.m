@@ -51,9 +51,13 @@
     
     [self.navigationItem setTitle:NSLocalizedString(@"COLORNAME", @"")];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"ABOUT", @"") style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonPressed)];
+    UIButton *aboutButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [aboutButton addTarget:self action:@selector(aboutButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    CGRect frame = aboutButton.frame;
+    [aboutButton setFrame:CGRectMake(frame.origin.x, frame.origin.y, 40, frame.size.height)];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:aboutButton]];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FAVORITES", @"") style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)];
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FAVORITES", @"") style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)]];
     
     isPlay = YES;
     isInitializing = NO;
@@ -78,7 +82,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self videoController:NO];
+    [self videoController:!isPlay];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -338,8 +338,13 @@
 
 - (BOOL)textField:(UITextField *)field shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)characters
 {
-    NSCharacterSet *blockedCharacters = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    return ([characters rangeOfCharacterFromSet:blockedCharacters].location == NSNotFound);
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^[a-zA-Z0-9]*$" options:0 error:&error];
+    if ([regex numberOfMatchesInString:characters options:0 range:NSMakeRange(0, [characters length])] > 0) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 #pragma mark - Upload Action
