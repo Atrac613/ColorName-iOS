@@ -12,9 +12,9 @@
 
 "MERGE" = "結合";
 "INFO" = "お知らせ";
-"CONFIRM_MERGE_MESSAGE" = "このアカウントには以前保存したデータがあります。現在のデータと結合しますか？";
+"CONFIRM_MERGE_MESSAGE" = "このアカウントには以前保存したリストがあります。現在のリストと結合しますか？";
 "CONFIRM_TWEET_MESSAGE" = "新しく追加した色をツイートしますか？";
-"CONFIRM_FACEBOOK_SHARE_MESSAGE" = "新しく追加色を Facebook でシェアしますか？";
+"CONFIRM_FACEBOOK_SHARE_MESSAGE" = "新しく追加した色を Facebook でシェアしますか？";
 "SYNC" = "同期";
 "CANCEL" = "キャンセル";
 "UPLOADING" = "アップロード中";
@@ -40,6 +40,11 @@
 
 "YES" = "はい";
 "NO" = "いいえ";
+"NEXT" = "次へ";
+
+"HOW_TO_USE" = "使い方ガイド";
+"HOW_TO_USE_MESSAGE_1" = "現在のリストをバックアップしたり復元するには同期ボタンをタップします。同期は Google アカウントにて行います。";
+"HOW_TO_USE_MESSAGE_2" = "初めての同期の場合は完了すると同時にマイページも作成されます。マイページを更新したい場合も同期ボタンをタップします。";
 
 "VERSION" = "バージョン";
 "AUTHOR" = "作者";

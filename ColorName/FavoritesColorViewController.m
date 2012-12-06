@@ -62,6 +62,10 @@
         } else {
             [self syncAction];
         }
+    } else {
+        if (![self checkHowToUseAlert]) {
+            [self showHowToUseAlertWithNumder:1];
+        }
     }
 }
 
@@ -227,6 +231,37 @@
         UserPageViewController *userPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserPageViewController"];
         [userPageViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
         [self presentModalViewController:userPageViewController animated:YES];
+    }
+}
+
+- (BOOL)checkHowToUseAlert {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"HOW_TO_USE_ALERT_1"]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)showHowToUseAlertWithNumder:(NSInteger)number {
+    UIAlertView *alert;
+    switch (number) {
+        case 1:
+            alertMode = @"how_to_use_1";
+            
+            alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"HOW_TO_USE", @"") message:NSLocalizedString(@"HOW_TO_USE_MESSAGE_1", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NEXT", @"") otherButtonTitles:nil, nil];
+            [alert show];
+            
+            break;
+        case 2:
+            alertMode = @"how_to_use_2";
+            
+            alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"HOW_TO_USE", @"") message:NSLocalizedString(@"HOW_TO_USE_MESSAGE_2", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"CLOSE", @"") otherButtonTitles:nil, nil];
+            [alert show];
+            
+            break;
+        default:
+            break;
     }
 }
 
@@ -420,19 +455,29 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([alertMode isEqualToString:@"tweet"]) {
+        alertMode = @"";
+        
         if (buttonIndex == 1) {
             [self performSelector:@selector(showTweetDialog:) withObject:addedColorNameList afterDelay:1.f];
         } else {
             [self performSelector:@selector(showFacebookConfirmDialog) withObject:nil afterDelay:1.f];
         }
-        
-        alertMode = @"";
     } else if ([alertMode isEqualToString:@"facebook"]) {
+        alertMode = @"";
+        
         if (buttonIndex == 1) {
             [self performSelector:@selector(showFacebookDialog:) withObject:addedColorNameList afterDelay:1.f];
         }
-        
+    } else if ([alertMode isEqualToString:@"how_to_use_1"]) {
         alertMode = @"";
+        
+        [self showHowToUseAlertWithNumder:2];
+    } else if ([alertMode isEqualToString:@"how_to_use_2"]) {
+        alertMode = @"";
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:@"HOW_TO_USE_ALERT_1"];
+        [defaults synchronize];
     } else {
         if (buttonIndex == 1) {
             [self.navigationItem setHidesBackButton:YES animated:YES];

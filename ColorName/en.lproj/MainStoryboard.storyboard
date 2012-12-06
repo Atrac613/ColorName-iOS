@@ -300,7 +300,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gUL-Oq-dLJ"/>
                                     <barButtonItem title="Sync" style="done" id="JmG-WM-7NE">
                                         <connections>
-                                            <action selector="syncButtonPressed:" destination="thr-xV-2Is" id="XFf-pP-rVQ"/>
+                                            <action selector="syncButtonPressed:" destination="thr-xV-2Is" id="BMR-7e-V7k"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gOx-JG-Kvo"/>
@@ -311,7 +311,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="syncButton" destination="JmG-WM-7NE" id="hm0-8s-AE9"/>
+                        <outlet property="syncButton" destination="JmG-WM-7NE" id="XWh-h9-cWF"/>
                         <outlet property="tableView" destination="rbe-YR-VMy" id="A2v-Xj-Z0a"/>
                         <outlet property="toolBar" destination="BIY-AX-uMN" id="I8x-Cr-8fG"/>
                     </connections>
@@ -417,6 +417,74 @@
     <resources>
         <image name="pause.png" width="100" height="100"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="AuthViewController" superclassName="WebViewViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AuthViewController.h"/>
+        </class>
+        <class className="ColorDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="likeButtonPressed:"/>
+                <relationship kind="outlet" name="blueLevelBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="blueLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorNameYomiLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="greenLevelBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="greenLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hexLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redLevelBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="redLevelLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FavoritesColorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesColorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="syncButtonPressed:"/>
+                <relationship kind="outlet" name="syncButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="MasterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="previewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="stateButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ThirdPartyNoticesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ThirdPartyNoticesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UserPageViewController" superclassName="WebViewViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserPageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="actionButtonPressed:"/>
+                <relationship kind="action" name="updateProfileButtonPressed:"/>
+                <relationship kind="outlet" name="updateProfileButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="WebViewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
