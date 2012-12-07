@@ -10,11 +10,11 @@
 
 "DETAIL" = "Detail";
 
-"MERGE" = "Merge";
+"COMBINE" = "Combine";
 "INFO" = "Info";
-"CONFIRM_MERGE_MESSAGE" = "このアカウントには以前保存したデータがあります。現在のデータと結合しますか？";
-"CONFIRM_TWEET_MESSAGE" = "新しく追加した色をツイートしますか？";
-"CONFIRM_FACEBOOK_SHARE_MESSAGE" = "新しく追加した色を Facebook でシェアしますか？";
+"CONFIRM_COMBINE_MESSAGE" = "This account has a previously saved list. Would you like to combine it with the current list?";
+"CONFIRM_TWEET_MESSAGE" = "Would you like to tweet the newly added color?";
+"CONFIRM_FACEBOOK_SHARE_MESSAGE" = "Would you like to share the newly added color on Facebook?";
 "SYNC" = "Sync";
 "CANCEL" = "Cancel";
 "UPLOADING" = "Uploading";
@@ -25,7 +25,7 @@
 "TWEET_MESSAGE" = "%@ #MyFavoriteColor";
 "FACEBOOK_SHARE_MESSAGE" = "New favorite color! %@";
 
-"MERGING" = "Merging";
+"COMBINING" = "Combining";
 
 "AUTHENTICATION" = "Authentication";
 
@@ -42,9 +42,9 @@
 "NO" = "No";
 "NEXT" = "Next";
 
-"HOW_TO_USE" = "使い方ガイド";
-"HOW_TO_USE_MESSAGE_1" = "現在のリストをバックアップしたり復元するには同期ボタンをタップします。同期は Google アカウントにて行います。";
-"HOW_TO_USE_MESSAGE_2" = "初めての同期の場合は完了すると同時にマイページも作成されます。マイページを更新したい場合も同期ボタンをタップします。";
+"HOW_TO_USE" = "How to Use";
+"HOW_TO_USE_MESSAGE_1" = "To backup and restore the current list, tap on the Sync button. The synchronization takes place at the Google account.";
+"HOW_TO_USE_MESSAGE_2" = "When synchronization finishes for the first time, My Page is created at the same time. If you want to update My Page, tap the Sync button.";
 
 "VERSION" = "Version";
 "AUTHOR" = "Author";

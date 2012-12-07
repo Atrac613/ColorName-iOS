@@ -56,8 +56,8 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        if (SharedAppDelegate.canBeMerge && ![defaults boolForKey:@"MERGE_DIALOG"]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"INFO", @"") message:NSLocalizedString(@"CONFIRM_MERGE_MESSAGE", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
+        if (SharedAppDelegate.canBeCombine && ![defaults boolForKey:@"COMBINE_DIALOG"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"INFO", @"") message:NSLocalizedString(@"CONFIRM_COMBINE_MESSAGE", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
             [alert show];
         } else {
             [self syncAction];
@@ -330,7 +330,7 @@
         [self syncFinishWithResult:YES];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:@"MERGE_DIALOG"];
+        [defaults setBool:YES forKey:@"COMBINE_DIALOG"];
 
         [self performSelector:@selector(showTweetConfirmDialog) withObject:nil afterDelay:1.f];
     } else {
@@ -482,7 +482,7 @@
         if (buttonIndex == 1) {
             [self.navigationItem setHidesBackButton:YES animated:YES];
             [self.navigationItem.rightBarButtonItem setEnabled:NO];
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"MERGING", @"")];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"COMBINING", @"")];
             
             NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationGetFavoriteColor) object:nil];
             [operation setQueuePriority:NSOperationQueuePriorityHigh];

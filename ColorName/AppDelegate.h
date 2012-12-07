@@ -16,7 +16,7 @@
     ColorNameService *colorNameService;
     FMDatabase *db;
     BOOL isAuthenticated;
-    BOOL canBeMerge;
+    BOOL canBeCombine;
     NSString *userId;
     NSOperationQueue *operationQueue;
 }
@@ -25,7 +25,7 @@
 @property (strong, nonatomic) ColorNameService *colorNmaeService;
 @property (strong, nonatomic) FMDatabase *db;
 @property (nonatomic) BOOL isAuthenticated;
-@property (nonatomic) BOOL canBeMerge;
+@property (nonatomic) BOOL canBeCombine;
 @property (strong, nonatomic) NSString *userId;
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
 

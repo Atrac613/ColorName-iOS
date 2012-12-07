@@ -10,9 +10,9 @@
 
 "DETAIL" = "詳細";
 
-"MERGE" = "結合";
+"COMBINE" = "結合";
 "INFO" = "お知らせ";
-"CONFIRM_MERGE_MESSAGE" = "このアカウントには以前保存したリストがあります。現在のリストと結合しますか？";
+"CONFIRM_COMBINE_MESSAGE" = "このアカウントには以前保存したリストがあります。現在のリストと結合しますか？";
 "CONFIRM_TWEET_MESSAGE" = "新しく追加した色をツイートしますか？";
 "CONFIRM_FACEBOOK_SHARE_MESSAGE" = "新しく追加した色を Facebook でシェアしますか？";
 "SYNC" = "同期";
@@ -25,7 +25,7 @@
 "TWEET_MESSAGE" = "%@ #MyFavoriteColor";
 "FACEBOOK_SHARE_MESSAGE" = "新しいお気に入りの色。 %@";
 
-"MERGING" = "結合中";
+"COMBINING" = "結合中";
 
 "AUTHENTICATION" = "認証";
 

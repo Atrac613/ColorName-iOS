@@ -14,7 +14,7 @@
 @synthesize colorNmaeService;
 @synthesize db;
 @synthesize isAuthenticated;
-@synthesize canBeMerge;
+@synthesize canBeCombine;
 @synthesize userId;
 @synthesize operationQueue;
 
@@ -27,7 +27,7 @@
     colorNmaeService = [[ColorNameService alloc] init];
     
     isAuthenticated = NO;
-    canBeMerge = NO;
+    canBeCombine = NO;
     
     if (![self initDatabase]) {
         NSLog(@"Failed to init database.");

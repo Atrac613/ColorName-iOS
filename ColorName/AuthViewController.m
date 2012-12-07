@@ -67,10 +67,10 @@
         if ([[url path] isEqualToString:@"/login/successful"]) {
             appDelegate.isAuthenticated = YES;
             
-            if ([[url query] isEqualToString:@"merge=true"]) {
-                appDelegate.canBeMerge = YES;
+            if ([[url query] isEqualToString:@"combine=true"]) {
+                appDelegate.canBeCombine = YES;
             } else {
-                appDelegate.canBeMerge = NO;
+                appDelegate.canBeCombine = NO;
             }
             
             [self performSelector:@selector(cancelButtonPressed) withObject:nil afterDelay:1.f];
