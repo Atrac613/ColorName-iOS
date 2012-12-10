@@ -16,7 +16,7 @@
 }
 
 - (void)createTable {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, name_yomi TEXT, red INTEGER, green INTEGER, blue INTEGER);"]];
     
@@ -26,7 +26,7 @@
 }
 
 - (int)countAll {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
           
     int count = 0;
     
@@ -42,7 +42,7 @@
 }
 
 - (int)countWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     int count = 0;
     
@@ -58,7 +58,7 @@
 }
 
 - (void)insertWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"INSERT INTO %@ (name, name_yomi, red, green, blue) VALUES (?, ?, ?, ?, ?)"], name, nameYomi, [NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue]];
     
@@ -68,7 +68,7 @@
 }
 
 - (NSMutableArray*)findColorNameWithColor:(UIColor *)color {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:0];
     
@@ -89,7 +89,7 @@
 }
 
 - (TbColorName*)findColorNameWithColor:(UIColor *)color colorName:(NSString *)colorName {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     TbColorName *result;
     

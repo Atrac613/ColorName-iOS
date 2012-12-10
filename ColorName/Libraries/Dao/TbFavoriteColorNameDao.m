@@ -12,12 +12,11 @@
 @implementation TbFavoriteColorNameDao
 
 - (NSString*)setTable:(NSString *)sql {
-    NSLog(@"%@", [NSString stringWithFormat:sql, @"favorite_color_name"]);
     return [NSString stringWithFormat:sql, @"favorite_color_name"];
 }
 
 - (void)createTable {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, name_yomi TEXT, red INTEGER, green INTEGER, blue INTEGER, rank INTEGER, language TEXT);"]];
     
@@ -27,7 +26,7 @@
 }
 
 - (int)countAll {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     int count = 0;
     
@@ -43,7 +42,7 @@
 }
 
 - (void)sortAll {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, rank FROM %@ ORDER BY rank"]];
     
@@ -62,7 +61,7 @@
 }
 
 - (void)updateRank:(int)rank favorite_id:(int)favorite_id {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"UPDATE %@ SET rank = ? WHERE id = ?"], [NSNumber numberWithInt:rank], [NSNumber numberWithInt:favorite_id]];
     
@@ -76,7 +75,7 @@
 }
 
 - (int)countWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     int count = 0;
     
@@ -92,13 +91,13 @@
 }
 
 - (void)insertWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [self insertWithName:name nameYomi:nameYomi red:red green:green blue:blue rank:0];
 }
 
 - (void)insertWithName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue rank:(NSInteger)rank {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     if (!rank || rank == 0) {
         [self sortAll];
@@ -117,7 +116,7 @@
 }
 
 - (void)removeFromName:(NSString *)name nameYomi:(NSString *)nameYomi red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"DELETE FROM %@ WHERE name = ? AND name_yomi = ? AND red = ? AND green = ? AND blue = ?"], name, nameYomi, [NSNumber numberWithFloat:red], [NSNumber numberWithFloat:green], [NSNumber numberWithFloat:blue]];
     
@@ -133,7 +132,7 @@
 }
 
 - (void)removeFromId:(int)favorite_id {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     [db executeUpdate:[self setTable:@"DELETE FROM %@ WHERE id = ?"], [NSNumber numberWithInt:favorite_id]];
     
@@ -145,7 +144,7 @@
 }
 
 - (NSMutableArray*)findColorNameWithColor:(UIColor *)color {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:0];
     
@@ -166,7 +165,7 @@
 }
 
 - (NSMutableArray*)getAll {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:0];
     
@@ -183,7 +182,7 @@
 }
 
 - (TbColorName*)findColorNameWithColor:(UIColor *)color colorName:(NSString *)colorName {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     TbColorName *result;
     

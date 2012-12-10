@@ -5,13 +5,13 @@
 "INITIALIZING" = "Initializing";
 "JAPANESE" = "Japanese";
 "ENGLISH" = "English";
-"PLEASE_WAIT" = "Plase Wait";
+"PLEASE_WAIT" = "Please wait";
 "NOT_FOUND" = "Not Found";
 
 "DETAIL" = "Detail";
 
 "COMBINE" = "Combine";
-"INFO" = "Info";
+"INFO" = "Information";
 "CONFIRM_COMBINE_MESSAGE" = "This account has a previously saved list. Would you like to combine it with the current list?";
 "CONFIRM_TWEET_MESSAGE" = "Would you like to tweet the newly added color?";
 "CONFIRM_FACEBOOK_SHARE_MESSAGE" = "Would you like to share the newly added color on Facebook?";

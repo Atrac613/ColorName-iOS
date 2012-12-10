@@ -313,7 +313,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     if ([httpResponseData length] > 0) {
         NSString *jsonString = [[NSString alloc] initWithData:httpResponseData encoding:NSUTF8StringEncoding];
@@ -388,6 +388,10 @@
 - (void)showTweetDialog:(NSArray*)colors {
     if ([colors count] > 0) {
         NSString *newColorName = [colors componentsJoinedByString:@", "];
+        if ([newColorName length] > 100) {
+            newColorName = [newColorName substringWithRange:NSMakeRange(0, 100)];
+            newColorName = [NSString stringWithFormat:@"%@...", newColorName];
+        }
         
         NSString *message = [NSString stringWithFormat:NSLocalizedString(@"TWEET_MESSAGE", @""), newColorName];
         
