@@ -14,6 +14,7 @@
 		0629B4AE15C6D58300397737 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AB15C6D58300397737 /* CoreVideo.framework */; };
 		0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */; };
 		0629B4B315C6E84B00397737 /* ColorListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0629B4B215C6E84B00397737 /* ColorListCell.m */; };
+		0639A6C4167DFA2F00DB78B5 /* LanguageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */; };
 		065D433915C0301500A38E86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433815C0301500A38E86 /* UIKit.framework */; };
 		065D433B15C0301500A38E86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433A15C0301500A38E86 /* Foundation.framework */; };
 		065D433D15C0301500A38E86 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433C15C0301500A38E86 /* CoreGraphics.framework */; };
@@ -110,6 +111,8 @@
 		0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0629B4B115C6E84B00397737 /* ColorListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorListCell.h; sourceTree = "<group>"; };
 		0629B4B215C6E84B00397737 /* ColorListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorListCell.m; sourceTree = "<group>"; };
+		0639A6C2167DFA2F00DB78B5 /* LanguageSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageSettingViewController.h; sourceTree = "<group>"; };
+		0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageSettingViewController.m; sourceTree = "<group>"; };
 		065D433415C0301500A38E86 /* ColorName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065D433815C0301500A38E86 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		065D433A15C0301500A38E86 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -307,6 +310,8 @@
 				06C660B5166506CA003CC7C2 /* ThirdPartyNoticesViewController.m */,
 				06C660D91666693E003CC7C2 /* AboutViewController.h */,
 				06C660DA1666693F003CC7C2 /* AboutViewController.m */,
+				0639A6C2167DFA2F00DB78B5 /* LanguageSettingViewController.h */,
+				0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */,
 				065D433F15C0301500A38E86 /* Supporting Files */,
 			);
 			path = ColorName;
@@ -645,6 +650,7 @@
 				06C660B916650B4E003CC7C2 /* FlipFromLeftSegue.m in Sources */,
 				06C660DB1666693F003CC7C2 /* AboutViewController.m in Sources */,
 				06C660E21666771D003CC7C2 /* FlipFromRightSegue.m in Sources */,
+				0639A6C4167DFA2F00DB78B5 /* LanguageSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
