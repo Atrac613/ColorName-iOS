@@ -414,7 +414,6 @@
             
             [self dismissViewControllerAnimated:YES completion:^(void){
                 [self showFacebookConfirmDialog];
-                
             }];
         }];
         

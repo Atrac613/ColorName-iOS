@@ -183,7 +183,6 @@
         if (indexPath.row == 0) {
             ThirdPartyNoticesViewController *thirdPartyNoticesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdPartyNoticesViewController"];
             [self presentViewController:thirdPartyNoticesViewController animated:YES completion:nil];
-            
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
