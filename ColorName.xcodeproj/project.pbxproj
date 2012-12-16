@@ -169,7 +169,7 @@
 		06A3F683162174F200833A22 /* TbFavoriteColorNameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbFavoriteColorNameDao.h; path = Dao/TbFavoriteColorNameDao.h; sourceTree = "<group>"; };
 		06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbFavoriteColorNameDao.m; path = Dao/TbFavoriteColorNameDao.m; sourceTree = "<group>"; };
 		06A3F6861621A6A300833A22 /* FavoritesColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesColorViewController.h; sourceTree = "<group>"; };
-		06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesColorViewController.m; sourceTree = "<group>"; };
+		06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesColorViewController.m; sourceTree = "<group>"; usesTabs = 0; };
 		06A3F6891622738200833A22 /* TbColorNameEnDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameEnDao.h; path = Dao/TbColorNameEnDao.h; sourceTree = "<group>"; };
 		06A3F68A1622738200833A22 /* TbColorNameEnDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameEnDao.m; path = Dao/TbColorNameEnDao.m; sourceTree = "<group>"; };
 		06A3F68C16227EDF00833A22 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
