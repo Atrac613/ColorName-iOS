@@ -128,10 +128,10 @@
             [authorLabel setBackgroundColor:[UIColor clearColor]];
             [cell addSubview:authorLabel];
         } else if (indexPath.row == 1) {
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
             [cell.textLabel setText:NSLocalizedString(@"SOURCE_CODE_REPOSITORY", @"")];
         }else {
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
             [cell.textLabel setText:NSLocalizedString(@"MORE_APPS", @"")];
         }
     } else if (indexPath.section == 1) {
@@ -142,7 +142,7 @@
         
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"THIRD_PARTY_NOTICES", @"")];
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
         }
     } else if (indexPath.section == 2) {
         cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -152,7 +152,7 @@
         
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"RATE_THIS_APP", @"")];
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
         }
     } else if (indexPath.section == 3) {
         cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -163,7 +163,7 @@
         
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"LANGUAGES", @"")];
-            [cell.textLabel setTextAlignment:UITextAlignmentLeft];
+            [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
         }
     }
     
@@ -182,7 +182,8 @@
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             ThirdPartyNoticesViewController *thirdPartyNoticesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdPartyNoticesViewController"];
-            [self presentModalViewController:thirdPartyNoticesViewController animated:YES];
+            [self presentViewController:thirdPartyNoticesViewController animated:YES completion:nil];
+            
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {

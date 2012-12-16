@@ -28,11 +28,11 @@
 		065D435C15C0301500A38E86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433A15C0301500A38E86 /* Foundation.framework */; };
 		065D436415C0301500A38E86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 065D436215C0301500A38E86 /* InfoPlist.strings */; };
 		065D436715C0301500A38E86 /* ColorNameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D436615C0301500A38E86 /* ColorNameTests.m */; };
-		065D438A15C6D33D00A38E86 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
-		065D438B15C6D33D00A38E86 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
-		065D438C15C6D33D00A38E86 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; };
-		065D438D15C6D33D00A38E86 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437915C6D33D00A38E86 /* FMDatabaseQueue.m */; };
-		065D438E15C6D33D00A38E86 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437B15C6D33D00A38E86 /* FMResultSet.m */; };
+		065D438A15C6D33D00A38E86 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		065D438B15C6D33D00A38E86 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		065D438C15C6D33D00A38E86 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		065D438D15C6D33D00A38E86 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437915C6D33D00A38E86 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		065D438E15C6D33D00A38E86 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437B15C6D33D00A38E86 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		065D438F15C6D33D00A38E86 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437F15C6D33D00A38E86 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		065D439015C6D33D00A38E86 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438115C6D33D00A38E86 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		065D439115C6D33D00A38E86 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438315C6D33D00A38E86 /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -752,7 +752,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B821FC8-E174-4FF7-B34F-329CA19CB28B";
 				SDKROOT = iphoneos;
 			};
@@ -771,7 +771,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01363147-E072-47EE-B3ED-73A5592735CB";
 				SDKROOT = iphoneos;
@@ -857,7 +857,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
 				SDKROOT = iphoneos;
 			};
