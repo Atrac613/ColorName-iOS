@@ -9,6 +9,7 @@
 #import "AboutViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ThirdPartyNoticesViewController.h"
+#import "LanguageSettingViewController.h"
 
 @interface AboutViewController ()
 
@@ -49,7 +50,7 @@
 #pragma mark - TableView delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -58,6 +59,8 @@
     } else if (section == 1) {
         return 1;
     } else if (section == 2) {
+        return 1;
+    } else if (section == 3) {
         return 1;
     }
     
@@ -75,6 +78,10 @@
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 3) {
+        return NSLocalizedString(@"OPTION", @"");
+    }
+    
     return @"";
 }
 
@@ -121,10 +128,10 @@
             [authorLabel setBackgroundColor:[UIColor clearColor]];
             [cell addSubview:authorLabel];
         } else if (indexPath.row == 1) {
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
             [cell.textLabel setText:NSLocalizedString(@"SOURCE_CODE_REPOSITORY", @"")];
         }else {
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
             [cell.textLabel setText:NSLocalizedString(@"MORE_APPS", @"")];
         }
     } else if (indexPath.section == 1) {
@@ -135,7 +142,7 @@
         
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"THIRD_PARTY_NOTICES", @"")];
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
         }
     } else if (indexPath.section == 2) {
         cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -145,7 +152,18 @@
         
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"RATE_THIS_APP", @"")];
-            [cell.textLabel setTextAlignment:UITextAlignmentCenter];
+            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+        }
+    } else if (indexPath.section == 3) {
+        cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        }
+        
+        if (indexPath.row == 0) {
+            [cell.textLabel setText:NSLocalizedString(@"LANGUAGES", @"")];
+            [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
         }
     }
     
@@ -164,11 +182,16 @@
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             ThirdPartyNoticesViewController *thirdPartyNoticesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdPartyNoticesViewController"];
-            [self presentModalViewController:thirdPartyNoticesViewController animated:YES];
+            [self presentViewController:thirdPartyNoticesViewController animated:YES completion:nil];
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=584817516"]];
+        }
+    } else if (indexPath.section == 3) {
+        if (indexPath.row == 0) {
+            LanguageSettingViewController * languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
+            [self.navigationController pushViewController:languageSettingViewController animated:YES];
         }
     }
 }

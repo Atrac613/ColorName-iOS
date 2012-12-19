@@ -106,6 +106,7 @@
     
     if (cell == nil) {
         cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     
     TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
@@ -185,7 +186,7 @@
     } else {
         AuthViewController *authViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
         authViewController.signIn = YES;
-        [self presentModalViewController:authViewController animated:YES];
+        [self presentViewController:authViewController animated:YES completion:nil];
     }
 }
 
@@ -230,7 +231,7 @@
     if ([SharedAppDelegate.userId length] > 0) {
         UserPageViewController *userPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserPageViewController"];
         [userPageViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-        [self presentModalViewController:userPageViewController animated:YES];
+        [self presentViewController:userPageViewController animated:YES completion:nil];
     }
 }
 
@@ -411,8 +412,9 @@
                     break;
             }
             
-            [self dismissModalViewControllerAnimated:YES];
-            [self performSelector:@selector(showFacebookConfirmDialog) withObject:nil afterDelay:1.f];
+            [self dismissViewControllerAnimated:YES completion:^(void){
+                [self showFacebookConfirmDialog];
+            }];
         }];
         
         [self presentViewController:twitterPostViewController animated:YES completion:nil];

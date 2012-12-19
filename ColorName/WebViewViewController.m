@@ -41,7 +41,7 @@
 }
 
 - (void)cancelButtonPressed {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {

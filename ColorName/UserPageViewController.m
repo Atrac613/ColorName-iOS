@@ -87,7 +87,7 @@
     accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
     // Request access from the user to use their Twitter accounts.
-    [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
         if (granted) {
             // Get the list of Twitter accounts.
             NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
@@ -223,7 +223,7 @@
     accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
     // Request access from the user to use their Twitter accounts.
-    [accountStore requestAccessToAccountsWithType:accountType withCompletionHandler:^(BOOL granted, NSError *error) {
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
         if(granted) {
             // Get the list of Twitter accounts.
             NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
@@ -284,7 +284,7 @@
     
     userIdField = [[UITextField alloc] initWithFrame:CGRectMake(73, 50, 197, 25)];
     userIdField.borderStyle = UITextBorderStyleRoundedRect;
-    userIdField.textAlignment = UITextAlignmentLeft;
+    userIdField.textAlignment = NSTextAlignmentLeft;
     //userIdField.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     userIdField.textColor = [UIColor grayColor];
     userIdField.minimumFontSize = 8;
@@ -298,7 +298,7 @@
     
     nickNameField = [[UITextField alloc] initWithFrame:CGRectMake(73, 85, 197, 25)];
     nickNameField.borderStyle = UITextBorderStyleRoundedRect;
-    nickNameField.textAlignment = UITextAlignmentLeft;
+    nickNameField.textAlignment = NSTextAlignmentLeft;
     //nickNameField.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     nickNameField.textColor = [UIColor grayColor];
     nickNameField.minimumFontSize = 8;

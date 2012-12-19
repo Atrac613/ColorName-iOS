@@ -410,6 +410,7 @@
             
             if (cell == nil) {
                 cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+                [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
             
             TbColorName *colorName = [[tableContentArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
