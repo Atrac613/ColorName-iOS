@@ -48,6 +48,9 @@
 		0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C32F160EFAAC00C9EFC5 /* BaseDao.m */; };
 		0665C333160F01AA00C9EFC5 /* TbColorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C332160F01AA00C9EFC5 /* TbColorName.m */; };
 		0665C336160F044900C9EFC5 /* TbColorNameJaDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */; };
+		0681E74E168202530071C5B3 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E74D168202530071C5B3 /* libGoogleAnalytics.a */; };
+		0681E751168205010071C5B3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E74F168205010071C5B3 /* CoreData.framework */; };
+		0681E752168205010071C5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E750168205010071C5B3 /* SystemConfiguration.framework */; };
 		06A3F685162174F200833A22 /* TbFavoriteColorNameDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */; };
 		06A3F6881621A6A400833A22 /* FavoritesColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F6871621A6A400833A22 /* FavoritesColorViewController.m */; };
 		06A3F68B1622738200833A22 /* TbColorNameEnDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F68A1622738200833A22 /* TbColorNameEnDao.m */; };
@@ -169,6 +172,14 @@
 		0665C332160F01AA00C9EFC5 /* TbColorName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorName.m; path = Dto/TbColorName.m; sourceTree = "<group>"; };
 		0665C334160F044900C9EFC5 /* TbColorNameJaDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameJaDao.h; path = Dao/TbColorNameJaDao.h; sourceTree = "<group>"; };
 		0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameJaDao.m; path = Dao/TbColorNameJaDao.m; sourceTree = "<group>"; };
+		0681E748168202530071C5B3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		0681E749168202530071C5B3 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		0681E74A168202530071C5B3 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		0681E74B168202530071C5B3 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		0681E74C168202530071C5B3 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		0681E74D168202530071C5B3 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		0681E74F168205010071C5B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0681E750168205010071C5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06A3F683162174F200833A22 /* TbFavoriteColorNameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbFavoriteColorNameDao.h; path = Dao/TbFavoriteColorNameDao.h; sourceTree = "<group>"; };
 		06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbFavoriteColorNameDao.m; path = Dao/TbFavoriteColorNameDao.m; sourceTree = "<group>"; };
 		06A3F6861621A6A300833A22 /* FavoritesColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesColorViewController.h; sourceTree = "<group>"; };
@@ -223,6 +234,9 @@
 				0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */,
 				06D79519165F4EE4004396FB /* Accounts.framework in Frameworks */,
 				06D7951A165F4EE4004396FB /* Social.framework in Frameworks */,
+				0681E74E168202530071C5B3 /* libGoogleAnalytics.a in Frameworks */,
+				0681E751168205010071C5B3 /* CoreData.framework in Frameworks */,
+				0681E752168205010071C5B3 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,10 +285,13 @@
 		065D433715C0301500A38E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0681E746168202530071C5B3 /* GoogleAnalyticsiOS_2-1.0beta3 */,
+				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
+				0681E74F168205010071C5B3 /* CoreData.framework */,
+				0681E750168205010071C5B3 /* SystemConfiguration.framework */,
 				06C660D316666590003CC7C2 /* QuartzCore.framework */,
 				06D79517165F4EE4004396FB /* Accounts.framework */,
 				06D79518165F4EE4004396FB /* Social.framework */,
-				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
 				0629B4A915C6D58300397737 /* AVFoundation.framework */,
 				0629B4AA15C6D58300397737 /* CoreMedia.framework */,
 				0629B4AB15C6D58300397737 /* CoreVideo.framework */,
@@ -451,6 +468,27 @@
 				0665C332160F01AA00C9EFC5 /* TbColorName.m */,
 			);
 			name = Dto;
+			sourceTree = "<group>";
+		};
+		0681E746168202530071C5B3 /* GoogleAnalyticsiOS_2-1.0beta3 */ = {
+			isa = PBXGroup;
+			children = (
+				0681E747168202530071C5B3 /* Library */,
+			);
+			path = "GoogleAnalyticsiOS_2-1.0beta3";
+			sourceTree = "<group>";
+		};
+		0681E747168202530071C5B3 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0681E748168202530071C5B3 /* GAI.h */,
+				0681E749168202530071C5B3 /* GAITrackedViewController.h */,
+				0681E74A168202530071C5B3 /* GAITracker.h */,
+				0681E74B168202530071C5B3 /* GAITransaction.h */,
+				0681E74C168202530071C5B3 /* GAITransactionItem.h */,
+				0681E74D168202530071C5B3 /* libGoogleAnalytics.a */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		06A3F6921629A99200833A22 /* SVProgressHUD */ = {
@@ -755,6 +793,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B821FC8-E174-4FF7-B34F-329CA19CB28B";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -776,6 +815,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01363147-E072-47EE-B3ED-73A5592735CB";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
@@ -786,8 +826,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -798,7 +843,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -860,6 +910,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
 			};
 			name = Distribution;
 		};
@@ -870,8 +921,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;

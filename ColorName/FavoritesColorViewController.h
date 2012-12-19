@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TbFavoriteColorNameDao.h"
+#import "GAITrackedViewController.h"
 
-@interface FavoritesColorViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
+@interface FavoritesColorViewController : GAITrackedViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     IBOutlet UITableView *tableView;
     IBOutlet UIBarButtonItem *syncButton;
     IBOutlet UIToolbar *toolBar;

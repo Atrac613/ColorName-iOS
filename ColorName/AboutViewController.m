@@ -32,6 +32,9 @@
 {
     [super viewDidLoad];
     
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
+    
     [self.navigationItem setTitle:NSLocalizedString(@"ABOUT", @"")];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLOSE", @"") style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];

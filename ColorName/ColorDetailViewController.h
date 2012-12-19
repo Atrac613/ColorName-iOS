@@ -10,8 +10,9 @@
 #import "TbColorNameJaDao.h"
 #import "TbFavoriteColorNameDao.h"
 #import "TbColorName.h"
+#import "GAITrackedViewController.h"
 
-@interface ColorDetailViewController : UIViewController {
+@interface ColorDetailViewController : GAITrackedViewController {
     IBOutlet UILabel *colorNameLabel;
     IBOutlet UILabel *colorNameYomiLabel;
     IBOutlet UIView *colorView;

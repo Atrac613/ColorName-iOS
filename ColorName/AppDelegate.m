@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -35,6 +36,15 @@
     
     userId = @"";
     
+    // Optional: automatically track uncaught exceptions with Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    [GAI sharedInstance].debug = NO;
+    // Create tracker instance.
+    [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingId];
+    
     return YES;
 }
 							
@@ -57,7 +67,15 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if (!SEND_USAGE_STATISTICS) {
+        [[GAI sharedInstance] setOptOut:YES];
+        
+        NSLog(@"Don't send usage statistics.");
+    } else {
+        [[GAI sharedInstance] setOptOut:NO];
+        
+        NSLog(@"Send usage staistics.");
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

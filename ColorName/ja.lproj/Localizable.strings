@@ -56,3 +56,5 @@
 "RATE_THIS_APP" = "このアプリを評価";
 "OPTION" = "オプション";
 "LANGUAGES" = "言語の設定";
+
+"CONFIRM_USAGE_STATISTICS" = "このアプリケーションの匿名の使用統計情報を送信しますか？";

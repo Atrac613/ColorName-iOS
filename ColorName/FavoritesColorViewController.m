@@ -37,6 +37,9 @@
 {
     [super viewDidLoad];
     
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
+    
     [self.navigationItem setTitle:NSLocalizedString(@"FAVORITES", @"")];
     [self.navigationItem setRightBarButtonItem:self.editButtonItem];
 

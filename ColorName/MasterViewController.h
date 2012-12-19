@@ -10,8 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "TbColorNameJaDao.h"
 #import "TbColorNameEnDao.h"
+#import "GAITrackedViewController.h"
 
-@interface MasterViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface MasterViewController : GAITrackedViewController <AVCaptureVideoDataOutputSampleBufferDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     IBOutlet UIView *previewView;
     IBOutlet UIView *colorView;
     IBOutlet UITableView *tableView;
@@ -27,6 +28,8 @@
     
     TbColorNameJaDao *colorNameJaDao;
     TbColorNameEnDao *colorNameEnDao;
+    
+    NSString *alertMode;
     
     BOOL isPlay;
     BOOL isInitializing;
@@ -44,6 +47,7 @@
 @property (nonatomic, retain) NSMutableArray *tableContentArray;
 @property (nonatomic, retain) TbColorNameJaDao *colorNameJaDao;
 @property (nonatomic, retain) TbColorNameEnDao *colorNameEnDao;
+@property (nonatomic, retain) NSString *alertMode;
 @property (nonatomic) BOOL isPlay;
 @property (nonatomic) BOOL isInitializing;
 

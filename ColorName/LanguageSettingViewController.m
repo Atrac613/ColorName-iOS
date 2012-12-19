@@ -28,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
 	
     [tableView setAllowsSelection:NO];
 }

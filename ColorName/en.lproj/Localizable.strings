@@ -56,3 +56,5 @@
 "RATE_THIS_APP" = "Rate This App";
 "OPTION" = "Option";
 "LANGUAGES" = "Languages";
+
+"CONFIRM_USAGE_STATISTICS" = "Do you want to send annonimous usage statistics?";

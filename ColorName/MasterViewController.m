@@ -19,6 +19,7 @@
 #import "FavoritesColorViewController.h"
 #import "SVProgressHUD.h"
 #import "AboutViewController.h"
+#import "GAI.h"
 
 @interface MasterViewController () {
 }
@@ -37,6 +38,7 @@
 @synthesize colorNameEnDao;
 @synthesize tableSectionArray;
 @synthesize tableContentArray;
+@synthesize alertMode;
 @synthesize isPlay;
 @synthesize isInitializing;
 
@@ -48,6 +50,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
     
     [self.navigationItem setTitle:NSLocalizedString(@"COLORNAME", @"")];
     
@@ -146,6 +151,8 @@
     isInitializing = NO;
     
     [self hideInitializingProgressView];
+    
+    [self showUsageStatisticsPermissionAlert:NO];
 }
 
 - (void)createDB {
@@ -496,6 +503,41 @@
     
     if ([previewLayer containsPoint:point]) {
         [self videoController:isPlay];
+    }
+}
+
+#pragma mark - Send usage statistics dialog
+
+- (void)showUsageStatisticsPermissionAlert:(BOOL)force {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:kSendUsageStatisticsAlert] && !force) {
+        return;
+    }
+    
+    alertMode = @"confirm_usage_statistics";
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CONFIRM_USAGE_STATISTICS", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([alertMode isEqualToString:@"confirm_usage_statistics"]) {
+        alertMode = @"";
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[NSNumber numberWithBool:YES] forKey:kSendUsageStatisticsAlert];
+        
+        if (buttonIndex == 1) {
+            [defaults setObject:[NSNumber numberWithBool:YES] forKey:kSendUsageStatistics];
+            
+            [[GAI sharedInstance] setOptOut:NO];
+        } else {
+            [defaults setObject:[NSNumber numberWithBool:NO] forKey:kSendUsageStatistics];
+            
+            [[GAI sharedInstance] setOptOut:YES];
+        }
+        
+        [defaults synchronize];
     }
 }
 

@@ -12,3 +12,9 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define kSendUsageStatisticsAlert @"send_usage_statistics_alert"
+#define kSendUsageStatistics @"send_usage_statistics"
+#define kGoogleAnalyticsTrackingId @"UA-1167116-23"
+
+#define SEND_USAGE_STATISTICS ((bool)[[[NSUserDefaults standardUserDefaults] objectForKey:kSendUsageStatistics] boolValue])
