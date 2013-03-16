@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
 #import "ColorNameService.h"
+#import "GAI.h"
 
 #define SharedAppDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
@@ -19,6 +20,8 @@
     BOOL canBeCombine;
     NSString *userId;
     NSOperationQueue *operationQueue;
+    
+    id<GAITracker> tracker;
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -27,6 +30,7 @@
 @property (nonatomic) BOOL isAuthenticated;
 @property (nonatomic) BOOL canBeCombine;
 @property (strong, nonatomic) NSString *userId;
-@property (nonatomic, retain) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) id<GAITracker> tracker;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ColorDetailViewController.h"
 #import "TbColorName.h"
+#import "AppDelegate.h"
 
 @interface ColorDetailViewController ()
 
@@ -91,9 +92,13 @@
     if ([favoriteColorNameDao countWithColorName:colorName] > 0) {
         [likeButton setTitle:@"Liked" forState:UIControlStateNormal];
         [likeButton setHighlighted:YES];
+        
+        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"liked" withValue:nil];
     } else {
         [likeButton setTitle:@"Like" forState:UIControlStateNormal];
         [likeButton setHighlighted:NO];
+        
+        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"like" withValue:nil];
     }
 }
 

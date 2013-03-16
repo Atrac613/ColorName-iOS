@@ -75,7 +75,11 @@
     
     [self performSelectorInBackground:@selector(operationInitializationTask) withObject:nil];
     
-    [self setupAVCapture];
+    if (TARGET_IPHONE_SIMULATOR) {
+        [self setupTestAVCapture];
+    } else {
+        [self setupAVCapture];
+    }
 }
 
 - (void)viewDidUnload
@@ -277,6 +281,28 @@
     [previewLayer setFrame:[rootLayer bounds]];
     [rootLayer addSublayer:previewLayer];
     [session startRunning];
+}
+
+- (void)setupTestAVCapture {
+    UIImage *image = [UIImage imageNamed:@"sample.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    [previewView addSubview:imageView];
+    
+    CGRect screenRect = CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height);
+    UIGraphicsBeginImageContext(screenRect.size);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    [[UIColor clearColor] set];
+    CGContextFillRect(ctx, screenRect);
+    
+    [imageView.layer renderInContext:ctx];
+    
+    UIImage *previewImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    [self getCenterColor:previewImage];
 }
 
 - (void)getCenterColor:(UIImage*)image {

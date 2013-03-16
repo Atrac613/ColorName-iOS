@@ -79,6 +79,8 @@
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
+    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"actionButton" withValue:nil];
+    
     [[UIApplication sharedApplication] openURL:webView.request.URL];
 }
 
@@ -320,6 +322,8 @@
 #pragma mark - UIAlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"updateProfile" withValue:[NSNumber numberWithInteger:buttonIndex]];
+    
     if (buttonIndex == 1) {
         [updateProfileButton setEnabled:NO];
         [SVProgressHUD showWithStatus:NSLocalizedString(@"UPLOADING", @"")];

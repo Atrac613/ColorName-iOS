@@ -48,7 +48,6 @@
 		0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C32F160EFAAC00C9EFC5 /* BaseDao.m */; };
 		0665C333160F01AA00C9EFC5 /* TbColorName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C332160F01AA00C9EFC5 /* TbColorName.m */; };
 		0665C336160F044900C9EFC5 /* TbColorNameJaDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */; };
-		0681E74E168202530071C5B3 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E74D168202530071C5B3 /* libGoogleAnalytics.a */; };
 		0681E751168205010071C5B3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E74F168205010071C5B3 /* CoreData.framework */; };
 		0681E752168205010071C5B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E750168205010071C5B3 /* SystemConfiguration.framework */; };
 		06A3F685162174F200833A22 /* TbFavoriteColorNameDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F684162174F200833A22 /* TbFavoriteColorNameDao.m */; };
@@ -58,6 +57,8 @@
 		06A3F6961629A99200833A22 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06A3F6931629A99200833A22 /* SVProgressHUD.bundle */; };
 		06A3F6971629A99200833A22 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F6951629A99200833A22 /* SVProgressHUD.m */; };
 		06A3F73216340EE400833A22 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F73116340EE400833A22 /* WebViewViewController.m */; };
+		06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */; };
+		06C4FFDD16F4706400EBD9C1 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFDC16F4706400EBD9C1 /* sample.png */; };
 		06C660AE16650567003CC7C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06C660AC16650567003CC7C2 /* Localizable.strings */; };
 		06C660B116650578003CC7C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06C660AF16650578003CC7C2 /* Localizable.strings */; };
 		06C660B3166506A7003CC7C2 /* third_party_notices.html in Resources */ = {isa = PBXBuildFile; fileRef = 06C660B2166506A7003CC7C2 /* third_party_notices.html */; };
@@ -172,12 +173,6 @@
 		0665C332160F01AA00C9EFC5 /* TbColorName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorName.m; path = Dto/TbColorName.m; sourceTree = "<group>"; };
 		0665C334160F044900C9EFC5 /* TbColorNameJaDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbColorNameJaDao.h; path = Dao/TbColorNameJaDao.h; sourceTree = "<group>"; };
 		0665C335160F044900C9EFC5 /* TbColorNameJaDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TbColorNameJaDao.m; path = Dao/TbColorNameJaDao.m; sourceTree = "<group>"; };
-		0681E748168202530071C5B3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		0681E749168202530071C5B3 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		0681E74A168202530071C5B3 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		0681E74B168202530071C5B3 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
-		0681E74C168202530071C5B3 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
-		0681E74D168202530071C5B3 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		0681E74F168205010071C5B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0681E750168205010071C5B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06A3F683162174F200833A22 /* TbFavoriteColorNameDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TbFavoriteColorNameDao.h; path = Dao/TbFavoriteColorNameDao.h; sourceTree = "<group>"; };
@@ -192,6 +187,13 @@
 		06A3F6951629A99200833A22 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		06A3F73016340EE400833A22 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		06A3F73116340EE400833A22 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		06C4FFA216F46DD400EBD9C1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		06C4FFA316F46DD400EBD9C1 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		06C4FFA416F46DD400EBD9C1 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		06C4FFA516F46DD400EBD9C1 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		06C4FFA616F46DD400EBD9C1 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		06C4FFDC16F4706400EBD9C1 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
 		06C660AD16650567003CC7C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ColorName/ja.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		06C660B016650578003CC7C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ColorName/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		06C660B2166506A7003CC7C2 /* third_party_notices.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = third_party_notices.html; sourceTree = SOURCE_ROOT; };
@@ -234,9 +236,9 @@
 				0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */,
 				06D79519165F4EE4004396FB /* Accounts.framework in Frameworks */,
 				06D7951A165F4EE4004396FB /* Social.framework in Frameworks */,
-				0681E74E168202530071C5B3 /* libGoogleAnalytics.a in Frameworks */,
 				0681E751168205010071C5B3 /* CoreData.framework in Frameworks */,
 				0681E752168205010071C5B3 /* SystemConfiguration.framework in Frameworks */,
+				06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +287,7 @@
 		065D433715C0301500A38E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0681E746168202530071C5B3 /* GoogleAnalyticsiOS_2-1.0beta3 */,
+				06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */,
 				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
 				0681E74F168205010071C5B3 /* CoreData.framework */,
 				0681E750168205010071C5B3 /* SystemConfiguration.framework */,
@@ -440,6 +442,7 @@
 		0665C327160EEDAF00C9EFC5 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				06C4FFDC16F4706400EBD9C1 /* sample.png */,
 				0665C328160EEDAF00C9EFC5 /* pause.png */,
 				0665C329160EEDAF00C9EFC5 /* play.png */,
 			);
@@ -470,27 +473,6 @@
 			name = Dto;
 			sourceTree = "<group>";
 		};
-		0681E746168202530071C5B3 /* GoogleAnalyticsiOS_2-1.0beta3 */ = {
-			isa = PBXGroup;
-			children = (
-				0681E747168202530071C5B3 /* Library */,
-			);
-			path = "GoogleAnalyticsiOS_2-1.0beta3";
-			sourceTree = "<group>";
-		};
-		0681E747168202530071C5B3 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				0681E748168202530071C5B3 /* GAI.h */,
-				0681E749168202530071C5B3 /* GAITrackedViewController.h */,
-				0681E74A168202530071C5B3 /* GAITracker.h */,
-				0681E74B168202530071C5B3 /* GAITransaction.h */,
-				0681E74C168202530071C5B3 /* GAITransactionItem.h */,
-				0681E74D168202530071C5B3 /* libGoogleAnalytics.a */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		06A3F6921629A99200833A22 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +481,27 @@
 				06A3F6951629A99200833A22 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */ = {
+			isa = PBXGroup;
+			children = (
+				06C4FFA116F46DD400EBD9C1 /* Library */,
+			);
+			path = GoogleAnalyticsiOS_2.0beta4;
+			sourceTree = "<group>";
+		};
+		06C4FFA116F46DD400EBD9C1 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				06C4FFA216F46DD400EBD9C1 /* GAI.h */,
+				06C4FFA316F46DD400EBD9C1 /* GAITrackedViewController.h */,
+				06C4FFA416F46DD400EBD9C1 /* GAITracker.h */,
+				06C4FFA516F46DD400EBD9C1 /* GAITransaction.h */,
+				06C4FFA616F46DD400EBD9C1 /* GAITransactionItem.h */,
+				06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		06C660AA1665054D003CC7C2 /* en.lproj */ = {
@@ -621,6 +624,7 @@
 				06C660AE16650567003CC7C2 /* Localizable.strings in Resources */,
 				06C660B116650578003CC7C2 /* Localizable.strings in Resources */,
 				06C660B3166506A7003CC7C2 /* third_party_notices.html in Resources */,
+				06C4FFDD16F4706400EBD9C1 /* sample.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +833,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
@@ -846,6 +851,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = armv7;
@@ -924,6 +930,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";

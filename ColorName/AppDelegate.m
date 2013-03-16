@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -18,6 +17,7 @@
 @synthesize canBeCombine;
 @synthesize userId;
 @synthesize operationQueue;
+@synthesize tracker;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -44,6 +44,8 @@
     [GAI sharedInstance].debug = NO;
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingId];
+    
+    tracker = [[GAI sharedInstance] defaultTracker];
     
     return YES;
 }
