@@ -62,6 +62,14 @@
 		06C4000416F4A4A900EBD9C1 /* Appirater.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFE516F4A4A900EBD9C1 /* Appirater.podspec */; };
 		06C4000516F4A4A900EBD9C1 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFE716F4A4A900EBD9C1 /* AppiraterLocalizable.strings */; };
 		06C4000616F4A4A900EBD9C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFFA16F4A4A900EBD9C1 /* README.md */; };
+		06C4000E16F4B62400EBD9C1 /* LINEActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4000916F4B62400EBD9C1 /* LINEActivity.m */; };
+		06C4000F16F4B62400EBD9C1 /* LINEActivityIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4000A16F4B62400EBD9C1 /* LINEActivityIcon.png */; };
+		06C4001016F4B62400EBD9C1 /* LINEActivityIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4000B16F4B62400EBD9C1 /* LINEActivityIcon@2x.png */; };
+		06C4001116F4B62400EBD9C1 /* LINEActivityIcon@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4000C16F4B62400EBD9C1 /* LINEActivityIcon@2x~ipad.png */; };
+		06C4001216F4B62400EBD9C1 /* LINEActivityIcon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4000D16F4B62400EBD9C1 /* LINEActivityIcon~ipad.png */; };
+		06C4001516F4C7BE00EBD9C1 /* SimilarColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4001416F4C7BE00EBD9C1 /* SimilarColorViewController.m */; };
+		06C4001816F4C86200EBD9C1 /* DefaultColorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */; };
+		06C4001B16F4E15A00EBD9C1 /* ShareSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */; };
 		06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */; };
 		06C4FFDD16F4706400EBD9C1 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFDC16F4706400EBD9C1 /* sample.png */; };
 		06C4FFE016F49FFC00EBD9C1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */; };
@@ -195,6 +203,18 @@
 		06A3F73116340EE400833A22 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
 		06C4000016F4A4A900EBD9C1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
 		06C4000116F4A4A900EBD9C1 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/AppiraterLocalizable.strings"; sourceTree = "<group>"; };
+		06C4000816F4B62400EBD9C1 /* LINEActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LINEActivity.h; sourceTree = "<group>"; };
+		06C4000916F4B62400EBD9C1 /* LINEActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LINEActivity.m; sourceTree = "<group>"; };
+		06C4000A16F4B62400EBD9C1 /* LINEActivityIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LINEActivityIcon.png; sourceTree = "<group>"; };
+		06C4000B16F4B62400EBD9C1 /* LINEActivityIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LINEActivityIcon@2x.png"; sourceTree = "<group>"; };
+		06C4000C16F4B62400EBD9C1 /* LINEActivityIcon@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LINEActivityIcon@2x~ipad.png"; sourceTree = "<group>"; };
+		06C4000D16F4B62400EBD9C1 /* LINEActivityIcon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LINEActivityIcon~ipad.png"; sourceTree = "<group>"; };
+		06C4001316F4C7BE00EBD9C1 /* SimilarColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimilarColorViewController.h; sourceTree = "<group>"; };
+		06C4001416F4C7BE00EBD9C1 /* SimilarColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimilarColorViewController.m; sourceTree = "<group>"; };
+		06C4001616F4C86200EBD9C1 /* DefaultColorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultColorTableViewController.h; sourceTree = "<group>"; };
+		06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultColorTableViewController.m; sourceTree = "<group>"; };
+		06C4001916F4E15900EBD9C1 /* ShareSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSettingViewController.h; sourceTree = "<group>"; };
+		06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSettingViewController.m; sourceTree = "<group>"; };
 		06C4FFA216F46DD400EBD9C1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		06C4FFA316F46DD400EBD9C1 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		06C4FFA416F46DD400EBD9C1 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
@@ -326,6 +346,7 @@
 		065D433715C0301500A38E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06C4000716F4B62400EBD9C1 /* LINEActivity */,
 				06C4FFE116F4A4A900EBD9C1 /* appirater */,
 				06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */,
 				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
@@ -372,6 +393,12 @@
 				06C660DA1666693F003CC7C2 /* AboutViewController.m */,
 				0639A6C2167DFA2F00DB78B5 /* LanguageSettingViewController.h */,
 				0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */,
+				06C4001316F4C7BE00EBD9C1 /* SimilarColorViewController.h */,
+				06C4001416F4C7BE00EBD9C1 /* SimilarColorViewController.m */,
+				06C4001616F4C86200EBD9C1 /* DefaultColorTableViewController.h */,
+				06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */,
+				06C4001916F4E15900EBD9C1 /* ShareSettingViewController.h */,
+				06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */,
 				065D433F15C0301500A38E86 /* Supporting Files */,
 			);
 			path = ColorName;
@@ -522,6 +549,20 @@
 				06A3F6951629A99200833A22 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		06C4000716F4B62400EBD9C1 /* LINEActivity */ = {
+			isa = PBXGroup;
+			children = (
+				06C4000816F4B62400EBD9C1 /* LINEActivity.h */,
+				06C4000916F4B62400EBD9C1 /* LINEActivity.m */,
+				06C4000A16F4B62400EBD9C1 /* LINEActivityIcon.png */,
+				06C4000B16F4B62400EBD9C1 /* LINEActivityIcon@2x.png */,
+				06C4000C16F4B62400EBD9C1 /* LINEActivityIcon@2x~ipad.png */,
+				06C4000D16F4B62400EBD9C1 /* LINEActivityIcon~ipad.png */,
+			);
+			name = LINEActivity;
+			path = LineActivity/LINEActivity;
 			sourceTree = "<group>";
 		};
 		06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */ = {
@@ -707,6 +748,10 @@
 				06C4000416F4A4A900EBD9C1 /* Appirater.podspec in Resources */,
 				06C4000516F4A4A900EBD9C1 /* AppiraterLocalizable.strings in Resources */,
 				06C4000616F4A4A900EBD9C1 /* README.md in Resources */,
+				06C4000F16F4B62400EBD9C1 /* LINEActivityIcon.png in Resources */,
+				06C4001016F4B62400EBD9C1 /* LINEActivityIcon@2x.png in Resources */,
+				06C4001116F4B62400EBD9C1 /* LINEActivityIcon@2x~ipad.png in Resources */,
+				06C4001216F4B62400EBD9C1 /* LINEActivityIcon~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,6 +821,10 @@
 				06C660E21666771D003CC7C2 /* FlipFromRightSegue.m in Sources */,
 				0639A6C4167DFA2F00DB78B5 /* LanguageSettingViewController.m in Sources */,
 				06C4000316F4A4A900EBD9C1 /* Appirater.m in Sources */,
+				06C4000E16F4B62400EBD9C1 /* LINEActivity.m in Sources */,
+				06C4001516F4C7BE00EBD9C1 /* SimilarColorViewController.m in Sources */,
+				06C4001816F4C86200EBD9C1 /* DefaultColorTableViewController.m in Sources */,
+				06C4001B16F4E15A00EBD9C1 /* ShareSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

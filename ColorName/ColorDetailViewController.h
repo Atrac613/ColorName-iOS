@@ -24,10 +24,14 @@
     IBOutlet UIProgressView *blueLevelBar;
     IBOutlet UILabel *hexLabel;
     IBOutlet UIButton *likeButton;
+    IBOutlet UIButton *similarColorButton;
+    IBOutlet UIButton *shareButton;
     
     TbColorName *colorName;
     TbColorNameJaDao *colorNameJaDao;
     TbFavoriteColorNameDao *favoriteColorNameDao;
+    
+    UIColor *currentColor;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *colorNameLabel;
@@ -41,8 +45,11 @@
 @property (nonatomic, strong) IBOutlet UIProgressView *blueLevelBar;
 @property (nonatomic, strong) IBOutlet UILabel *hexLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) IBOutlet UIButton *similarColorButton;
+@property (nonatomic, strong) IBOutlet UIButton *shareButton;
 @property (nonatomic, strong) TbColorName *colorName;
 @property (nonatomic, strong) TbColorNameJaDao *colorNameJaDao;
 @property (nonatomic, strong) TbFavoriteColorNameDao *favoriteColorNameDao;
+@property (nonatomic, strong) UIColor *currentColor;
 
 @end

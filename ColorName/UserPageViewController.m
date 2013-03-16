@@ -74,6 +74,8 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
 
+#pragma mark - IBAction
+
 - (IBAction)updateProfileButtonPressed:(id)sender {
     [self twitterAccountCheck];
 }
@@ -83,6 +85,8 @@
     
     [[UIApplication sharedApplication] openURL:webView.request.URL];
 }
+
+#pragma mark - Profile
 
 - (void)twitterAccountCheck {
     // Create an account store object.
@@ -199,7 +203,7 @@
     return YES;
 }
 
-#pragma mark - UIPickerView delegate
+#pragma mark - UIPickerView Delegate
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;

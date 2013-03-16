@@ -1,18 +1,18 @@
 //
-//  LanguageSettingViewController.m
+//  ShareSettingViewController.m
 //  ColorName
 //
-//  Created by Osamu Noguchi on 12/16/12.
-//  Copyright (c) 2012 atrac613.io. All rights reserved.
+//  Created by Osamu Noguchi on 3/17/13.
+//  Copyright (c) 2013 atrac613.io. All rights reserved.
 //
 
-#import "LanguageSettingViewController.h"
+#import "ShareSettingViewController.h"
 
-@interface LanguageSettingViewController ()
+@interface ShareSettingViewController ()
 
 @end
 
-@implementation LanguageSettingViewController
+@implementation ShareSettingViewController
 
 @synthesize tableView;
 
@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+	
     // for Google Analytics
     self.trackedViewName = NSStringFromClass([self class]);
     
@@ -59,7 +59,7 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return NSLocalizedString(@"LANGUAGES", @"");
+        return NSLocalizedString(@"SHARE", @"");
     }
     
     return @"";
@@ -82,19 +82,19 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (indexPath.row == 0) {
-        [cell.textLabel setText:NSLocalizedString(@"ENGLISH", @"")];
+        [cell.textLabel setText:NSLocalizedString(@"SHARE_MESSAGE_SUFFIX", @"")];
         
         UISwitch *switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0, 1.0, 20.0, 20.0)];
-        [switchObj setOn:[defaults boolForKey:@"enabled_lang_english"]];
-        [switchObj addTarget:self action:@selector(englishSwitch:) forControlEvents:UIControlEventValueChanged];
+        [switchObj setOn:[defaults boolForKey:@"enabled_suffix"]];
+        [switchObj addTarget:self action:@selector(suffixSwitch:) forControlEvents:UIControlEventValueChanged];
         
         [cell setAccessoryView:switchObj];
     } else {
-        [cell.textLabel setText:NSLocalizedString(@"JAPANESE", @"")];
+        [cell.textLabel setText:NSLocalizedString(@"SHARE_MESSAGE_ATTACHMENT", @"")];
         
         UISwitch *switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0, 1.0, 20.0, 20.0)];
-        [switchObj setOn:[defaults boolForKey:@"enabled_lang_japanese"]];
-        [switchObj addTarget:self action:@selector(japaneseSwitch:) forControlEvents:UIControlEventValueChanged];
+        [switchObj setOn:[defaults boolForKey:@"enabled_attachment"]];
+        [switchObj addTarget:self action:@selector(attachmentSwitch:) forControlEvents:UIControlEventValueChanged];
         
         [cell setAccessoryView:switchObj];
     }
@@ -106,15 +106,15 @@
     [tv deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)englishSwitch:(id)sender {
+- (void)suffixSwitch:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:((UISwitch*)sender).on forKey:@"enabled_lang_english"];
+    [defaults setBool:((UISwitch*)sender).on forKey:@"enabled_suffix"];
     [defaults synchronize];
 }
 
-- (void)japaneseSwitch:(id)sender {
+- (void)attachmentSwitch:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:((UISwitch*)sender).on forKey:@"enabled_lang_japanese"];
+    [defaults setBool:((UISwitch*)sender).on forKey:@"enabled_attachment"];
     [defaults synchronize];
 }
 

@@ -43,9 +43,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBAction
+
 - (void)cancelButtonPressed {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - UIWebView Delegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self rightButtonIsBusy];

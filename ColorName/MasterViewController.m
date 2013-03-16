@@ -13,7 +13,6 @@
 #import "FMDatabase.h"
 #import "JSON.h"
 #import "UIColor_Categories.h"
-#import "ColorListCell.h"
 #import "TbColorName.h"
 #import "ColorDetailViewController.h"
 #import "FavoritesColorViewController.h"
@@ -29,18 +28,11 @@
 @synthesize previewLayer;
 @synthesize previewView;
 @synthesize colorView;
-@synthesize currentColor;
-@synthesize tableView;
 @synthesize stateButton;
 @synthesize session;
 @synthesize timer;
-@synthesize colorNameJaDao;
-@synthesize colorNameEnDao;
-@synthesize tableSectionArray;
-@synthesize tableContentArray;
 @synthesize alertMode;
 @synthesize isPlay;
-@synthesize isInitializing;
 
 - (void)awakeFromNib
 {
@@ -50,9 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
     
     [self.navigationItem setTitle:NSLocalizedString(@"COLORNAME", @"")];
     
@@ -65,13 +54,6 @@
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FAVORITES", @"") style:UIBarButtonItemStylePlain target:self action:@selector(favoritesColorButtonPressed)]];
     
     isPlay = YES;
-    isInitializing = NO;
-    
-    colorNameJaDao = [[TbColorNameJaDao alloc] init];
-    colorNameEnDao = [[TbColorNameEnDao alloc] init];
-    
-    tableSectionArray = [[NSMutableArray alloc] init];
-    tableContentArray = [[NSMutableArray alloc] init];
     
     [self performSelectorInBackground:@selector(operationInitializationTask) withObject:nil];
     
@@ -105,7 +87,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - IBActions
+#pragma mark - IBAction
 
 - (IBAction)stateButtonPressed:(id)sender {
     [self videoController:isPlay];
@@ -211,46 +193,7 @@
     }
 }
 
-- (void)getColorList {
-    if (!currentColor || isInitializing) {
-        return;
-    }
-
-    tableSectionArray = [[NSMutableArray alloc] init];
-    tableContentArray = [[NSMutableArray alloc] init];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"enabled_lang_japanese"] || [defaults boolForKey:@"enabled_lang_english"]) {
-        NSString *lang = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
-        
-        if ([lang isEqualToString:@"ja"]) {
-            if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
-                [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
-            }
-            
-            if ([defaults boolForKey:@"enabled_lang_english"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
-                [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
-            }
-        } else {
-            if ([defaults boolForKey:@"enabled_lang_english"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
-                [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
-            }
-            
-            if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
-                [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
-            }
-        }
-    } else {
-        [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
-        [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
-    }
-    
-    [tableView reloadData];
-}
+#pragma mark - AVCapture
 
 - (void)setupAVCapture
 {
@@ -377,123 +320,7 @@
     [self getCenterColor:image];
 }
 
-#pragma mark - TableView delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (isInitializing) {
-        return 1;
-    }
-    
-    return [tableSectionArray count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (isInitializing) {
-        return 1;
-    }
-    
-    NSInteger count = [[tableContentArray objectAtIndex:section] count];
-    
-    if (count > 0) {
-        return count;
-    } else {
-        return 1;
-    }
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (isInitializing) {
-        return @"";
-    }
-    
-    return [tableSectionArray objectAtIndex:section];
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return  @"";
-}
-
-- (float)tableView:(UITableView *)tv heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (isInitializing) {
-        return tableView.frame.size.height;
-    } else {
-        return 45.f;
-    }
-}
-
-- (UITableViewCell*)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (isInitializing) {
-        NSString *cellIdentifier = @"EmptyTableViewCell";
-        UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
-        
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        }
-        
-        [cell.textLabel setText:NSLocalizedString(@"PLEASE_WAIT", @"")];
-        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        
-        return cell;
-    } else {
-        if ([[tableContentArray objectAtIndex:indexPath.section] count] > 0) {
-            NSString *cellIdentifier = @"TableViewCell";
-            
-            ColorListCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
-            
-            if (cell == nil) {
-                cell = [[ColorListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-            }
-            
-            TbColorName *colorName = [[tableContentArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-            
-            float red = [colorName red] / 255.f;
-            float green = [colorName green] / 255.f;
-            float blue = [colorName blue] / 255.f;
-            
-            UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
-            
-            [cell.colorNameLabel setText:[colorName name]];
-            [cell.colorNameYomiLabel setText:[colorName nameYomi]];
-            [cell.colorView setBackgroundColor:color];
-            [cell checkNameYomiLength];
-            
-            return cell;
-        } else {
-            return [self createNotFoundCell:tv];
-        }
-    }
-}
-
-- (UITableViewCell*)createNotFoundCell:(UITableView *)tv {
-    NSString *cellIdentifier = @"NotFoundTableViewCell";
-    
-    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    [cell.textLabel setText:NSLocalizedString(@"NOT_FOUND", @"")];
-    [cell.textLabel setFont:[UIFont boldSystemFontOfSize:18.f]];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tv deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (!isInitializing) {
-        if ([[tableContentArray objectAtIndex:indexPath.section] count] > 0) {
-            TbColorName *colorName = [[tableContentArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-            
-            ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
-            colorDetailViewController.colorName = colorName;
-            [self.navigationController pushViewController:colorDetailViewController animated:YES];
-        }
-    }
-}
+#pragma mark - VideoController
 
 - (void)videoController:(BOOL)state {
     if (state) {
@@ -532,7 +359,7 @@
     }
 }
 
-#pragma mark - Send usage statistics dialog
+#pragma mark - Send Usage Statistics Dialog
 
 - (void)showUsageStatisticsPermissionAlert:(BOOL)force {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -545,6 +372,8 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CONFIRM_USAGE_STATISTICS", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"YES", @""), nil];
     [alert show];
 }
+
+#pragma mark - UIAlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([alertMode isEqualToString:@"confirm_usage_statistics"]) {
@@ -567,6 +396,8 @@
     }
 }
 
+#pragma mark - Initialize
+
 + (void)initialize {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -580,9 +411,17 @@
             [defaults setBool:NO forKey:@"enabled_lang_japanese"];
             [defaults setBool:YES forKey:@"enabled_lang_english"];
         }
-        
-        [defaults synchronize];
     }
+    
+    if ([defaults objectForKey:@"enabled_suffix"] == nil) {
+        [defaults setBool:YES forKey:@"enabled_suffix"];
+    }
+    
+    if ([defaults objectForKey:@"enabled_attachment"] == nil) {
+        [defaults setBool:YES forKey:@"enabled_attachment"];
+    }
+    
+    [defaults synchronize];
 }
 
 @end

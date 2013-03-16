@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ThirdPartyNoticesViewController.h"
 #import "LanguageSettingViewController.h"
+#import "ShareSettingViewController.h"
 #import "AppDelegate.h"
 
 @interface AboutViewController ()
@@ -47,11 +48,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBAction
+
 - (void)cancelButtonPressed {
     [self performSegueWithIdentifier:@"MasterViewFromAboutView" sender:self];
 }
 
-#pragma mark - TableView delegate
+#pragma mark - UITableView Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
@@ -65,7 +68,7 @@
     } else if (section == 2) {
         return 1;
     } else if (section == 3) {
-        return 1;
+        return 2;
     }
     
     return 0;
@@ -83,7 +86,7 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 3) {
-        return NSLocalizedString(@"OPTION", @"");
+        return NSLocalizedString(@"APPLICATION_SETTINGS", @"");
     }
     
     return @"";
@@ -168,6 +171,9 @@
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"LANGUAGES", @"")];
             [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
+        } else {
+            [cell.textLabel setText:NSLocalizedString(@"SHARE", @"")];
+            [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
         }
     }
     
@@ -204,8 +210,13 @@
         if (indexPath.row == 0) {
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"languageSetting" withValue:nil];
             
-            LanguageSettingViewController * languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
+            LanguageSettingViewController *languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
             [self.navigationController pushViewController:languageSettingViewController animated:YES];
+        } else {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"shareSetting" withValue:nil];
+            
+            ShareSettingViewController *shareSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareSettingViewController"];
+            [self.navigationController pushViewController:shareSettingViewController animated:YES];
         }
     }
 }

@@ -61,6 +61,8 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
 
+#pragma mark - UIWebView Delegate
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     

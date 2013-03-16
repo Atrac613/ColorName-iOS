@@ -78,7 +78,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - TableView delegate
+#pragma mark - UITableView Delegate
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
@@ -173,7 +173,7 @@
     }
 }
 
-#pragma mark - IBActions
+#pragma mark - IBAction
 
 - (IBAction)syncButtonPressed:(id)sender {
     [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"sync" withValue:nil];
