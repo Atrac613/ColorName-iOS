@@ -59,6 +59,7 @@
 		06A3F73216340EE400833A22 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A3F73116340EE400833A22 /* WebViewViewController.m */; };
 		06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */; };
 		06C4FFDD16F4706400EBD9C1 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFDC16F4706400EBD9C1 /* sample.png */; };
+		06C4FFE016F49FFC00EBD9C1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */; };
 		06C660AE16650567003CC7C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06C660AC16650567003CC7C2 /* Localizable.strings */; };
 		06C660B116650578003CC7C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06C660AF16650578003CC7C2 /* Localizable.strings */; };
 		06C660B3166506A7003CC7C2 /* third_party_notices.html in Resources */ = {isa = PBXBuildFile; fileRef = 06C660B2166506A7003CC7C2 /* third_party_notices.html */; };
@@ -194,6 +195,7 @@
 		06C4FFA616F46DD400EBD9C1 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
 		06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		06C4FFDC16F4706400EBD9C1 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
+		06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		06C660AD16650567003CC7C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ColorName/ja.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		06C660B016650578003CC7C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ColorName/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		06C660B2166506A7003CC7C2 /* third_party_notices.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = third_party_notices.html; sourceTree = SOURCE_ROOT; };
@@ -239,6 +241,7 @@
 				0681E751168205010071C5B3 /* CoreData.framework in Frameworks */,
 				0681E752168205010071C5B3 /* SystemConfiguration.framework in Frameworks */,
 				06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */,
+				06C4FFE016F49FFC00EBD9C1 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +290,7 @@
 		065D433715C0301500A38E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */,
 				06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */,
 				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
 				0681E74F168205010071C5B3 /* CoreData.framework */,

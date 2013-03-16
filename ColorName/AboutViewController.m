@@ -198,7 +198,7 @@
         if (indexPath.row == 0) {
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"rateThisApp" withValue:nil];
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=584817516"]];
+            [self presentAppStoreForID:[NSNumber numberWithInt:584817516] withDelegate:self withURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=584817516"]];
         }
     } else if (indexPath.section == 3) {
         if (indexPath.row == 0) {
@@ -208,6 +208,39 @@
             [self.navigationController pushViewController:languageSettingViewController animated:YES];
         }
     }
+}
+
+#pragma mark SKStoreProductViewController
+
+- (void)presentAppStoreForID:(NSNumber *)appStoreID withDelegate:(id<SKStoreProductViewControllerDelegate>)delegate withURL:(NSURL *)appStoreURL
+{
+    if(NSClassFromString(@"SKStoreProductViewController")) { // Checks for iOS 6 feature.
+        
+        SKStoreProductViewController *storeController = [[SKStoreProductViewController alloc] init];
+        storeController.delegate = delegate; // productViewControllerDidFinish
+        
+        // Example app_store_id (e.g. for Words With Friends)
+        // [NSNumber numberWithInt:322852954];
+        
+        NSDictionary *productParameters = @{ SKStoreProductParameterITunesItemIdentifier : appStoreID };
+        
+        
+        [storeController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError *error) {
+            if (result) {
+                [self presentViewController:storeController animated:YES completion:nil];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"There was a problem displaying the app." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+            }
+        }];
+        
+        
+    } else { // Before iOS 6, we can only open the URL
+        [[UIApplication sharedApplication] openURL:appStoreURL];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
