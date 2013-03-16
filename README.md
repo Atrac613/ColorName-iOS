@@ -1,5 +1,4 @@
-ColorName*
-===================
+# ColorName*
 
 Discover the names of colors!
 
@@ -11,7 +10,6 @@ You can make a list of your favorite colors to create personalized web pages.
 
 ![](https://raw.github.com/Atrac613/ColorName-iOS/master/screenshot.png)
 
-License
-===================
+## License
 
-ColorName* is released under the [MIT License][http://www.opensource.org/licenses/MIT].
+ColorName* is released under the [MIT License](http://www.opensource.org/licenses/MIT).
