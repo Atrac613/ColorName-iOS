@@ -1,5 +1,5 @@
 ColorName*
-=============
+===================
 
 Discover the names of colors!
 
@@ -10,3 +10,8 @@ Search for color names in both English and Japanese, and look up RGB values and 
 You can make a list of your favorite colors to create personalized web pages.
 
 ![](https://raw.github.com/Atrac613/ColorName-iOS/master/screenshot.png)
+
+License
+===================
+
+ColorName* is released under the [MIT License][http://www.opensource.org/licenses/MIT].
