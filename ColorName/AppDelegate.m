@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Appirater.h"
 
 @implementation AppDelegate
 
@@ -47,6 +48,14 @@
     
     tracker = [[GAI sharedInstance] defaultTracker];
     
+    [Appirater setAppId:[NSString stringWithFormat:@"%d", kAppId]];
+    [Appirater setDaysUntilPrompt:5];
+    [Appirater setUsesUntilPrompt:10];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:2];
+    [Appirater setDebug:NO];
+    [Appirater appLaunched:YES];
+    
     return YES;
 }
 							
@@ -64,7 +73,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

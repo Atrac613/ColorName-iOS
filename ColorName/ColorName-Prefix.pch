@@ -17,4 +17,6 @@
 #define kSendUsageStatistics @"send_usage_statistics"
 #define kGoogleAnalyticsTrackingId @"UA-1167116-23"
 
+#define kAppId 584817516
+
 #define SEND_USAGE_STATISTICS ((bool)[[[NSUserDefaults standardUserDefaults] objectForKey:kSendUsageStatistics] boolValue])

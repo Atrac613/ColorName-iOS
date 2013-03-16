@@ -198,7 +198,7 @@
         if (indexPath.row == 0) {
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"rateThisApp" withValue:nil];
             
-            [self presentAppStoreForID:[NSNumber numberWithInt:584817516] withDelegate:self withURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=584817516"]];
+            [self presentAppStoreForID:[NSNumber numberWithInt:kAppId] withDelegate:self withURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", kAppId]]];
         }
     } else if (indexPath.section == 3) {
         if (indexPath.row == 0) {
@@ -211,6 +211,8 @@
 }
 
 #pragma mark SKStoreProductViewController
+
+// Thanks: http://stackoverflow.com/questions/12475568/appstore-as-modal-view-in-ios6
 
 - (void)presentAppStoreForID:(NSNumber *)appStoreID withDelegate:(id<SKStoreProductViewControllerDelegate>)delegate withURL:(NSURL *)appStoreURL
 {
@@ -229,7 +231,7 @@
             if (result) {
                 [self presentViewController:storeController animated:YES completion:nil];
             } else {
-                [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"There was a problem displaying the app." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"There was a problem displaying the app." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil] show];
             }
         }];
         
