@@ -64,4 +64,4 @@
 "SHARE_MESSAGE_SUFFIX" = "App Introduction URL";
 "SHARE_MESSAGE_ATTACHMENT" = "Image Attachment File";
 
-"CONFIRM_USAGE_STATISTICS" = "Do you want to send annonimous usage statistics?";
+"CONFIRM_USAGE_STATISTICS" = "In order to improve this application, is it okay to submit anonymous usage statistics?";
