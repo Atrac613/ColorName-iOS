@@ -996,7 +996,6 @@
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1014,7 +1013,6 @@
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1093,7 +1091,6 @@
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAnalyticsiOS_2-1.0beta3/Library\"",
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
