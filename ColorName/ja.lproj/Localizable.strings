@@ -8,7 +8,7 @@
 "PLEASE_WAIT" = "お待ちください";
 "NOT_FOUND" = "見つかりません";
 
-"DETAIL" = "詳細";
+"DETAILS" = "詳細";
 
 "COMBINE" = "結合";
 "INFO" = "お知らせ";
@@ -58,7 +58,7 @@
 "APPLICATION_SETTINGS" = "アプリの設定";
 "LANGUAGES" = "言語";
 
-"SIMILAR_COLOR" = "似た色";
+"SIMILAR_COLORS" = "似た色";
 "SHARE" = "共有";
 
 "SHARE_MESSAGE_SUFFIX" = "アプリの紹介URL";

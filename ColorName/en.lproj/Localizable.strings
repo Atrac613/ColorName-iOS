@@ -8,7 +8,7 @@
 "PLEASE_WAIT" = "Please wait";
 "NOT_FOUND" = "Not Found";
 
-"DETAIL" = "Detail";
+"DETAILS" = "Details";
 
 "COMBINE" = "Combine";
 "INFO" = "Information";
@@ -58,7 +58,7 @@
 "APPLICATION_SETTINGS" = "Application Settings";
 "LANGUAGES" = "Languages";
 
-"SIMILAR_COLOR" = "Similar Color";
+"SIMILAR_COLORS" = "Similar Colors";
 "SHARE" = "Share";
 
 "SHARE_MESSAGE_SUFFIX" = "App Introduction URL";

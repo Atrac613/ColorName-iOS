@@ -14,7 +14,7 @@
 #import "JSON.h"
 #import "UIColor_Categories.h"
 #import "TbColorName.h"
-#import "ColorDetailViewController.h"
+#import "ColorDetailsViewController.h"
 #import "FavoritesColorViewController.h"
 #import "SVProgressHUD.h"
 #import "AboutViewController.h"

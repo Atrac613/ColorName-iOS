@@ -1,5 +1,5 @@
 //
-//  SimilarColorViewController.h
+//  SimilarColorsViewController.h
 //  ColorName
 //
 //  Created by Osamu Noguchi on 3/17/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DefaultColorTableViewController.h"
 
-@interface SimilarColorViewController : DefaultColorTableViewController {
+@interface SimilarColorsViewController : DefaultColorTableViewController {
 
 }
 

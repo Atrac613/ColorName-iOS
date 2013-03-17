@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="1614" y="675"/>
         </scene>
-        <!--Similar Color View Controller-->
+        <!--Similar Colors View Controller-->
         <scene sceneID="5zO-J2-bSZ">
             <objects>
-                <viewController storyboardIdentifier="SimilarColorViewController" id="Zrv-6S-hUd" customClass="SimilarColorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SimilarColorsViewController" id="Zrv-6S-hUd" customClass="SimilarColorsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JHW-YX-nzK">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="1998" y="675"/>
         </scene>
-        <!--Color Detail View Controller-->
+        <!--Color Details View Controller-->
         <scene sceneID="eAt-zk-qfF">
             <objects>
-                <viewController storyboardIdentifier="ColorDetailViewController" id="h8m-rl-Kh4" customClass="ColorDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorDetailsViewController" id="h8m-rl-Kh4" customClass="ColorDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kaS-a7-QO4">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -335,7 +335,7 @@
                                 <rect key="frame" x="20" y="354" width="125" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Similar Color">
+                                <state key="normal" title="Similar Colors">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -343,7 +343,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="similarColorButtonPressed:" destination="h8m-rl-Kh4" eventType="touchUpInside" id="HUt-gI-4f4"/>
+                                    <action selector="similarColorsButtonPressed:" destination="h8m-rl-Kh4" eventType="touchUpInside" id="2eY-6H-yP9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9f8-OF-Bq8">
@@ -378,7 +378,7 @@
                         <outlet property="redLevelBar" destination="Tw6-Lc-AaK" id="L4S-s0-aVw"/>
                         <outlet property="redLevelLabel" destination="gm9-2i-yh3" id="TDj-WP-zMW"/>
                         <outlet property="shareButton" destination="9f8-OF-Bq8" id="OEe-Vy-9dR"/>
-                        <outlet property="similarColorButton" destination="6dN-nW-D3h" id="G84-of-siI"/>
+                        <outlet property="similarColorsButton" destination="6dN-nW-D3h" id="YXH-Fc-eXF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BY8-V6-O2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -536,12 +536,9 @@
         <class className="AuthViewController" superclassName="WebViewViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AuthViewController.h"/>
         </class>
-        <class className="ColorDetailViewController" superclassName="GAITrackedViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorDetailViewController.h"/>
+        <class className="ColorDetailsViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorDetailsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="likeButtonPressed:"/>
-                <relationship kind="action" name="shareButtonPressed:"/>
-                <relationship kind="action" name="similarColorButtonPressed:"/>
                 <relationship kind="outlet" name="blueLevelBar" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="blueLevelLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="colorNameLabel" candidateClass="UILabel"/>
@@ -554,7 +551,7 @@
                 <relationship kind="outlet" name="redLevelBar" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="redLevelLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="similarColorButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="similarColorsButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="DefaultColorTableViewController" superclassName="GAITrackedViewController">
@@ -584,7 +581,6 @@
         <class className="MasterViewController" superclassName="DefaultColorTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
             <relationships>
-                <relationship kind="action" name="stateButtonPressed:"/>
                 <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="previewView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="stateButton" candidateClass="UIButton"/>
@@ -597,8 +593,8 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
-        <class className="SimilarColorViewController" superclassName="DefaultColorTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SimilarColorViewController.h"/>
+        <class className="SimilarColorsViewController" superclassName="DefaultColorTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SimilarColorsViewController.h"/>
         </class>
         <class className="ThirdPartyNoticesViewController" superclassName="GAITrackedViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ThirdPartyNoticesViewController.h"/>

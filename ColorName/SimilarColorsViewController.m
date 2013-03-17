@@ -1,18 +1,18 @@
 //
-//  SimilarColorViewController.m
+//  SimilarColorsViewController.m
 //  ColorName
 //
 //  Created by Osamu Noguchi on 3/17/13.
 //  Copyright (c) 2013 atrac613.io. All rights reserved.
 //
 
-#import "SimilarColorViewController.h"
+#import "SimilarColorsViewController.h"
 
-@interface SimilarColorViewController ()
+@interface SimilarColorsViewController ()
 
 @end
 
-@implementation SimilarColorViewController
+@implementation SimilarColorsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
 	
-    [self.navigationItem setTitle:NSLocalizedString(@"SIMILAR_COLOR", @"")];
+    [self.navigationItem setTitle:NSLocalizedString(@"SIMILAR_COLORS", @"")];
     
     [self getColorList];
 }

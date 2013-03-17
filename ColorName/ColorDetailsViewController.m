@@ -1,23 +1,23 @@
 //
-//  ColorDetailViewController.m
+//  ColorDetailsViewController.m
 //  ColorName
 //
 //  Created by Osamu Noguchi on 10/7/12.
 //  Copyright (c) 2012 atrac613.io. All rights reserved.
 //
 
-#import "ColorDetailViewController.h"
+#import "ColorDetailsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "TbColorName.h"
 #import "LINEActivity.h"
 #import "AppDelegate.h"
-#import "SimilarColorViewController.h"
+#import "SimilarColorsViewController.h"
 
-@interface ColorDetailViewController ()
+@interface ColorDetailsViewController ()
 
 @end
 
-@implementation ColorDetailViewController
+@implementation ColorDetailsViewController
 
 @synthesize colorNameLabel;
 @synthesize colorNameYomiLabel;
@@ -30,7 +30,7 @@
 @synthesize blueLevelBar;
 @synthesize hexLabel;
 @synthesize likeButton;
-@synthesize similarColorButton;
+@synthesize similarColorsButton;
 @synthesize shareButton;
 @synthesize colorName;
 @synthesize colorNameJaDao;
@@ -44,7 +44,7 @@
     // for Google Analytics
     self.trackedViewName = NSStringFromClass([self class]);
     
-    [self.navigationItem setTitle:NSLocalizedString(@"DETAIL", @"")];
+    [self.navigationItem setTitle:NSLocalizedString(@"DETAILS", @"")];
     
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
     favoriteColorNameDao = [[TbFavoriteColorNameDao alloc] init];
@@ -73,7 +73,7 @@
     
     [hexLabel setText:[NSString stringWithFormat:@"#%02x%02x%02x", [colorName red], [colorName green], [colorName blue]]];
     
-    [similarColorButton setTitle:NSLocalizedString(@"SIMILAR_COLOR", @"") forState:UIControlStateNormal];
+    [similarColorsButton setTitle:NSLocalizedString(@"SIMILAR_COLORS", @"") forState:UIControlStateNormal];
     [shareButton setTitle:NSLocalizedString(@"SHARE", @"") forState:UIControlStateNormal];
     
     [self checkLikeButtonState];
@@ -115,12 +115,12 @@
     }
 }
 
-- (IBAction)similarColorButtonPressed:(id)sender {
-    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"similarColor" withValue:nil];
+- (IBAction)similarColorsButtonPressed:(id)sender {
+    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"similarColors" withValue:nil];
     
-    SimilarColorViewController *similarColorViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SimilarColorViewController"];
-    similarColorViewController.currentColor = currentColor;
-    [self.navigationController pushViewController:similarColorViewController animated:YES];
+    SimilarColorsViewController *similarColorsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SimilarColorsViewController"];
+    similarColorsViewController.currentColor = currentColor;
+    [self.navigationController pushViewController:similarColorsViewController animated:YES];
 }
 
 - (IBAction)shareButtonPressed:(id)sender {

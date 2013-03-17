@@ -7,7 +7,7 @@
 //
 
 #import "FavoritesColorViewController.h"
-#import "ColorDetailViewController.h"
+#import "ColorDetailsViewController.h"
 #import "ColorListCell.h"
 #import "JSON.h"
 #import "SVProgressHUD.h"
@@ -134,7 +134,7 @@
     if (![SVProgressHUD isVisible]) {
         TbColorName *colorName = (TbColorName*)[colorList objectAtIndex:indexPath.row];
         
-        ColorDetailViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailViewController"];
+        ColorDetailsViewController *colorDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ColorDetailsViewController"];
         colorDetailViewController.colorName = colorName;
         [self.navigationController pushViewController:colorDetailViewController animated:YES];
     }
