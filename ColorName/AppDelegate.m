@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Appirater.h"
 
 @implementation AppDelegate
 
@@ -17,6 +18,7 @@
 @synthesize canBeCombine;
 @synthesize userId;
 @synthesize operationQueue;
+@synthesize tracker;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -35,6 +37,25 @@
     
     userId = @"";
     
+    // Optional: automatically track uncaught exceptions with Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    [GAI sharedInstance].debug = NO;
+    // Create tracker instance.
+    [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsTrackingId];
+    
+    tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [Appirater setAppId:[NSString stringWithFormat:@"%d", kAppId]];
+    [Appirater setDaysUntilPrompt:5];
+    [Appirater setUsesUntilPrompt:10];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:2];
+    [Appirater setDebug:NO];
+    [Appirater appLaunched:YES];
+    
     return YES;
 }
 							
@@ -52,12 +73,20 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if (!SEND_USAGE_STATISTICS) {
+        [[GAI sharedInstance] setOptOut:YES];
+        
+        NSLog(@"Don't send usage statistics.");
+    } else {
+        [[GAI sharedInstance] setOptOut:NO];
+        
+        NSLog(@"Send usage staistics.");
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

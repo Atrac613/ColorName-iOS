@@ -42,6 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
 	
     [self.navigationItem setTitle:NSLocalizedString(@"MY_PAGE", @"")];
     
@@ -71,13 +74,19 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
 
+#pragma mark - IBAction
+
 - (IBAction)updateProfileButtonPressed:(id)sender {
     [self twitterAccountCheck];
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
+    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"actionButton" withValue:nil];
+    
     [[UIApplication sharedApplication] openURL:webView.request.URL];
 }
+
+#pragma mark - Profile
 
 - (void)twitterAccountCheck {
     // Create an account store object.
@@ -194,7 +203,7 @@
     return YES;
 }
 
-#pragma mark - UIPickerView delegate
+#pragma mark - UIPickerView Delegate
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
@@ -317,6 +326,8 @@
 #pragma mark - UIAlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"updateProfile" withValue:[NSNumber numberWithInteger:buttonIndex]];
+    
     if (buttonIndex == 1) {
         [updateProfileButton setEnabled:NO];
         [SVProgressHUD showWithStatus:NSLocalizedString(@"UPLOADING", @"")];

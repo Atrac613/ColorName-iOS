@@ -29,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
 	
     [self.navigationItem setTitle:NSLocalizedString(@"AUTHENTICATION", @"")];
 }
@@ -57,6 +60,8 @@
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 }
+
+#pragma mark - UIWebView Delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;

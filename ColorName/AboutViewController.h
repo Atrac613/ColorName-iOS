@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
+#import "GAITrackedViewController.h"
 
-@interface AboutViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface AboutViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, SKStoreProductViewControllerDelegate> {
     IBOutlet UITableView *tableView;
 }
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface WebViewViewController : UIViewController<UIWebViewDelegate> {
+@interface WebViewViewController : GAITrackedViewController <UIWebViewDelegate> {
     IBOutlet UINavigationItem *navigationItem;
     IBOutlet UIWebView *webView;
 }

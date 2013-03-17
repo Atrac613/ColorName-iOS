@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface ThirdPartyNoticesViewController : UIViewController <UIWebViewDelegate> {
+@interface ThirdPartyNoticesViewController : GAITrackedViewController <UIWebViewDelegate> {
     IBOutlet UINavigationItem *navigationItem;
     IBOutlet UIWebView *webView;
 }

@@ -1,5 +1,5 @@
 //
-//  ColorDetailViewController.h
+//  ColorDetailsViewController.h
 //  ColorName
 //
 //  Created by Osamu Noguchi on 10/7/12.
@@ -10,8 +10,9 @@
 #import "TbColorNameJaDao.h"
 #import "TbFavoriteColorNameDao.h"
 #import "TbColorName.h"
+#import "GAITrackedViewController.h"
 
-@interface ColorDetailViewController : UIViewController {
+@interface ColorDetailsViewController : GAITrackedViewController {
     IBOutlet UILabel *colorNameLabel;
     IBOutlet UILabel *colorNameYomiLabel;
     IBOutlet UIView *colorView;
@@ -23,10 +24,14 @@
     IBOutlet UIProgressView *blueLevelBar;
     IBOutlet UILabel *hexLabel;
     IBOutlet UIButton *likeButton;
+    IBOutlet UIButton *similarColorsButton;
+    IBOutlet UIButton *shareButton;
     
     TbColorName *colorName;
     TbColorNameJaDao *colorNameJaDao;
     TbFavoriteColorNameDao *favoriteColorNameDao;
+    
+    UIColor *currentColor;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *colorNameLabel;
@@ -40,8 +45,11 @@
 @property (nonatomic, strong) IBOutlet UIProgressView *blueLevelBar;
 @property (nonatomic, strong) IBOutlet UILabel *hexLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) IBOutlet UIButton *similarColorsButton;
+@property (nonatomic, strong) IBOutlet UIButton *shareButton;
 @property (nonatomic, strong) TbColorName *colorName;
 @property (nonatomic, strong) TbColorNameJaDao *colorNameJaDao;
 @property (nonatomic, strong) TbFavoriteColorNameDao *favoriteColorNameDao;
+@property (nonatomic, strong) UIColor *currentColor;
 
 @end

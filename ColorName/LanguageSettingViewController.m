@@ -28,6 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
+    
+    [self.navigationItem setTitle:NSLocalizedString(@"APPLICATION_SETTINGS", @"")];
 	
     [tableView setAllowsSelection:NO];
 }
@@ -38,7 +43,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - TableView delegate
+#pragma mark - UITableView Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;

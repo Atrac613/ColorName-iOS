@@ -8,7 +8,7 @@
 "PLEASE_WAIT" = "Please wait";
 "NOT_FOUND" = "Not Found";
 
-"DETAIL" = "Detail";
+"DETAILS" = "Details";
 
 "COMBINE" = "Combine";
 "INFO" = "Information";
@@ -55,4 +55,13 @@
 "LICENSE" = "License";
 "RATE_THIS_APP" = "Rate This App";
 "OPTION" = "Option";
+"APPLICATION_SETTINGS" = "Application Settings";
 "LANGUAGES" = "Languages";
+
+"SIMILAR_COLORS" = "Similar Colors";
+"SHARE" = "Share";
+
+"SHARE_MESSAGE_SUFFIX" = "App Introduction URL";
+"SHARE_MESSAGE_ATTACHMENT" = "Image Attachment File";
+
+"CONFIRM_USAGE_STATISTICS" = "In order to improve this application, is it okay to submit anonymous usage statistics?";

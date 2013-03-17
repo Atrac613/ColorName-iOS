@@ -31,6 +31,9 @@
 {
     [super viewDidLoad];
     
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
+    
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)]];
 }
 
@@ -40,9 +43,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBAction
+
 - (void)cancelButtonPressed {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - UIWebView Delegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self rightButtonIsBusy];

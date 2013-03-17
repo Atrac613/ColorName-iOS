@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ThirdPartyNoticesViewController.h"
 #import "LanguageSettingViewController.h"
+#import "ShareSettingViewController.h"
+#import "AppDelegate.h"
 
 @interface AboutViewController ()
 
@@ -32,6 +34,9 @@
 {
     [super viewDidLoad];
     
+    // for Google Analytics
+    self.trackedViewName = NSStringFromClass([self class]);
+    
     [self.navigationItem setTitle:NSLocalizedString(@"ABOUT", @"")];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLOSE", @"") style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
@@ -43,11 +48,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - IBAction
+
 - (void)cancelButtonPressed {
     [self performSegueWithIdentifier:@"MasterViewFromAboutView" sender:self];
 }
 
-#pragma mark - TableView delegate
+#pragma mark - UITableView Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
@@ -61,7 +68,7 @@
     } else if (section == 2) {
         return 1;
     } else if (section == 3) {
-        return 1;
+        return 2;
     }
     
     return 0;
@@ -79,7 +86,7 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 3) {
-        return NSLocalizedString(@"OPTION", @"");
+        return NSLocalizedString(@"APPLICATION_SETTINGS", @"");
     }
     
     return @"";
@@ -164,6 +171,9 @@
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"LANGUAGES", @"")];
             [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
+        } else {
+            [cell.textLabel setText:NSLocalizedString(@"SHARE", @"")];
+            [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
         }
     }
     
@@ -175,25 +185,75 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"sourceCodeRepository" withValue:nil];
+            
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/Atrac613/ColorName-iOS"]];
         } else if (indexPath.row == 2) {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"moreApps" withValue:nil];
+            
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.com/apps/osamunoguchi"]];
         }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"thirdPartyNotices" withValue:nil];
+            
             ThirdPartyNoticesViewController *thirdPartyNoticesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdPartyNoticesViewController"];
             [self presentViewController:thirdPartyNoticesViewController animated:YES completion:nil];
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=584817516"]];
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"rateThisApp" withValue:nil];
+            
+            [self presentAppStoreForID:[NSNumber numberWithInt:kAppId] withDelegate:self withURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", kAppId]]];
         }
     } else if (indexPath.section == 3) {
         if (indexPath.row == 0) {
-            LanguageSettingViewController * languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"languageSetting" withValue:nil];
+            
+            LanguageSettingViewController *languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
             [self.navigationController pushViewController:languageSettingViewController animated:YES];
+        } else {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"shareSetting" withValue:nil];
+            
+            ShareSettingViewController *shareSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareSettingViewController"];
+            [self.navigationController pushViewController:shareSettingViewController animated:YES];
         }
     }
+}
+
+#pragma mark SKStoreProductViewController
+
+// Thanks: http://stackoverflow.com/questions/12475568/appstore-as-modal-view-in-ios6
+
+- (void)presentAppStoreForID:(NSNumber *)appStoreID withDelegate:(id<SKStoreProductViewControllerDelegate>)delegate withURL:(NSURL *)appStoreURL
+{
+    if(NSClassFromString(@"SKStoreProductViewController")) { // Checks for iOS 6 feature.
+        
+        SKStoreProductViewController *storeController = [[SKStoreProductViewController alloc] init];
+        storeController.delegate = delegate; // productViewControllerDidFinish
+        
+        // Example app_store_id (e.g. for Words With Friends)
+        // [NSNumber numberWithInt:322852954];
+        
+        NSDictionary *productParameters = @{ SKStoreProductParameterITunesItemIdentifier : appStoreID };
+        
+        
+        [storeController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError *error) {
+            if (result) {
+                [self presentViewController:storeController animated:YES completion:nil];
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"There was a problem displaying the app." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil] show];
+            }
+        }];
+        
+        
+    } else { // Before iOS 6, we can only open the URL
+        [[UIApplication sharedApplication] openURL:appStoreURL];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -8,7 +8,7 @@
 "PLEASE_WAIT" = "お待ちください";
 "NOT_FOUND" = "見つかりません";
 
-"DETAIL" = "詳細";
+"DETAILS" = "詳細";
 
 "COMBINE" = "結合";
 "INFO" = "お知らせ";
@@ -36,7 +36,7 @@
 "CLOSE" = "閉じる";
 "CANCEL" = "キャンセル";
 
-"UPDATE_PROFILE_ERROR_MESSAGE" = "Please add a twitter account at ios settings and allow granting of permission to this application.";
+"UPDATE_PROFILE_ERROR_MESSAGE" = "iOS の設定より Twitter アカウント追加して頂き、このアプリケーションへ権限の付与をお願いします。";
 
 "YES" = "はい";
 "NO" = "いいえ";
@@ -55,4 +55,13 @@
 "LICENSE" = "ライセンス";
 "RATE_THIS_APP" = "このアプリを評価";
 "OPTION" = "オプション";
-"LANGUAGES" = "言語の設定";
+"APPLICATION_SETTINGS" = "アプリの設定";
+"LANGUAGES" = "言語";
+
+"SIMILAR_COLORS" = "似た色";
+"SHARE" = "共有";
+
+"SHARE_MESSAGE_SUFFIX" = "アプリの紹介URL";
+"SHARE_MESSAGE_ATTACHMENT" = "画像の添付ファイル";
+
+"CONFIRM_USAGE_STATISTICS" = "このアプリケーションの今後の改善の為に匿名の使用統計情報を送信しますか？";

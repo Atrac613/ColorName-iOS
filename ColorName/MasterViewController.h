@@ -8,28 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "TbColorNameJaDao.h"
-#import "TbColorNameEnDao.h"
+#import "DefaultColorTableViewController.h"
 
-@interface MasterViewController : UIViewController<AVCaptureVideoDataOutputSampleBufferDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface MasterViewController : DefaultColorTableViewController <AVCaptureVideoDataOutputSampleBufferDelegate, UIAlertViewDelegate> {
     IBOutlet UIView *previewView;
     IBOutlet UIView *colorView;
-    IBOutlet UITableView *tableView;
     IBOutlet UIButton *stateButton;
     
     AVCaptureVideoPreviewLayer *previewLayer;
     AVCaptureSession *session;
     NSTimer *timer;
     
-    UIColor *currentColor;
-    NSMutableArray *tableSectionArray;
-    NSMutableArray *tableContentArray;
-    
-    TbColorNameJaDao *colorNameJaDao;
-    TbColorNameEnDao *colorNameEnDao;
+    NSString *alertMode;
     
     BOOL isPlay;
-    BOOL isInitializing;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *previewView;
@@ -39,12 +31,7 @@
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, retain) AVCaptureSession *session;
 @property (nonatomic, retain) NSTimer *timer;
-@property (nonatomic, retain) UIColor *currentColor;
-@property (nonatomic, retain) NSMutableArray *tableSectionArray;
-@property (nonatomic, retain) NSMutableArray *tableContentArray;
-@property (nonatomic, retain) TbColorNameJaDao *colorNameJaDao;
-@property (nonatomic, retain) TbColorNameEnDao *colorNameEnDao;
+@property (nonatomic, retain) NSString *alertMode;
 @property (nonatomic) BOOL isPlay;
-@property (nonatomic) BOOL isInitializing;
 
 @end
