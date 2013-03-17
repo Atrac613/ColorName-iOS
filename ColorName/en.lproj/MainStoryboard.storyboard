@@ -447,13 +447,13 @@
                             <webView contentMode="scaleToFill" id="iFl-gE-gHd">
                                 <rect key="frame" x="0.0" y="44" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="zTq-5Q-OEW" id="iPH-xo-eAz"/>
                                 </connections>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="navigationItem" destination="xmI-UZ-SRo" id="1AV-Fu-xgZ"/>
@@ -504,13 +504,13 @@
                             <webView contentMode="scaleToFill" id="nGQ-Hz-3hO">
                                 <rect key="frame" x="0.0" y="44" width="320" height="372"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="hiE-9P-bCc" id="tPl-HM-1bG"/>
                                 </connections>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="navigationItem" destination="hNr-d5-L8k" id="dMg-6p-sGg"/>
@@ -526,6 +526,103 @@
     <resources>
         <image name="pause.png" width="100" height="100"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="AuthViewController" superclassName="WebViewViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AuthViewController.h"/>
+        </class>
+        <class className="ColorDetailViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="likeButtonPressed:"/>
+                <relationship kind="action" name="shareButtonPressed:"/>
+                <relationship kind="action" name="similarColorButtonPressed:"/>
+                <relationship kind="outlet" name="blueLevelBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="blueLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorNameYomiLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="greenLevelBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="greenLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hexLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redLevelBar" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="redLevelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="similarColorButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DefaultColorTableViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DefaultColorTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="FavoritesColorViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesColorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="syncButtonPressed:"/>
+                <relationship kind="outlet" name="syncButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="GAITrackedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GAITrackedViewController.h"/>
+        </class>
+        <class className="LanguageSettingViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LanguageSettingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MasterViewController" superclassName="DefaultColorTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="stateButtonPressed:"/>
+                <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="previewView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="stateButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ShareSettingViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShareSettingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SimilarColorViewController" superclassName="DefaultColorTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SimilarColorViewController.h"/>
+        </class>
+        <class className="ThirdPartyNoticesViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ThirdPartyNoticesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UserPageViewController" superclassName="WebViewViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserPageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="actionButtonPressed:"/>
+                <relationship kind="action" name="updateProfileButtonPressed:"/>
+                <relationship kind="outlet" name="updateProfileButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="WebViewViewController" superclassName="GAITrackedViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
