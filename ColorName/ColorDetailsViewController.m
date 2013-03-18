@@ -30,8 +30,8 @@
 @synthesize blueLevelBar;
 @synthesize hexLabel;
 @synthesize likeButton;
-@synthesize similarColorsButton;
-@synthesize shareButton;
+@synthesize similarColorsLabel;
+@synthesize shareLabel;
 @synthesize colorName;
 @synthesize colorNameJaDao;
 @synthesize favoriteColorNameDao;
@@ -73,8 +73,8 @@
     
     [hexLabel setText:[NSString stringWithFormat:@"#%02x%02x%02x", [colorName red], [colorName green], [colorName blue]]];
     
-    [similarColorsButton setTitle:NSLocalizedString(@"SIMILAR_COLORS", @"") forState:UIControlStateNormal];
-    [shareButton setTitle:NSLocalizedString(@"SHARE", @"") forState:UIControlStateNormal];
+    [similarColorsLabel setText:NSLocalizedString(@"SIMILAR_COLORS", @"")];
+    [shareLabel setText:NSLocalizedString(@"SHARE", @"")];
     
     [self checkLikeButtonState];
 }

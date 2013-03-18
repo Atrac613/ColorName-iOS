@@ -237,7 +237,7 @@
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Similar Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v9H-jR-Ks3">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Similar Colors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v9H-jR-Ks3">
                                                     <rect key="frame" x="15" y="11" width="240" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -291,6 +291,8 @@
                         <outlet property="likeButton" destination="fkc-c1-Lx9" id="HvP-gk-Bez"/>
                         <outlet property="redLevelBar" destination="bTR-Xg-bKd" id="FCt-JC-eNy"/>
                         <outlet property="redLevelLabel" destination="o2w-kP-edw" id="U9l-gj-etg"/>
+                        <outlet property="shareLabel" destination="2Iv-yF-QeT" id="6D3-9g-Dey"/>
+                        <outlet property="similarColorsLabel" destination="v9H-jR-Ks3" id="lnK-ZL-wQt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5J-uh-y7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -614,8 +616,8 @@
                 <relationship kind="outlet" name="likeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="redLevelBar" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="redLevelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="similarColorsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="shareLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="similarColorsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="DefaultColorTableViewController" superclassName="GAITrackedViewController">
