@@ -58,6 +58,30 @@
     currentColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
     [colorView setBackgroundColor:currentColor];
     
+    /*
+    CGFloat hue;
+    CGFloat saturation;
+    CGFloat brightness;
+    CGFloat alpha;
+     
+    BOOL b = [currentColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    
+    NSLog(@"%f %f %f %f %d", hue, saturation, brightness, alpha, b);
+    
+    float k = MIN(1 - red, MIN(1 - green, 1 - blue));
+    float c = (1 - red - k) / (1 - k);
+    float m = 255 * (255 - [colorName green] - k) / (255 - k);
+    float y = 255 * (255 - [colorName blue] - k) / (255 - k);
+    
+    int c1 = (c * 100 / 1);
+    int m1 = (m * 100 / 255);
+    int y1 = (y * 100 / 255);
+    int k1 = (k * 100 / 255);
+    
+    NSLog(@"%f %f %f %f", c, m, y, k);
+    NSLog(@"%d %d %d %d", c1, m1, y1, k1);
+    */
+    
     [colorNameLabel setText:colorName.name];
     [colorNameLabel setAdjustsFontSizeToFitWidth:YES];
     [colorNameYomiLabel setText:colorName.nameYomi];
