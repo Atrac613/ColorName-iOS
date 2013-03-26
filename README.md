@@ -12,6 +12,8 @@ You can search for color information from about 1,000 colors, English and Japane
 
 ![](https://raw.github.com/Atrac613/ColorName-iOS/master/screenshot.png)
 
+[Available on the App Store](https://itunes.apple.com/app/colorname*/id584817516)
+
 ## License
 
 ColorName* is released under the [MIT License](http://www.opensource.org/licenses/MIT).
