@@ -30,8 +30,8 @@
 @synthesize blueLevelBar;
 @synthesize hexLabel;
 @synthesize likeButton;
-@synthesize similarColorsButton;
-@synthesize shareButton;
+@synthesize similarColorsLabel;
+@synthesize shareLabel;
 @synthesize colorName;
 @synthesize colorNameJaDao;
 @synthesize favoriteColorNameDao;
@@ -42,7 +42,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
+    [SharedAppDelegate.tracker sendView:NSStringFromClass([self class])];
     
     [self.navigationItem setTitle:NSLocalizedString(@"DETAILS", @"")];
     
@@ -57,6 +57,30 @@
     
     currentColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.f];
     [colorView setBackgroundColor:currentColor];
+    
+    /*
+    CGFloat hue;
+    CGFloat saturation;
+    CGFloat brightness;
+    CGFloat alpha;
+     
+    BOOL b = [currentColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    
+    NSLog(@"%f %f %f %f %d", hue, saturation, brightness, alpha, b);
+    
+    float k = MIN(1 - red, MIN(1 - green, 1 - blue));
+    float c = (1 - red - k) / (1 - k);
+    float m = 255 * (255 - [colorName green] - k) / (255 - k);
+    float y = 255 * (255 - [colorName blue] - k) / (255 - k);
+    
+    int c1 = (c * 100 / 1);
+    int m1 = (m * 100 / 255);
+    int y1 = (y * 100 / 255);
+    int k1 = (k * 100 / 255);
+    
+    NSLog(@"%f %f %f %f", c, m, y, k);
+    NSLog(@"%d %d %d %d", c1, m1, y1, k1);
+    */
     
     [colorNameLabel setText:colorName.name];
     [colorNameLabel setAdjustsFontSizeToFitWidth:YES];
@@ -73,8 +97,8 @@
     
     [hexLabel setText:[NSString stringWithFormat:@"#%02x%02x%02x", [colorName red], [colorName green], [colorName blue]]];
     
-    [similarColorsButton setTitle:NSLocalizedString(@"SIMILAR_COLORS", @"") forState:UIControlStateNormal];
-    [shareButton setTitle:NSLocalizedString(@"SHARE", @"") forState:UIControlStateNormal];
+    [similarColorsLabel setText:NSLocalizedString(@"SIMILAR_COLORS", @"")];
+    [shareLabel setText:NSLocalizedString(@"SHARE", @"")];
     
     [self checkLikeButtonState];
 }
@@ -98,7 +122,7 @@
         [favoriteColorNameDao removeFromColorName:colorName];
     }
     
-    [self performSelector:@selector(checkLikeButtonState) withObject:nil afterDelay:0.f];
+    [self performSelector:@selector(checkLikeButtonState) withObject:nil afterDelay:0.01f];
 }
 
 - (void)checkLikeButtonState {
@@ -115,40 +139,44 @@
     }
 }
 
-- (IBAction)similarColorsButtonPressed:(id)sender {
-    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"similarColors" withValue:nil];
-    
-    SimilarColorsViewController *similarColorsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SimilarColorsViewController"];
-    similarColorsViewController.currentColor = currentColor;
-    [self.navigationController pushViewController:similarColorsViewController animated:YES];
-}
+#pragma mark - UITableViewController Delegate
 
-- (IBAction)shareButtonPressed:(id)sender {
-    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"share" withValue:nil];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *message;
-    
-    if (colorNameYomiLabel.text.length > 0) {
-        message = [NSString stringWithFormat:@"%@(%@) %@ R:%@ G:%@ B:%@", colorNameLabel.text, colorNameYomiLabel.text, hexLabel.text, redLevelLabel.text, greenLevelLabel.text, blueLevelLabel.text];
-    } else {
-        message = [NSString stringWithFormat:@"%@ %@ R:%@ G:%@ B:%@", colorNameLabel.text, hexLabel.text, redLevelLabel.text, greenLevelLabel.text, blueLevelLabel.text];
+    if (indexPath.section == 3) {
+        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"similarColors" withValue:nil];
+        
+        SimilarColorsViewController *similarColorsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SimilarColorsViewController"];
+        similarColorsViewController.currentColor = currentColor;
+        [self.navigationController pushViewController:similarColorsViewController animated:YES];
+    } else if (indexPath.section == 4) {
+        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"share" withValue:nil];
+        
+        NSString *message;
+        
+        if (colorNameYomiLabel.text.length > 0) {
+            message = [NSString stringWithFormat:@"%@(%@) %@ R:%@ G:%@ B:%@", colorNameLabel.text, colorNameYomiLabel.text, hexLabel.text, redLevelLabel.text, greenLevelLabel.text, blueLevelLabel.text];
+        } else {
+            message = [NSString stringWithFormat:@"%@ %@ R:%@ G:%@ B:%@", colorNameLabel.text, hexLabel.text, redLevelLabel.text, greenLevelLabel.text, blueLevelLabel.text];
+        }
+        
+        NSString *appStoreUrl;
+        NSString *lang = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
+        
+        if ([lang isEqualToString:@"ja"]) {
+            appStoreUrl = @"https://itunes.apple.com/jp/app/colorname*/id584817516?mt=8";
+        } else {
+            appStoreUrl = @"https://itunes.apple.com/app/colorname*/id584817516?mt=8";
+        }
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults boolForKey:@"enabled_suffix"]) {
+            message = [NSString stringWithFormat:@"%@ via ColorName* %@", message, appStoreUrl];
+        }
+        
+        [self openInOtherApps:message];
     }
-    
-    NSString *appStoreUrl;
-    NSString *lang = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
-    
-    if ([lang isEqualToString:@"ja"]) {
-        appStoreUrl = @"https://itunes.apple.com/jp/app/colorname*/id584817516?mt=8";
-    } else {
-        appStoreUrl = @"https://itunes.apple.com/app/colorname*/id584817516?mt=8";
-    }
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"enabled_suffix"]) {
-        message = [NSString stringWithFormat:@"%@ via ColorName* %@", message, appStoreUrl];
-    }
-    
-    [self openInOtherApps:message];
 }
 
 #pragma mark - UIActivityViewController

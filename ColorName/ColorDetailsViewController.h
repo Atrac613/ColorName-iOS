@@ -10,9 +10,8 @@
 #import "TbColorNameJaDao.h"
 #import "TbFavoriteColorNameDao.h"
 #import "TbColorName.h"
-#import "GAITrackedViewController.h"
 
-@interface ColorDetailsViewController : GAITrackedViewController {
+@interface ColorDetailsViewController : UITableViewController {
     IBOutlet UILabel *colorNameLabel;
     IBOutlet UILabel *colorNameYomiLabel;
     IBOutlet UIView *colorView;
@@ -24,8 +23,8 @@
     IBOutlet UIProgressView *blueLevelBar;
     IBOutlet UILabel *hexLabel;
     IBOutlet UIButton *likeButton;
-    IBOutlet UIButton *similarColorsButton;
-    IBOutlet UIButton *shareButton;
+    IBOutlet UILabel *similarColorsLabel;
+    IBOutlet UILabel *shareLabel;
     
     TbColorName *colorName;
     TbColorNameJaDao *colorNameJaDao;
@@ -45,8 +44,8 @@
 @property (nonatomic, strong) IBOutlet UIProgressView *blueLevelBar;
 @property (nonatomic, strong) IBOutlet UILabel *hexLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
-@property (nonatomic, strong) IBOutlet UIButton *similarColorsButton;
-@property (nonatomic, strong) IBOutlet UIButton *shareButton;
+@property (nonatomic, strong) IBOutlet UILabel *similarColorsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *shareLabel;
 @property (nonatomic, strong) TbColorName *colorName;
 @property (nonatomic, strong) TbColorNameJaDao *colorNameJaDao;
 @property (nonatomic, strong) TbFavoriteColorNameDao *favoriteColorNameDao;
