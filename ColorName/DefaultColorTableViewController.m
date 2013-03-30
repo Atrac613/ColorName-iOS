@@ -202,7 +202,7 @@
             
             [cell.colorNameLabel setText:[colorName name]];
             [cell.colorNameYomiLabel setText:[colorName nameYomi]];
-            [cell.colorView setBackgroundColor:color];
+            [cell.colorView setImageFromUIColor:color];
             [cell checkNameYomiLength];
             
             return cell;

@@ -66,7 +66,7 @@
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return  @"";
+    return  NSLocalizedString(@"LANGUAGE_INFORMATION_MESSAGE", @"");
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {

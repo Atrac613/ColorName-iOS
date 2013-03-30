@@ -29,7 +29,7 @@
         [colorNameYomiLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:colorNameYomiLabel];
         
-        colorView = [[UIView alloc] initWithFrame:CGRectMake(10, 7, 30, 30)];
+        colorView = [[ColorImageView alloc] initWithFrame:CGRectMake(10, 7, 30, 30)];
         [self.contentView addSubview:colorView];
     }
     return self;
