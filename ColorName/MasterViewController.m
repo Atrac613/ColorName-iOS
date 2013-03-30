@@ -198,7 +198,7 @@
 - (void)setupAVCapture
 {
     session = [AVCaptureSession new];
-    [session setSessionPreset:AVCaptureSessionPresetLow];
+    [session setSessionPreset:AVCaptureSessionPreset640x480];
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
@@ -249,7 +249,7 @@
 }
 
 - (void)getCenterColor:(UIImage*)image {
-    UIColor *color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.height/2, image.size.width/2)];
+    UIColor *color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.width/2, image.size.height/2)];
     
     if (!color) {
         return;
@@ -310,14 +310,36 @@
     CGImageRef cgImage;
     UIImage *image;
     cgImage = CGBitmapContextCreateImage(cgContext);
-    image = [UIImage imageWithCGImage:cgImage scale:1.0f 
+    image = [UIImage imageWithCGImage:cgImage scale:2.f
                           orientation:UIImageOrientationRight];
     CGImageRelease(cgImage);
     CGContextRelease(cgContext);
     
     CVPixelBufferUnlockBaseAddress(buffer, 0);
     
-    [self getCenterColor:image];
+    UIImage *lowImage = [self converToLowImage:image];
+    
+    [self getCenterColor:lowImage];
+}
+
+- (UIImage*)converToLowImage:(UIImage*)image {
+    float oldWidth = image.size.width;
+    float scale = 144 / oldWidth;
+    
+    float newHeight = image.size.height * scale;
+    float newWidth = oldWidth * scale;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [image drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    float top = (newImage.size.height / 2) - (96 / 2);
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect(newImage.CGImage, CGRectMake(0, top, 144, 96));
+    newImage = [UIImage imageWithCGImage:imageRef];
+    
+    return newImage;
 }
 
 #pragma mark - VideoController

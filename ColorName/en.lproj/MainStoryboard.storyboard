@@ -647,10 +647,12 @@
         <class className="MasterViewController" superclassName="DefaultColorTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
             <relationships>
+                <relationship kind="action" name="stateButtonPressed:"/>
                 <relationship kind="outlet" name="colorView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="previewView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="stateButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="testView" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="ShareSettingViewController" superclassName="GAITrackedViewController">
