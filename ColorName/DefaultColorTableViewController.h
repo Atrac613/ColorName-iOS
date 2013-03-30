@@ -33,5 +33,6 @@
 @property (nonatomic) BOOL isInitializing;
 
 - (void)getColorList;
+- (void)getColorListWithOffset:(int)offset;
 
 @end

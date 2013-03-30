@@ -58,6 +58,10 @@
 #pragma mark - Build Color List
 
 - (void)getColorList {
+    [self getColorListWithOffset:0];
+}
+
+- (void)getColorListWithOffset:(int)offset {
     if (!currentColor || isInitializing) {
         return;
     }
@@ -72,22 +76,39 @@
         if ([lang isEqualToString:@"ja"]) {
             if ([defaults boolForKey:@"enabled_lang_japanese"]) {
                 [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
-                [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
+                if (offset > 0) {
+                    [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor offset:offset]];
+                } else {
+                    [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
+                }
             }
             
             if ([defaults boolForKey:@"enabled_lang_english"]) {
                 [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
-                [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
+                
+                if (offset > 0) {
+                    [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor offset:offset]];
+                } else {
+                    [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
+                }
             }
         } else {
             if ([defaults boolForKey:@"enabled_lang_english"]) {
                 [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
-                [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
+                if (offset > 0) {
+                    [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor offset:offset]];
+                } else {
+                    [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
+                }
             }
             
             if ([defaults boolForKey:@"enabled_lang_japanese"]) {
                 [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
-                [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
+                if (offset > 0) {
+                    [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor offset:offset]];
+                } else {
+                    [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor]];
+                }
             }
         }
     } else {

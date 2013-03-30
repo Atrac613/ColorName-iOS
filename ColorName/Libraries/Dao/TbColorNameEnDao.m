@@ -66,7 +66,21 @@
     }
 }
 
-- (NSMutableArray*)findColorNameWithColor:(UIColor *)color {
+- (NSMutableArray*)findColorNameWithColor:(UIColor*)color {
+    return [self findColorNameWithColor:color offset:0];
+}
+
+- (NSMutableArray*)findColorNameWithColor:(UIColor*)color offset:(int)offset {
+    NSMutableArray *results = [self findColorNameWithColor:color difference:2000 + offset];
+    
+    if ([results count] > 3) {
+        return results;
+    } else {
+        return [self findColorNameWithColor:color difference:10000];
+    }
+}
+
+- (NSMutableArray*)findColorNameWithColor:(UIColor*)color difference:(int)difference {
     //NSLog(@"%@", NSStringFromSelector(_cmd));
     
     NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:0];
@@ -76,7 +90,7 @@
     FMResultSet *resultSet = [db executeQuery:[self setTable:@"SELECT id, name, red, green, blue, (pow((?-red), 2) + pow((?-green), 2) + pow((?-blue), 2)) as difference FROM %@ ORDER BY difference;"], [NSNumber numberWithFloat:rgba[0] * 255], [NSNumber numberWithFloat:rgba[1] * 255], [NSNumber numberWithFloat:rgba[2] * 255]];
     
     while([resultSet next]){
-        if ([resultSet intForColumn:@"difference"] < 2000) {
+        if ([resultSet intForColumn:@"difference"] < difference) {
             TbColorName *result = [[TbColorName alloc] initWithIndex:[resultSet intForColumn:@"id"] name:[resultSet stringForColumn:@"name"] nameYomi:@"" red:[resultSet intForColumn:@"red"] green:[resultSet intForColumn:@"green"] blue:[resultSet intForColumn:@"blue"] language:@"en_US"];
             [results addObject:result];
         }
