@@ -12,6 +12,7 @@
 #import "LINEActivity.h"
 #import "AppDelegate.h"
 #import "SimilarColorsViewController.h"
+#import "DMActivityInstagram.h"
 
 @interface ColorDetailsViewController ()
 
@@ -170,6 +171,8 @@
             appStoreUrl = @"https://itunes.apple.com/app/colorname*/id584817516?mt=8";
         }
         
+        //NSString *appStoreUrl = @"http://AppStore.com/ColorName";
+        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults boolForKey:@"enabled_suffix"]) {
             message = [NSString stringWithFormat:@"%@ via ColorName* %@", message, appStoreUrl];
@@ -187,12 +190,12 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults boolForKey:@"enabled_attachment"]) {
         UIImage *canvasImage = [self convertColorViewToUIImage];
-        actItems = [NSArray arrayWithObjects:UIImagePNGRepresentation(canvasImage), message, nil];
+        actItems = [NSArray arrayWithObjects:canvasImage, message, nil];
     } else {
         actItems = [NSArray arrayWithObjects:message, nil];
     }
     
-    NSArray *applicationActivities = @[[[LINEActivity alloc] init]];
+    NSArray *applicationActivities = @[[[LINEActivity alloc] init], [[DMActivityInstagram alloc] init]];
     
     UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:actItems applicationActivities:applicationActivities];
     activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact];
@@ -231,7 +234,7 @@
 #pragma mark - Other
 
 - (UIImage*)convertColorViewToUIImage {
-    CGRect screenRect = CGRectMake(0, 0, 300.f, 300.f);
+    CGRect screenRect = CGRectMake(0, 0, 612.f, 612.f);
     UIGraphicsBeginImageContext(screenRect.size);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
