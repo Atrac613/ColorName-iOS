@@ -58,7 +58,7 @@
 "APPLICATION_SETTINGS" = "Application Settings";
 "LANGUAGES" = "Languages";
 
-"LANGUAGE_INFORMATION_MESSAGE" = "色名の検索は各言語の Wikipedia を利用して行われます。その為、選択した言語以外の結果も含まれて表示される事があります。また、検索結果はサイト上のデータと異なる場合があります。参考にしている Wikipedia の詳細はライセンスページをご覧ください。";
+"LANGUAGE_INFORMATION_MESSAGE" = "A color name search is performed by using Wikipedia in all languages. Consequently, results in languages other than those selected are sometimes also included and displayed. Furthermore, there are cases in which the search result differs from the data on the site. Please look at the license page for the details of Wikipedia that we refer to.";
 
 
 "SIMILAR_COLORS" = "Similar Colors";
