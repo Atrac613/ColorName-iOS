@@ -17,13 +17,13 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        colorNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 7, 300, 20)];
+        colorNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 7, 245, 20)];
         [colorNameLabel setTextColor:[UIColor blackColor]];
         [colorNameLabel setFont:[UIFont systemFontOfSize:20]];
         [colorNameLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:colorNameLabel];
         
-        colorNameYomiLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 300, 10)];
+        colorNameYomiLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 245, 10)];
         [colorNameYomiLabel setTextColor:[UIColor blackColor]];
         [colorNameYomiLabel setFont:[UIFont systemFontOfSize:10]];
         [colorNameYomiLabel setBackgroundColor:[UIColor clearColor]];
@@ -36,12 +36,17 @@
 }
 
 - (void)checkNameYomiLength {
+    float width = 0;
+    if (self.editing) {
+        width = 45;
+    }
+    
     if ([colorNameYomiLabel.text length] > 0) {
-        [colorNameLabel setFrame:CGRectMake(50, 7, 300, 20)];
-        [colorNameYomiLabel setFrame:CGRectMake(50, 30, 300, 10)];
+        [colorNameLabel setFrame:CGRectMake(50, 7, 245 - width, 20)];
+        [colorNameYomiLabel setFrame:CGRectMake(50, 30, 245 - width, 10)];
         [colorNameYomiLabel setHidden:NO];
     } else {
-        [colorNameLabel setFrame:CGRectMake(50, 12, 300, 20)];
+        [colorNameLabel setFrame:CGRectMake(50, 12, 245 - width, 20)];
         [colorNameYomiLabel setHidden:YES];
     }
 }
@@ -51,6 +56,19 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    
+    [self checkNameYomiLength];
+    
+    [UIView commitAnimations];
 }
 
 @end
