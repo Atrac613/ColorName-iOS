@@ -22,6 +22,9 @@
 		063096F6170714B6002420BE /* instagram~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 063096DD170714B5002420BE /* instagram~ipad.png */; };
 		063096F7170714B6002420BE /* instagram~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 063096DE170714B5002420BE /* instagram~ipad@2x.png */; };
 		0630970117074CB7002420BE /* ColorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630970017074CB7002420BE /* ColorImageView.m */; };
+		0630978217089806002420BE /* MachineName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630978117089806002420BE /* MachineName.m */; };
+		063097851708997A002420BE /* DevicePerformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 063097841708997A002420BE /* DevicePerformance.m */; };
+		0630978817089DC4002420BE /* CameraSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630978717089DC4002420BE /* CameraSettingViewController.m */; };
 		0639A6C4167DFA2F00DB78B5 /* LanguageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */; };
 		065D433915C0301500A38E86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433815C0301500A38E86 /* UIKit.framework */; };
 		065D433B15C0301500A38E86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433A15C0301500A38E86 /* Foundation.framework */; };
@@ -148,6 +151,12 @@
 		063096DE170714B5002420BE /* instagram~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram~ipad@2x.png"; sourceTree = "<group>"; };
 		063096FF17074CB7002420BE /* ColorImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorImageView.h; sourceTree = "<group>"; };
 		0630970017074CB7002420BE /* ColorImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorImageView.m; sourceTree = "<group>"; };
+		0630978017089806002420BE /* MachineName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MachineName.h; sourceTree = "<group>"; };
+		0630978117089806002420BE /* MachineName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineName.m; sourceTree = "<group>"; };
+		063097831708997A002420BE /* DevicePerformance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicePerformance.h; sourceTree = "<group>"; };
+		063097841708997A002420BE /* DevicePerformance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicePerformance.m; sourceTree = "<group>"; };
+		0630978617089DC4002420BE /* CameraSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraSettingViewController.h; sourceTree = "<group>"; };
+		0630978717089DC4002420BE /* CameraSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraSettingViewController.m; sourceTree = "<group>"; };
 		0639A6C2167DFA2F00DB78B5 /* LanguageSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageSettingViewController.h; sourceTree = "<group>"; };
 		0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageSettingViewController.m; sourceTree = "<group>"; };
 		065D433415C0301500A38E86 /* ColorName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorName.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -443,6 +452,8 @@
 				06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */,
 				06C4001916F4E15900EBD9C1 /* ShareSettingViewController.h */,
 				06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */,
+				0630978617089DC4002420BE /* CameraSettingViewController.h */,
+				0630978717089DC4002420BE /* CameraSettingViewController.m */,
 				065D433F15C0301500A38E86 /* Supporting Files */,
 			);
 			path = ColorName;
@@ -495,6 +506,10 @@
 				06C660B816650B4E003CC7C2 /* FlipFromLeftSegue.m */,
 				06C660E01666771C003CC7C2 /* FlipFromRightSegue.h */,
 				06C660E11666771C003CC7C2 /* FlipFromRightSegue.m */,
+				0630978017089806002420BE /* MachineName.h */,
+				0630978117089806002420BE /* MachineName.m */,
+				063097831708997A002420BE /* DevicePerformance.h */,
+				063097841708997A002420BE /* DevicePerformance.m */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -879,6 +894,9 @@
 				063096EA170714B6002420BE /* DMActivityInstagram.m in Sources */,
 				063096ED170714B6002420BE /* DMResizerViewController.m in Sources */,
 				0630970117074CB7002420BE /* ColorImageView.m in Sources */,
+				0630978217089806002420BE /* MachineName.m in Sources */,
+				063097851708997A002420BE /* DevicePerformance.m in Sources */,
+				0630978817089DC4002420BE /* CameraSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@
 #import "SVProgressHUD.h"
 #import "AboutViewController.h"
 #import "GAI.h"
+#import "DevicePerformance.h"
 
 @interface MasterViewController () {
 }
@@ -198,7 +199,8 @@
 - (void)setupAVCapture
 {
     session = [AVCaptureSession new];
-    [session setSessionPreset:AVCaptureSessionPreset640x480];
+    
+    [self setupAVSessionPreset];
     
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
@@ -224,6 +226,15 @@
     [previewLayer setFrame:[rootLayer bounds]];
     [rootLayer addSublayer:previewLayer];
     [session startRunning];
+}
+
+- (void)setupAVSessionPreset {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([[defaults objectForKey:@"high_resolution_preview"] boolValue]) {
+        [session setSessionPreset:AVCaptureSessionPreset640x480];
+    } else {
+        [session setSessionPreset:AVCaptureSessionPresetLow];
+    }
 }
 
 - (void)setupTestAVCapture {
@@ -350,6 +361,8 @@
         isPlay = YES;
         [stateButton setImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateNormal];
         
+        [self setupAVSessionPreset];
+        
         [session startRunning];
     }
     
@@ -437,6 +450,14 @@
     
     if ([defaults objectForKey:@"enabled_attachment"] == nil) {
         [defaults setBool:YES forKey:@"enabled_attachment"];
+    }
+    
+    if ([defaults objectForKey:@"high_resolution_preview"] == nil) {
+        if ([[[DevicePerformance alloc] init] isHighPerformanceMachine]) {
+            [defaults setBool:YES forKey:@"high_resolution_preview"];
+        } else {
+            [defaults setBool:NO forKey:@"high_resolution_preview"];
+        }
     }
     
     [defaults synchronize];

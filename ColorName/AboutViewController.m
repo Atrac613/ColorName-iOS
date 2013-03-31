@@ -11,6 +11,7 @@
 #import "ThirdPartyNoticesViewController.h"
 #import "LanguageSettingViewController.h"
 #import "ShareSettingViewController.h"
+#import "CameraSettingViewController.h"
 #import "AppDelegate.h"
 
 @interface AboutViewController ()
@@ -74,7 +75,7 @@
     } else if (section == 2) {
         return 1;
     } else if (section == 3) {
-        return 2;
+        return 3;
     }
     
     return 0;
@@ -179,8 +180,11 @@
         if (indexPath.row == 0) {
             [cell.textLabel setText:NSLocalizedString(@"LANGUAGES", @"")];
             [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
-        } else {
+        } else if (indexPath.row == 1) {
             [cell.textLabel setText:NSLocalizedString(@"SHARE", @"")];
+            [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
+        } else {
+            [cell.textLabel setText:NSLocalizedString(@"CAMERA", @"")];
             [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
         }
     }
@@ -231,11 +235,16 @@
             
             LanguageSettingViewController *languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
             [self.navigationController pushViewController:languageSettingViewController animated:YES];
-        } else {
+        } else if (indexPath.row == 1) {
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"shareSetting" withValue:nil];
             
             ShareSettingViewController *shareSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareSettingViewController"];
             [self.navigationController pushViewController:shareSettingViewController animated:YES];
+        } else {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"cameraSetting" withValue:nil];
+            
+            CameraSettingViewController *cameraSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CameraSettingViewController"];
+            [self.navigationController pushViewController:cameraSettingViewController animated:YES];
         }
     }
 }

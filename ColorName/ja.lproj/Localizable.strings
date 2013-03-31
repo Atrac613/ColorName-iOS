@@ -57,6 +57,8 @@
 "OPTION" = "オプション";
 "APPLICATION_SETTINGS" = "アプリの設定";
 "LANGUAGES" = "言語";
+"CAMERA" = "カメラ";
+"HIGH_RESOLUTION" = "高解像度";
 
 "LANGUAGE_INFORMATION_MESSAGE" = "色名の検索は各言語の Wikipedia を利用して行われます。その為、選択した言語以外の結果も含まれて表示される事があります。また、検索結果はサイト上のデータと異なる場合があります。参考にしている Wikipedia の詳細はライセンスページをご覧ください。";
 
