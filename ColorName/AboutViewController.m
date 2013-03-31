@@ -213,12 +213,15 @@
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"rateThisApp" withValue:nil];
             
             UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
-            [cell.textLabel setText:@""];
             
-            UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            [indicator setFrame:CGRectMake(tableView.frame.size.width / 2 - 25, 5, 30, 30)];
-            [indicator startAnimating];
-            [cell.contentView addSubview:indicator];
+            if (cell.textLabel.text.length > 0) {
+                [cell.textLabel setText:@""];
+                
+                UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                [indicator setFrame:CGRectMake(tableView.frame.size.width / 2 - 25, 5, 30, 30)];
+                [indicator startAnimating];
+                [cell.contentView addSubview:indicator];
+            }
             
             [self presentAppStoreForID:[NSNumber numberWithInt:kAppId] withDelegate:self withURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", kAppId]]];
         }

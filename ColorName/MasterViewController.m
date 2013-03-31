@@ -287,8 +287,7 @@
 }
 
 - (void)captureOutput:(AVCaptureOutput*)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection*)connection {
-    CVImageBufferRef buffer;
-    buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVImageBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     
     CVPixelBufferLockBaseAddress(buffer, 0);
     
@@ -299,27 +298,23 @@
     height = CVPixelBufferGetHeight(buffer);
     bytesPerRow = CVPixelBufferGetBytesPerRow(buffer);
     
-    CGColorSpaceRef colorSpace;
-    CGContextRef cgContext;
-    colorSpace = CGColorSpaceCreateDeviceRGB();
-    cgContext = CGBitmapContextCreate(
-                                      base, width, height, 8, bytesPerRow, colorSpace, 
-                                      kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef cgContext = CGBitmapContextCreate(base, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    
+    CGImageRef cgImage = CGBitmapContextCreateImage(cgContext);
+    
+    CGContextRelease(cgContext);
     CGColorSpaceRelease(colorSpace);
     
-    CGImageRef cgImage;
-    UIImage *image;
-    cgImage = CGBitmapContextCreateImage(cgContext);
-    image = [UIImage imageWithCGImage:cgImage scale:2.f
-                          orientation:UIImageOrientationRight];
-    CGImageRelease(cgImage);
-    CGContextRelease(cgContext);
+    UIImage *image = [UIImage imageWithCGImage:cgImage scale:2.f orientation:UIImageOrientationRight];
     
-    CVPixelBufferUnlockBaseAddress(buffer, 0);
+    CGImageRelease(cgImage);
     
     UIImage *lowImage = [self converToLowImage:image];
     
     [self getCenterColor:lowImage];
+    
+    CVPixelBufferUnlockBaseAddress(buffer, 0);
 }
 
 - (UIImage*)converToLowImage:(UIImage*)image {
