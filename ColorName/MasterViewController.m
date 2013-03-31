@@ -333,6 +333,7 @@
     
     CGImageRef imageRef = CGImageCreateWithImageInRect(newImage.CGImage, CGRectMake(0, top, 144, 96));
     newImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
     
     return newImage;
 }
