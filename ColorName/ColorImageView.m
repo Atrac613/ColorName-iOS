@@ -20,7 +20,7 @@
     return self;
 }
 
-- (void)setImageFromUIColor:(UIColor *)color {
+- (void)setImageFromUIColor:(UIColor*)color {
     UIImage *colorImage = [self convertUIColorToUIImage:color];
     
     [self setImage:colorImage];

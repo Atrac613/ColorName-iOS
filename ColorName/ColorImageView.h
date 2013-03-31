@@ -10,6 +10,6 @@
 
 @interface ColorImageView : UIImageView
 
-- (void)setImageFromUIColor:(UIColor *)color;
+- (void)setImageFromUIColor:(UIColor*)color;
 
 @end

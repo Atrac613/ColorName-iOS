@@ -26,9 +26,17 @@
 @synthesize redLevelLabel;
 @synthesize greenLevelLabel;
 @synthesize blueLevelLabel;
+@synthesize cLevelLabel;
+@synthesize mLevelLabel;
+@synthesize yLevelLabel;
+@synthesize kLevelLabel;
 @synthesize redLevelBar;
 @synthesize greenLevelBar;
 @synthesize blueLevelBar;
+@synthesize cLevelBar;
+@synthesize mLevelBar;
+@synthesize yLevelBar;
+@synthesize kLevelBar;
 @synthesize hexLabel;
 @synthesize likeButton;
 @synthesize similarColorsLabel;
@@ -68,20 +76,25 @@
     BOOL b = [currentColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
     
     NSLog(@"%f %f %f %f %d", hue, saturation, brightness, alpha, b);
+    */
     
     float k = MIN(1 - red, MIN(1 - green, 1 - blue));
     float c = (1 - red - k) / (1 - k);
-    float m = 255 * (255 - [colorName green] - k) / (255 - k);
-    float y = 255 * (255 - [colorName blue] - k) / (255 - k);
+    float m = (1 - green - k) / (1 - k);
+    float y = (1 - blue - k) / (1 - k);
     
-    int c1 = (c * 100 / 1);
-    int m1 = (m * 100 / 255);
-    int y1 = (y * 100 / 255);
-    int k1 = (k * 100 / 255);
+    //NSLog(@"%f %f %f %f", c, m, y, k);
+    //NSLog(@"%f %f %f %f", c*100, m*100, y*100, k*100);
     
-    NSLog(@"%f %f %f %f", c, m, y, k);
-    NSLog(@"%d %d %d %d", c1, m1, y1, k1);
-    */
+    [cLevelBar setProgress:c];
+    [mLevelBar setProgress:m];
+    [yLevelBar setProgress:y];
+    [kLevelBar setProgress:k];
+    
+    [cLevelLabel setText:[NSString stringWithFormat:@"%@%%", [NSNumber numberWithFloat:round(c*100)]]];
+    [mLevelLabel setText:[NSString stringWithFormat:@"%@%%", [NSNumber numberWithFloat:round(m*100)]]];
+    [yLevelLabel setText:[NSString stringWithFormat:@"%@%%", [NSNumber numberWithFloat:round(y*100)]]];
+    [kLevelLabel setText:[NSString stringWithFormat:@"%@%%", [NSNumber numberWithFloat:round(k*100)]]];
     
     [colorNameLabel setText:colorName.name];
     [colorNameLabel setAdjustsFontSizeToFitWidth:YES];
@@ -145,13 +158,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 3) {
+    if (indexPath.section == 4) {
         [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"similarColors" withValue:nil];
         
         SimilarColorsViewController *similarColorsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SimilarColorsViewController"];
         similarColorsViewController.currentColor = currentColor;
         [self.navigationController pushViewController:similarColorsViewController animated:YES];
-    } else if (indexPath.section == 4) {
+    } else if (indexPath.section == 5) {
         [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"share" withValue:nil];
         
         NSString *message;
