@@ -70,12 +70,20 @@
     tableContentArray = [[NSMutableArray alloc] init];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults boolForKey:@"enabled_lang_japanese"] || [defaults boolForKey:@"enabled_lang_english"]) {
+    BOOL langJapanese = [defaults boolForKey:@"enabled_lang_japanese"];
+    BOOL langEnglish = [defaults boolForKey:@"enabled_lang_english"];
+    
+    if (langJapanese || langEnglish) {
         NSString *lang = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"] objectAtIndex:0];
         
         if ([lang isEqualToString:@"ja"]) {
-            if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
+            if (langJapanese) {
+                if (langJapanese && langEnglish) {
+                    [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
+                } else {
+                    [tableSectionArray addObject:NSLocalizedString(@"SEARCH_RESULTS", @"")];
+                }
+                
                 if (offset > 0) {
                     [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor offset:offset]];
                 } else {
@@ -83,8 +91,12 @@
                 }
             }
             
-            if ([defaults boolForKey:@"enabled_lang_english"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
+            if (langEnglish) {
+                if (langJapanese && langEnglish) {
+                    [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
+                } else {
+                    [tableSectionArray addObject:NSLocalizedString(@"SEARCH_RESULTS", @"")];
+                }
                 
                 if (offset > 0) {
                     [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor offset:offset]];
@@ -93,8 +105,13 @@
                 }
             }
         } else {
-            if ([defaults boolForKey:@"enabled_lang_english"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
+            if (langEnglish) {
+                if (langJapanese && langEnglish) {
+                    [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
+                } else {
+                    [tableSectionArray addObject:NSLocalizedString(@"SEARCH_RESULTS", @"")];
+                }
+                
                 if (offset > 0) {
                     [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor offset:offset]];
                 } else {
@@ -102,8 +119,13 @@
                 }
             }
             
-            if ([defaults boolForKey:@"enabled_lang_japanese"]) {
-                [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
+            if (langJapanese) {
+                if (langJapanese && langEnglish) {
+                    [tableSectionArray addObject:NSLocalizedString(@"JAPANESE", @"")];
+                } else {
+                    [tableSectionArray addObject:NSLocalizedString(@"SEARCH_RESULTS", @"")];
+                }
+                
                 if (offset > 0) {
                     [tableContentArray addObject:[colorNameJaDao findColorNameWithColor:currentColor offset:offset]];
                 } else {
@@ -112,7 +134,7 @@
             }
         }
     } else {
-        [tableSectionArray addObject:NSLocalizedString(@"ENGLISH", @"")];
+        [tableSectionArray addObject:NSLocalizedString(@"SEARCH_RESULTS", @"")];
         [tableContentArray addObject:[colorNameEnDao findColorNameWithColor:currentColor]];
     }
     
