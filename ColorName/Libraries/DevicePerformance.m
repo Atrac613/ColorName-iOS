@@ -14,7 +14,9 @@
 @synthesize lowPerformanceMachine;
 
 - (id)init {
-    lowPerformanceMachine = [[NSArray alloc] initWithObjects:@"iPod1,1", @"iPod2,1", @"iPod3,1", @"iPod4,1", @"iPhone1,1", @"iPhone1,2", @"iPhone2,1", @"iPad1,1", @"iPad2,1", @"iPhone3,1", nil];
+    if (self = [super init]) {
+        lowPerformanceMachine = [[NSArray alloc] initWithObjects:@"iPod1,1", @"iPod2,1", @"iPod3,1", @"iPod4,1", @"iPhone1,1", @"iPhone1,2", @"iPhone2,1", @"iPad1,1", @"iPad2,1", @"iPhone3,1", nil];
+    }
     
     return self;
 }
