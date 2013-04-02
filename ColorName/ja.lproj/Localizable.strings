@@ -62,6 +62,8 @@
 
 "LANGUAGE_INFORMATION_MESSAGE" = "色名の検索は各言語の Wikipedia を利用して行われます。その為、選択した言語以外の結果も含まれて表示される事があります。また、検索結果はサイト上のデータと異なる場合があります。参考にしている Wikipedia の詳細はライセンスページをご覧ください。";
 
+"CAMERA_WARNING_MESSAGE" = "高解像度の設定をすると iPhone4S 以前の端末では動作が遅くなる場合があります。";
+
 "SIMILAR_COLORS" = "似た色";
 "SHARE" = "共有";
 

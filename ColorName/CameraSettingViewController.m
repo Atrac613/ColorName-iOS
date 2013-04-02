@@ -66,7 +66,7 @@
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return  @"";
+    return  NSLocalizedString(@"CAMERA_WARNING_MESSAGE", @"");
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
