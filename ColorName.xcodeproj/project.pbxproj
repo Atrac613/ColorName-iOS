@@ -14,6 +14,17 @@
 		0629B4AE15C6D58300397737 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AB15C6D58300397737 /* CoreVideo.framework */; };
 		0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */; };
 		0629B4B315C6E84B00397737 /* ColorListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0629B4B215C6E84B00397737 /* ColorListCell.m */; };
+		063096EA170714B6002420BE /* DMActivityInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 063096CB170714B5002420BE /* DMActivityInstagram.m */; };
+		063096ED170714B6002420BE /* DMResizerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063096D1170714B5002420BE /* DMResizerViewController.m */; };
+		063096EE170714B6002420BE /* DMResizerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063096D2170714B5002420BE /* DMResizerViewController.xib */; };
+		063096F4170714B6002420BE /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 063096DB170714B5002420BE /* instagram.png */; };
+		063096F5170714B6002420BE /* instagram@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 063096DC170714B5002420BE /* instagram@2x.png */; };
+		063096F6170714B6002420BE /* instagram~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 063096DD170714B5002420BE /* instagram~ipad.png */; };
+		063096F7170714B6002420BE /* instagram~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 063096DE170714B5002420BE /* instagram~ipad@2x.png */; };
+		0630970117074CB7002420BE /* ColorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630970017074CB7002420BE /* ColorImageView.m */; };
+		0630978217089806002420BE /* MachineName.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630978117089806002420BE /* MachineName.m */; };
+		063097851708997A002420BE /* DevicePerformance.m in Sources */ = {isa = PBXBuildFile; fileRef = 063097841708997A002420BE /* DevicePerformance.m */; };
+		0630978817089DC4002420BE /* CameraSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630978717089DC4002420BE /* CameraSettingViewController.m */; };
 		0639A6C4167DFA2F00DB78B5 /* LanguageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */; };
 		065D433915C0301500A38E86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433815C0301500A38E86 /* UIKit.framework */; };
 		065D433B15C0301500A38E86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065D433A15C0301500A38E86 /* Foundation.framework */; };
@@ -129,6 +140,23 @@
 		0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0629B4B115C6E84B00397737 /* ColorListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorListCell.h; sourceTree = "<group>"; };
 		0629B4B215C6E84B00397737 /* ColorListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorListCell.m; sourceTree = "<group>"; };
+		063096CA170714B5002420BE /* DMActivityInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMActivityInstagram.h; sourceTree = "<group>"; };
+		063096CB170714B5002420BE /* DMActivityInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMActivityInstagram.m; sourceTree = "<group>"; };
+		063096D0170714B5002420BE /* DMResizerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMResizerViewController.h; sourceTree = "<group>"; };
+		063096D1170714B5002420BE /* DMResizerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMResizerViewController.m; sourceTree = "<group>"; };
+		063096D2170714B5002420BE /* DMResizerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMResizerViewController.xib; sourceTree = "<group>"; };
+		063096DB170714B5002420BE /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
+		063096DC170714B5002420BE /* instagram@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram@2x.png"; sourceTree = "<group>"; };
+		063096DD170714B5002420BE /* instagram~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram~ipad.png"; sourceTree = "<group>"; };
+		063096DE170714B5002420BE /* instagram~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram~ipad@2x.png"; sourceTree = "<group>"; };
+		063096FF17074CB7002420BE /* ColorImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorImageView.h; sourceTree = "<group>"; };
+		0630970017074CB7002420BE /* ColorImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorImageView.m; sourceTree = "<group>"; };
+		0630978017089806002420BE /* MachineName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MachineName.h; sourceTree = "<group>"; };
+		0630978117089806002420BE /* MachineName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineName.m; sourceTree = "<group>"; };
+		063097831708997A002420BE /* DevicePerformance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevicePerformance.h; sourceTree = "<group>"; };
+		063097841708997A002420BE /* DevicePerformance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevicePerformance.m; sourceTree = "<group>"; };
+		0630978617089DC4002420BE /* CameraSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraSettingViewController.h; sourceTree = "<group>"; };
+		0630978717089DC4002420BE /* CameraSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraSettingViewController.m; sourceTree = "<group>"; };
 		0639A6C2167DFA2F00DB78B5 /* LanguageSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageSettingViewController.h; sourceTree = "<group>"; };
 		0639A6C3167DFA2F00DB78B5 /* LanguageSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageSettingViewController.m; sourceTree = "<group>"; };
 		065D433415C0301500A38E86 /* ColorName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorName.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +348,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		063096C3170714B5002420BE /* DMActivityInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				063096C4170714B5002420BE /* DMActivityInstagram */,
+			);
+			path = DMActivityInstagram;
+			sourceTree = "<group>";
+		};
+		063096C4170714B5002420BE /* DMActivityInstagram */ = {
+			isa = PBXGroup;
+			children = (
+				063096CA170714B5002420BE /* DMActivityInstagram.h */,
+				063096CB170714B5002420BE /* DMActivityInstagram.m */,
+				063096D0170714B5002420BE /* DMResizerViewController.h */,
+				063096D1170714B5002420BE /* DMResizerViewController.m */,
+				063096D2170714B5002420BE /* DMResizerViewController.xib */,
+				063096DB170714B5002420BE /* instagram.png */,
+				063096DC170714B5002420BE /* instagram@2x.png */,
+				063096DD170714B5002420BE /* instagram~ipad.png */,
+				063096DE170714B5002420BE /* instagram~ipad@2x.png */,
+			);
+			path = DMActivityInstagram;
+			sourceTree = "<group>";
+		};
 		065D432915C0301400A38E86 = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +398,7 @@
 		065D433715C0301500A38E86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				063096C3170714B5002420BE /* DMActivityInstagram */,
 				06C4000716F4B62400EBD9C1 /* LINEActivity */,
 				06C4FFE116F4A4A900EBD9C1 /* appirater */,
 				06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */,
@@ -399,6 +452,8 @@
 				06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */,
 				06C4001916F4E15900EBD9C1 /* ShareSettingViewController.h */,
 				06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */,
+				0630978617089DC4002420BE /* CameraSettingViewController.h */,
+				0630978717089DC4002420BE /* CameraSettingViewController.m */,
 				065D433F15C0301500A38E86 /* Supporting Files */,
 			);
 			path = ColorName;
@@ -451,6 +506,10 @@
 				06C660B816650B4E003CC7C2 /* FlipFromLeftSegue.m */,
 				06C660E01666771C003CC7C2 /* FlipFromRightSegue.h */,
 				06C660E11666771C003CC7C2 /* FlipFromRightSegue.m */,
+				0630978017089806002420BE /* MachineName.h */,
+				0630978117089806002420BE /* MachineName.m */,
+				063097831708997A002420BE /* DevicePerformance.h */,
+				063097841708997A002420BE /* DevicePerformance.m */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -621,6 +680,8 @@
 			children = (
 				0629B4B115C6E84B00397737 /* ColorListCell.h */,
 				0629B4B215C6E84B00397737 /* ColorListCell.m */,
+				063096FF17074CB7002420BE /* ColorImageView.h */,
+				0630970017074CB7002420BE /* ColorImageView.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -752,6 +813,11 @@
 				06C4001016F4B62400EBD9C1 /* LINEActivityIcon@2x.png in Resources */,
 				06C4001116F4B62400EBD9C1 /* LINEActivityIcon@2x~ipad.png in Resources */,
 				06C4001216F4B62400EBD9C1 /* LINEActivityIcon~ipad.png in Resources */,
+				063096EE170714B6002420BE /* DMResizerViewController.xib in Resources */,
+				063096F4170714B6002420BE /* instagram.png in Resources */,
+				063096F5170714B6002420BE /* instagram@2x.png in Resources */,
+				063096F6170714B6002420BE /* instagram~ipad.png in Resources */,
+				063096F7170714B6002420BE /* instagram~ipad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,6 +891,12 @@
 				06C4001516F4C7BE00EBD9C1 /* SimilarColorsViewController.m in Sources */,
 				06C4001816F4C86200EBD9C1 /* DefaultColorTableViewController.m in Sources */,
 				06C4001B16F4E15A00EBD9C1 /* ShareSettingViewController.m in Sources */,
+				063096EA170714B6002420BE /* DMActivityInstagram.m in Sources */,
+				063096ED170714B6002420BE /* DMResizerViewController.m in Sources */,
+				0630970117074CB7002420BE /* ColorImageView.m in Sources */,
+				0630978217089806002420BE /* MachineName.m in Sources */,
+				063097851708997A002420BE /* DevicePerformance.m in Sources */,
+				0630978817089DC4002420BE /* CameraSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,6 +1020,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -963,7 +1036,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B821FC8-E174-4FF7-B34F-329CA19CB28B";
+				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA51E37A-8118-46F3-BB12-D4B5A6553D63";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = armv7;
 			};
@@ -979,6 +1053,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Osamu Noguchi";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -988,6 +1063,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "01363147-E072-47EE-B3ED-73A5592735CB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01363147-E072-47EE-B3ED-73A5592735CB";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -998,6 +1074,7 @@
 		065D436B15C0301500A38E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
@@ -1007,7 +1084,8 @@
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
+				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA51E37A-8118-46F3-BB12-D4B5A6553D63";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1016,6 +1094,8 @@
 		065D436C15C0301500A38E86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Osamu Noguchi";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
@@ -1024,6 +1104,8 @@
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "01363147-E072-47EE-B3ED-73A5592735CB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01363147-E072-47EE-B3ED-73A5592735CB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1073,7 +1155,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: paperboy&co., Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1088,7 +1171,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
+				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = armv7;
 			};
@@ -1097,7 +1180,8 @@
 		6577010015CA0C3500A36A85 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: paperboy&co., Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
@@ -1106,7 +1190,7 @@
 					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2AFC211-74CB-42B4-B4C6-B05FC36F088C";
+				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

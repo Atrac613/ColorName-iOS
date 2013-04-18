@@ -29,7 +29,7 @@
 	
     [self.navigationItem setTitle:NSLocalizedString(@"SIMILAR_COLORS", @"")];
     
-    [self getColorList];
+    [self getColorListWithOffset:0];
 }
 
 - (void)didReceiveMemoryWarning

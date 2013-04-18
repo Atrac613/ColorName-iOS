@@ -11,6 +11,7 @@
 #import "ThirdPartyNoticesViewController.h"
 #import "LanguageSettingViewController.h"
 #import "ShareSettingViewController.h"
+#import "CameraSettingViewController.h"
 #import "AppDelegate.h"
 
 @interface AboutViewController ()
@@ -42,6 +43,12 @@
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CLOSE", @"") style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonPressed)]];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -68,7 +75,7 @@
     } else if (section == 2) {
         return 1;
     } else if (section == 3) {
-        return 2;
+        return 3;
     }
     
     return 0;
@@ -102,44 +109,46 @@
     UITableViewCell *cell;
     
     if (indexPath.section == 0) {
+        cellIdentifier = @"HeadCell";
+        
         cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        }
         
-        if (indexPath.row == 0) {
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            cell.imageView.image = [UIImage imageNamed:@"icon.png"];
-            cell.imageView.layer.cornerRadius = 10.f;
-            cell.imageView.clipsToBounds = YES;
-            
-            UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 20, 200, 15)];
-            [appNameLabel setText:NSLocalizedString(@"COLORNAME", @"")];
-            [appNameLabel setTextColor:[UIColor blackColor]];
-            [appNameLabel setBackgroundColor:[UIColor clearColor]];
-            [cell addSubview:appNameLabel];
-            
-            NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-            UILabel *appVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 40, 200, 15)];
-            [appVersionLabel setText:[NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"VERSION", @""), version]];
-            [appVersionLabel setFont:[UIFont systemFontOfSize:10.f]];
-            [appVersionLabel setTextColor:[UIColor blackColor]];
-            [appVersionLabel setBackgroundColor:[UIColor clearColor]];
-            [cell addSubview:appVersionLabel];
-            
-            UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 52, 200, 15)];
-            [authorLabel setText:[NSString stringWithFormat:@"%@: Osamu Noguchi", NSLocalizedString(@"AUTHOR", @"")]];
-            [authorLabel setFont:[UIFont systemFontOfSize:10.f]];
-            [authorLabel setTextColor:[UIColor blackColor]];
-            [authorLabel setBackgroundColor:[UIColor clearColor]];
-            [cell addSubview:authorLabel];
-        } else if (indexPath.row == 1) {
-            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-            [cell.textLabel setText:NSLocalizedString(@"SOURCE_CODE_REPOSITORY", @"")];
-        }else {
-            [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-            [cell.textLabel setText:NSLocalizedString(@"MORE_APPS", @"")];
+            if (indexPath.row == 0) {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                cell.imageView.image = [UIImage imageNamed:@"icon.png"];
+                cell.imageView.layer.cornerRadius = 10.f;
+                cell.imageView.clipsToBounds = YES;
+                
+                UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 20, 200, 15)];
+                [appNameLabel setText:NSLocalizedString(@"COLORNAME", @"")];
+                [appNameLabel setTextColor:[UIColor blackColor]];
+                [appNameLabel setBackgroundColor:[UIColor clearColor]];
+                [cell addSubview:appNameLabel];
+                
+                NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+                UILabel *appVersionLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 40, 200, 15)];
+                [appVersionLabel setText:[NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"VERSION", @""), version]];
+                [appVersionLabel setFont:[UIFont systemFontOfSize:10.f]];
+                [appVersionLabel setTextColor:[UIColor blackColor]];
+                [appVersionLabel setBackgroundColor:[UIColor clearColor]];
+                [cell addSubview:appVersionLabel];
+                
+                UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 52, 200, 15)];
+                [authorLabel setText:[NSString stringWithFormat:@"%@: Osamu Noguchi", NSLocalizedString(@"AUTHOR", @"")]];
+                [authorLabel setFont:[UIFont systemFontOfSize:10.f]];
+                [authorLabel setTextColor:[UIColor blackColor]];
+                [authorLabel setBackgroundColor:[UIColor clearColor]];
+                [cell addSubview:authorLabel];
+            } else if (indexPath.row == 1) {
+                [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+                [cell.textLabel setText:NSLocalizedString(@"SOURCE_CODE_REPOSITORY", @"")];
+            }else {
+                [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+                [cell.textLabel setText:NSLocalizedString(@"MORE_APPS", @"")];
+            }
         }
     } else if (indexPath.section == 1) {
         cell = [tv dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -169,6 +178,9 @@
         }
         
         if (indexPath.row == 0) {
+            [cell.textLabel setText:NSLocalizedString(@"CAMERA", @"")];
+            [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
+        } else if (indexPath.row == 1) {
             [cell.textLabel setText:NSLocalizedString(@"LANGUAGES", @"")];
             [cell.textLabel setTextAlignment:NSTextAlignmentLeft];
         } else {
@@ -204,10 +216,26 @@
         if (indexPath.row == 0) {
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"rateThisApp" withValue:nil];
             
+            UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
+            
+            if (cell.textLabel.text.length > 0) {
+                [cell.textLabel setText:@""];
+                
+                UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                [indicator setFrame:CGRectMake(tableView.frame.size.width / 2 - 25, 5, 30, 30)];
+                [indicator startAnimating];
+                [cell.contentView addSubview:indicator];
+            }
+            
             [self presentAppStoreForID:[NSNumber numberWithInt:kAppId] withDelegate:self withURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d", kAppId]]];
         }
     } else if (indexPath.section == 3) {
         if (indexPath.row == 0) {
+            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"cameraSetting" withValue:nil];
+            
+            CameraSettingViewController *cameraSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CameraSettingViewController"];
+            [self.navigationController pushViewController:cameraSettingViewController animated:YES];
+        } else if (indexPath.row == 1) {
             [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"languageSetting" withValue:nil];
             
             LanguageSettingViewController *languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
@@ -242,6 +270,8 @@
             if (result) {
                 [self presentViewController:storeController animated:YES completion:nil];
             } else {
+                [tableView reloadData];
+                
                 [[[UIAlertView alloc] initWithTitle:@"Sorry" message:@"There was a problem displaying the app." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil] show];
             }
         }];

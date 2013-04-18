@@ -19,6 +19,8 @@
 - (int)countWithName:(NSString*)name red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue;
 - (void)insertWithName:(NSString*)name red:(NSInteger)red green:(NSInteger)green blue:(NSInteger)blue;
 - (NSMutableArray*)findColorNameWithColor:(UIColor*)color;
+- (NSMutableArray*)findColorNameWithColor:(UIColor*)color offset:(int)offset;
+- (NSMutableArray*)findColorNameWithColor:(UIColor*)color difference:(int)difference;
 - (TbColorName*)findColorNameWithColor:(UIColor*)color colorName:(NSString*)colorName;
 
 @end

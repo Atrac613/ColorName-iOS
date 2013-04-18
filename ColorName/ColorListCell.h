@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ColorImageView.h"
 
 @interface ColorListCell : UITableViewCell {
     UILabel *colorNameLabel;
     UILabel *colorNameYomiLabel;
-    UIView *colorView;
+    ColorImageView *colorView;
 }
 
 @property (nonatomic, retain) UILabel *colorNameLabel;
 @property (nonatomic, retain) UILabel *colorNameYomiLabel;
-@property (nonatomic, retain) UIView *colorView;
+@property (nonatomic, retain) ColorImageView *colorView;
 
 - (void)checkNameYomiLength;
 

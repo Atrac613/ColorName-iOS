@@ -1,18 +1,18 @@
 //
-//  LanguageSettingViewController.m
+//  CameraSettingViewController.m
 //  ColorName
 //
-//  Created by Osamu Noguchi on 12/16/12.
-//  Copyright (c) 2012 atrac613.io. All rights reserved.
+//  Created by Osamu Noguchi on 4/1/13.
+//  Copyright (c) 2013 atrac613.io. All rights reserved.
 //
 
-#import "LanguageSettingViewController.h"
+#import "CameraSettingViewController.h"
 
-@interface LanguageSettingViewController ()
+@interface CameraSettingViewController ()
 
 @end
 
-@implementation LanguageSettingViewController
+@implementation CameraSettingViewController
 
 @synthesize tableView;
 
@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+	
     // for Google Analytics
     self.trackedViewName = NSStringFromClass([self class]);
     
@@ -50,7 +50,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 1;
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,14 +59,14 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return NSLocalizedString(@"LANGUAGES", @"");
+        return NSLocalizedString(@"CAMERA", @"");
     }
     
     return @"";
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return  NSLocalizedString(@"LANGUAGE_INFORMATION_MESSAGE", @"");
+    return  NSLocalizedString(@"CAMERA_WARNING_MESSAGE", @"");
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,19 +82,11 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (indexPath.row == 0) {
-        [cell.textLabel setText:NSLocalizedString(@"ENGLISH", @"")];
+        [cell.textLabel setText:NSLocalizedString(@"HIGH_RESOLUTION", @"")];
         
         UISwitch *switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0, 1.0, 20.0, 20.0)];
-        [switchObj setOn:[defaults boolForKey:@"enabled_lang_english"]];
-        [switchObj addTarget:self action:@selector(englishSwitch:) forControlEvents:UIControlEventValueChanged];
-        
-        [cell setAccessoryView:switchObj];
-    } else {
-        [cell.textLabel setText:NSLocalizedString(@"JAPANESE", @"")];
-        
-        UISwitch *switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0, 1.0, 20.0, 20.0)];
-        [switchObj setOn:[defaults boolForKey:@"enabled_lang_japanese"]];
-        [switchObj addTarget:self action:@selector(japaneseSwitch:) forControlEvents:UIControlEventValueChanged];
+        [switchObj setOn:[defaults boolForKey:@"high_resolution_preview"]];
+        [switchObj addTarget:self action:@selector(resolutionSwitch:) forControlEvents:UIControlEventValueChanged];
         
         [cell setAccessoryView:switchObj];
     }
@@ -106,15 +98,9 @@
     [tv deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)englishSwitch:(id)sender {
+- (void)resolutionSwitch:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:((UISwitch*)sender).on forKey:@"enabled_lang_english"];
-    [defaults synchronize];
-}
-
-- (void)japaneseSwitch:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:((UISwitch*)sender).on forKey:@"enabled_lang_japanese"];
+    [defaults setBool:((UISwitch*)sender).on forKey:@"high_resolution_preview"];
     [defaults synchronize];
 }
 

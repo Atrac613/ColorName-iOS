@@ -57,6 +57,14 @@
 "OPTION" = "Option";
 "APPLICATION_SETTINGS" = "Application Settings";
 "LANGUAGES" = "Languages";
+"CAMERA" = "Camera";
+"HIGH_RESOLUTION" = "High Resolution";
+
+"SEARCH_RESULTS" = "Search Results";
+
+"LANGUAGE_INFORMATION_MESSAGE" = "A color name search is performed by using Wikipedia in all languages. Consequently, results in languages other than those selected are sometimes also included and displayed. Furthermore, there are cases in which the search result differs from the data on the site. Please look at the license page for the details of Wikipedia that we refer to.";
+
+"CAMERA_WARNING_MESSAGE" = "For the iPhone4S or earlier models, if you select the high resolution option, the device may become less responsive.";
 
 "SIMILAR_COLORS" = "Similar Colors";
 "SHARE" = "Share";
