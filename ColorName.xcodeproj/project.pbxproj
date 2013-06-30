@@ -43,6 +43,9 @@
 		065D439915C6D34700A38E86 /* color_names_us.json in Resources */ = {isa = PBXBuildFile; fileRef = 065D439715C6D34700A38E86 /* color_names_us.json */; };
 		065D439E15C6D38700A38E86 /* sqlite3_extension_functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 065D439A15C6D38700A38E86 /* sqlite3_extension_functions.c */; };
 		065D439F15C6D38700A38E86 /* UIColor_Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D439D15C6D38700A38E86 /* UIColor_Categories.m */; };
+		065E5E9717801B7D0066B22F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */; };
+		065E5E9817801BA90066B22F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E74F168205010071C5B3 /* CoreData.framework */; };
+		065E5E9917801BC40066B22F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E750168205010071C5B3 /* SystemConfiguration.framework */; };
 		0665C32A160EEDAF00C9EFC5 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 0665C328160EEDAF00C9EFC5 /* pause.png */; };
 		0665C32B160EEDAF00C9EFC5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 0665C329160EEDAF00C9EFC5 /* play.png */; };
 		0665C330160EFAAC00C9EFC5 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0665C32F160EFAAC00C9EFC5 /* BaseDao.m */; };
@@ -89,11 +92,11 @@
 		06D7951A165F4EE4004396FB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D79518165F4EE4004396FB /* Social.framework */; };
 		06D7951E1661FF12004396FB /* ColorNameService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D7951D1661FF12004396FB /* ColorNameService.m */; };
 		06EC7CB0162155F5002F1B8F /* ColorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EC7CAF162155F5002F1B8F /* ColorDetailsViewController.m */; };
-		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; };
-		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; };
-		6577010515CA0CB800A36A85 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; };
-		6577010615CA0CB800A36A85 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437915C6D33D00A38E86 /* FMDatabaseQueue.m */; };
-		6577010715CA0CB800A36A85 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437B15C6D33D00A38E86 /* FMResultSet.m */; };
+		6577010315CA0CB800A36A85 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437315C6D33D00A38E86 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010415CA0CB800A36A85 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437515C6D33D00A38E86 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010515CA0CB800A36A85 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437715C6D33D00A38E86 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010615CA0CB800A36A85 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437915C6D33D00A38E86 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6577010715CA0CB800A36A85 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437B15C6D33D00A38E86 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6577010815CA0CB800A36A85 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D437F15C6D33D00A38E86 /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6577010915CA0CB800A36A85 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438115C6D33D00A38E86 /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6577010A15CA0CB800A36A85 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 065D438315C6D33D00A38E86 /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -305,6 +308,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				065E5E9917801BC40066B22F /* SystemConfiguration.framework in Frameworks */,
+				065E5E9817801BA90066B22F /* CoreData.framework in Frameworks */,
 				6577011515CA0D3600A36A85 /* CoreGraphics.framework in Frameworks */,
 				6577011415CA0D1E00A36A85 /* AVFoundation.framework in Frameworks */,
 				6577011315CA0D0D00A36A85 /* libsqlite3.0.dylib in Frameworks */,
@@ -313,6 +318,7 @@
 				065D435A15C0301500A38E86 /* SenTestingKit.framework in Frameworks */,
 				065D435B15C0301500A38E86 /* UIKit.framework in Frameworks */,
 				065D435C15C0301500A38E86 /* Foundation.framework in Frameworks */,
+				065E5E9717801B7D0066B22F /* libGoogleAnalytics.a in Frameworks */,
 				06C660D416666590003CC7C2 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,7 +783,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "if [ \"$RUN_UNIT_TEST_WITH_IOS_SIM\" = \"YES\" ]; then\ntest_bundle_path=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\nenvironment_args=\"--setenv DYLD_INSERT_LIBRARIES=/../../Library/PrivateFrameworks/IDEBundleInjection.framework/IDEBundleInjection --setenv XCInjectBundle=$test_bundle_path --setenv XCInjectBundleInto=$TEST_HOST\"\nios-sim launch $(dirname $TEST_HOST) $environment_args --args -SenTest All $test_bundle_path\necho \"Finished running tests with ios-sim\"\nelse\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1008,7 +1014,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1040,8 +1046,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1057,8 +1069,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -1123,8 +1141,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Distribution;
