@@ -7,26 +7,33 @@
 //
 
 #import "ColorNameTests.h"
+#import "JSON.h"
+#import "UIColor_Categories.h"
+#import "MasterViewController.h"
+
+static NSTimeInterval const SenDefaultTimeoutInterval = 30.f;
 
 @implementation ColorNameTests
 
 - (void)setUp
 {
     [super setUp];
-    
-    // Set-up code here.
 }
 
 - (void)tearDown
 {
-    // Tear-down code here.
-    
     [super tearDown];
 }
 
-- (void)testExample
+- (void)test001FindYellowColor
 {
-    //STFail(@"Unit tests are not implemented yet in ColorNameTests");
+    colorNameEnDao = [[TbColorNameEnDao alloc] init];
+    
+    NSArray *results = [colorNameEnDao findColorNameWithColor:[UIColor yellowColor]];
+    
+    NSLog(@"Results: %d", [results count]);
+    
+    STAssertTrue([results count] > 0, @"Database is not initialize.");
 }
 
 @end

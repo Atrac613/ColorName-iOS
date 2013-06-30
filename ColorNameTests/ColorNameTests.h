@@ -7,7 +7,12 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "TbColorNameJaDao.h"
+#import "TbColorNameEnDao.h"
 
-@interface ColorNameTests : SenTestCase
+@interface ColorNameTests : SenTestCase {
+    TbColorNameJaDao *colorNameJaDao;
+    TbColorNameEnDao *colorNameEnDao;
+}
 
 @end
