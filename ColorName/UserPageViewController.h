@@ -9,6 +9,8 @@
 #import "WebViewViewController.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface UserPageViewController : WebViewViewController<UIPickerViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UITextFieldDelegate> {
     IBOutlet UIBarButtonItem *updateProfileButton;

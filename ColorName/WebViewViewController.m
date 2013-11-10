@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
+    self.screenName = NSStringFromClass([self class]);
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)]];
 }

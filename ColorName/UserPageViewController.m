@@ -44,7 +44,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
+    self.screenName = NSStringFromClass([self class]);
 	
     [self.navigationItem setTitle:NSLocalizedString(@"MY_PAGE", @"")];
     
@@ -81,7 +81,7 @@
 }
 
 - (IBAction)actionButtonPressed:(id)sender {
-    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"actionButton" withValue:nil];
+    [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"actionButton" value:nil] build]];
     
     [[UIApplication sharedApplication] openURL:webView.request.URL];
 }
@@ -326,7 +326,7 @@
 #pragma mark - UIAlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"updateProfile" withValue:[NSNumber numberWithInteger:buttonIndex]];
+    [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"updateProfile" value:[NSNumber numberWithInteger:buttonIndex]] build]];
     
     if (buttonIndex == 1) {
         [updateProfileButton setEnabled:NO];

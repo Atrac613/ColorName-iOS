@@ -38,7 +38,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
+    self.screenName = NSStringFromClass([self class]);
     
     [self.navigationItem setTitle:NSLocalizedString(@"FAVORITES", @"")];
     [self.navigationItem setRightBarButtonItem:self.editButtonItem];
@@ -176,7 +176,7 @@
 #pragma mark - IBAction
 
 - (IBAction)syncButtonPressed:(id)sender {
-    [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"sync" withValue:nil];
+    [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"sync" value:nil] build]];
     
     if ([SVProgressHUD isVisible]) {
         [connection cancel];
@@ -234,7 +234,7 @@
 
 - (void)myPageButtonPressed {
     if ([SharedAppDelegate.userId length] > 0) {
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"myPage" withValue:nil];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"myPage" value:nil] build]];
         
         UserPageViewController *userPageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UserPageViewController"];
         [userPageViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
@@ -470,7 +470,7 @@
     if ([alertMode isEqualToString:@"tweet"]) {
         alertMode = @"";
         
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"tweetDialog" withValue:[NSNumber numberWithInteger:buttonIndex]];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"tweetDialog" value:[NSNumber numberWithInteger:buttonIndex]] build]];
         
         if (buttonIndex == 1) {
             [self performSelector:@selector(showTweetDialog:) withObject:addedColorNameList afterDelay:1.f];
@@ -480,7 +480,7 @@
     } else if ([alertMode isEqualToString:@"facebook"]) {
         alertMode = @"";
         
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"facebookDialog" withValue:[NSNumber numberWithInteger:buttonIndex]];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"facebookDialog" value:[NSNumber numberWithInteger:buttonIndex]] build]];
         
         if (buttonIndex == 1) {
             [self performSelector:@selector(showFacebookDialog:) withObject:addedColorNameList afterDelay:1.f];
@@ -496,7 +496,7 @@
         [defaults setBool:YES forKey:@"HOW_TO_USE_ALERT_1"];
         [defaults synchronize];
     } else {
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"combining" withValue:[NSNumber numberWithInteger:buttonIndex]];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"combining" value:[NSNumber numberWithInteger:buttonIndex]] build]];
         
         if (buttonIndex == 1) {
             [self.navigationItem setHidesBackButton:YES animated:YES];

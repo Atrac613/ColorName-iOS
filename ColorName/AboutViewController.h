@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
 #import "GAITrackedViewController.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface AboutViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, SKStoreProductViewControllerDelegate> {
     IBOutlet UITableView *tableView;

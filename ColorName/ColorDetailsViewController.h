@@ -10,6 +10,8 @@
 #import "TbColorNameJaDao.h"
 #import "TbFavoriteColorNameDao.h"
 #import "TbColorName.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface ColorDetailsViewController : UITableViewController {
     IBOutlet UILabel *colorNameLabel;

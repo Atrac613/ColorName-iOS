@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
+    self.screenName = NSStringFromClass([self class]);
 	
     [self.navigationItem setTitle:NSLocalizedString(@"LICENSE", @"")];
     

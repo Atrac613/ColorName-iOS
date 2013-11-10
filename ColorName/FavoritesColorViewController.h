@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TbFavoriteColorNameDao.h"
 #import "GAITrackedViewController.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 
 @interface FavoritesColorViewController : GAITrackedViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     IBOutlet UITableView *tableView;

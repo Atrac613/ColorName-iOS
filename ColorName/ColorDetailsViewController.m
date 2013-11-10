@@ -51,7 +51,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    [SharedAppDelegate.tracker sendView:NSStringFromClass([self class])];
+    [SharedAppDelegate.tracker set:kGAIScreenName value:NSStringFromClass([self class])];
     
     [self.navigationItem setTitle:NSLocalizedString(@"DETAILS", @"")];
     
@@ -144,12 +144,12 @@
         [likeButton setTitle:@"Liked" forState:UIControlStateNormal];
         [likeButton setHighlighted:YES];
         
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"liked" withValue:nil];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"liked" value:nil] build]];
     } else {
         [likeButton setTitle:@"Like" forState:UIControlStateNormal];
         [likeButton setHighlighted:NO];
         
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"like" withValue:nil];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"like" value:nil] build]];
     }
 }
 
@@ -159,13 +159,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 4) {
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"similarColors" withValue:nil];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"similarColors" value:nil] build]];
         
         SimilarColorsViewController *similarColorsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SimilarColorsViewController"];
         similarColorsViewController.currentColor = currentColor;
         [self.navigationController pushViewController:similarColorsViewController animated:YES];
     } else if (indexPath.section == 5) {
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"share" withValue:nil];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"share" value:nil] build]];
         
         NSString *message;
         
@@ -216,7 +216,7 @@
     activityView.completionHandler = ^(NSString *activityType, BOOL completed){
         NSLog(@"Activity Type: %@", activityType);
         
-        [SharedAppDelegate.tracker sendEventWithCategory:@"uiActivity" withAction:@"buttonPress" withLabel:activityType withValue:nil];
+        [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:activityType value:nil] build]];
         
         if (completed) {
             NSLog(@"Done.");

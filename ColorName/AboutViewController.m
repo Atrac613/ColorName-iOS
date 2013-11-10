@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
+    self.screenName = NSStringFromClass([self class]);
     
     [self.navigationItem setTitle:NSLocalizedString(@"ABOUT", @"")];
     
@@ -197,24 +197,24 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"sourceCodeRepository" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"sourceCodeRepository" value:nil] build]];
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/Atrac613/ColorName-iOS"]];
         } else if (indexPath.row == 2) {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"moreApps" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"moreApps" value:nil] build]];
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.com/apps/osamunoguchi"]];
         }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"thirdPartyNotices" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"thirdPartyNotices" value:nil] build]];
             
             ThirdPartyNoticesViewController *thirdPartyNoticesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdPartyNoticesViewController"];
             [self presentViewController:thirdPartyNoticesViewController animated:YES completion:nil];
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"rateThisApp" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"rateThisApp" value:nil] build]];
             
             UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
             
@@ -231,17 +231,17 @@
         }
     } else if (indexPath.section == 3) {
         if (indexPath.row == 0) {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"cameraSetting" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"cameraSetting" value:nil] build]];
             
             CameraSettingViewController *cameraSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CameraSettingViewController"];
             [self.navigationController pushViewController:cameraSettingViewController animated:YES];
         } else if (indexPath.row == 1) {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"languageSetting" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"languageSetting" value:nil] build]];
             
             LanguageSettingViewController *languageSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LanguageSettingViewController"];
             [self.navigationController pushViewController:languageSettingViewController animated:YES];
         } else {
-            [SharedAppDelegate.tracker sendEventWithCategory:@"uiAction" withAction:@"buttonPress" withLabel:@"shareSetting" withValue:nil];
+            [SharedAppDelegate.tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"uiAction" action:@"buttonPress" label:@"shareSetting" value:nil] build]];
             
             ShareSettingViewController *shareSettingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ShareSettingViewController"];
             [self.navigationController pushViewController:shareSettingViewController animated:YES];

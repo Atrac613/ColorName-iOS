@@ -38,8 +38,8 @@
     [super viewDidLoad];
     
     // for Google Analytics
-    self.trackedViewName = NSStringFromClass([self class]);
-	
+    self.screenName = NSStringFromClass([self class]);
+    
     colorNameJaDao = [[TbColorNameJaDao alloc] init];
     colorNameEnDao = [[TbColorNameEnDao alloc] init];
     

@@ -81,7 +81,6 @@
 		06C4001516F4C7BE00EBD9C1 /* SimilarColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4001416F4C7BE00EBD9C1 /* SimilarColorsViewController.m */; };
 		06C4001816F4C86200EBD9C1 /* DefaultColorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */; };
 		06C4001B16F4E15A00EBD9C1 /* ShareSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */; };
-		06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */; };
 		06C4FFDD16F4706400EBD9C1 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C4FFDC16F4706400EBD9C1 /* sample.png */; };
 		06C4FFE016F49FFC00EBD9C1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */; };
 		06C660AE16650567003CC7C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06C660AC16650567003CC7C2 /* Localizable.strings */; };
@@ -93,10 +92,15 @@
 		06C660D5166665AD003CC7C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C660D316666590003CC7C2 /* QuartzCore.framework */; };
 		06C660DB1666693F003CC7C2 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C660DA1666693F003CC7C2 /* AboutViewController.m */; };
 		06C660E21666771D003CC7C2 /* FlipFromRightSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C660E11666771C003CC7C2 /* FlipFromRightSegue.m */; };
-		06D28272182F88F500C0CC6E /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */; };
 		06D28273182F891900C0CC6E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */; };
 		06D28274182F892300C0CC6E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E750168205010071C5B3 /* SystemConfiguration.framework */; };
 		06D28275182F892700C0CC6E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0681E74F168205010071C5B3 /* CoreData.framework */; };
+		06D2833B182F8C7800C0CC6E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D282ED182F8C7800C0CC6E /* libGoogleAnalyticsServices.a */; };
+		06D28343182F910000C0CC6E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D282ED182F8C7800C0CC6E /* libGoogleAnalyticsServices.a */; };
+		06D28345182F935D00C0CC6E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D28344182F935D00C0CC6E /* libz.dylib */; };
+		06D28346182F936B00C0CC6E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D28344182F935D00C0CC6E /* libz.dylib */; };
+		06D28348182F93D700C0CC6E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D28347182F93D700C0CC6E /* AdSupport.framework */; };
+		06D28349182F93E500C0CC6E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D28347182F93D700C0CC6E /* AdSupport.framework */; };
 		06D7950616500069004396FB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06D7950516500069004396FB /* Default-568h@2x.png */; };
 		06D79509165F3074004396FB /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D79508165F3074004396FB /* AuthViewController.m */; };
 		06D7950C165F32A3004396FB /* UserPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D7950B165F32A3004396FB /* UserPageViewController.m */; };
@@ -238,12 +242,6 @@
 		06C4001716F4C86200EBD9C1 /* DefaultColorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultColorTableViewController.m; sourceTree = "<group>"; };
 		06C4001916F4E15900EBD9C1 /* ShareSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareSettingViewController.h; sourceTree = "<group>"; };
 		06C4001A16F4E15900EBD9C1 /* ShareSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareSettingViewController.m; sourceTree = "<group>"; };
-		06C4FFA216F46DD400EBD9C1 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		06C4FFA316F46DD400EBD9C1 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		06C4FFA416F46DD400EBD9C1 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		06C4FFA516F46DD400EBD9C1 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
-		06C4FFA616F46DD400EBD9C1 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
-		06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		06C4FFDC16F4706400EBD9C1 /* sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample.png; sourceTree = "<group>"; };
 		06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		06C4FFE216F4A4A900EBD9C1 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -287,6 +285,20 @@
 		06C660DA1666693F003CC7C2 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		06C660E01666771C003CC7C2 /* FlipFromRightSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipFromRightSegue.h; sourceTree = "<group>"; };
 		06C660E11666771C003CC7C2 /* FlipFromRightSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipFromRightSegue.m; sourceTree = "<group>"; };
+		06D282A4182F8C7700C0CC6E /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		06D282A5182F8C7700C0CC6E /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		06D282A6182F8C7700C0CC6E /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		06D282A7182F8C7700C0CC6E /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		06D282A8182F8C7700C0CC6E /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		06D282A9182F8C7700C0CC6E /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		06D282E7182F8C7800C0CC6E /* TAGContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainer.h; sourceTree = "<group>"; };
+		06D282E8182F8C7800C0CC6E /* TAGContainerOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainerOpener.h; sourceTree = "<group>"; };
+		06D282E9182F8C7800C0CC6E /* TAGDataLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGDataLayer.h; sourceTree = "<group>"; };
+		06D282EA182F8C7800C0CC6E /* TAGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGLogger.h; sourceTree = "<group>"; };
+		06D282EB182F8C7800C0CC6E /* TAGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGManager.h; sourceTree = "<group>"; };
+		06D282ED182F8C7800C0CC6E /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		06D28344182F935D00C0CC6E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		06D28347182F93D700C0CC6E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		06D7950516500069004396FB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		06D79507165F3074004396FB /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		06D79508165F3074004396FB /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
@@ -310,19 +322,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				06C660D5166665AD003CC7C2 /* QuartzCore.framework in Frameworks */,
+				06D28348182F93D700C0CC6E /* AdSupport.framework in Frameworks */,
 				065D433915C0301500A38E86 /* UIKit.framework in Frameworks */,
 				065D433B15C0301500A38E86 /* Foundation.framework in Frameworks */,
 				065D433D15C0301500A38E86 /* CoreGraphics.framework in Frameworks */,
 				0629B4AC15C6D58300397737 /* AVFoundation.framework in Frameworks */,
 				0629B4AD15C6D58300397737 /* CoreMedia.framework in Frameworks */,
 				0629B4AE15C6D58300397737 /* CoreVideo.framework in Frameworks */,
-				0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */,
 				06D79519165F4EE4004396FB /* Accounts.framework in Frameworks */,
 				06D7951A165F4EE4004396FB /* Social.framework in Frameworks */,
 				0681E751168205010071C5B3 /* CoreData.framework in Frameworks */,
 				0681E752168205010071C5B3 /* SystemConfiguration.framework in Frameworks */,
-				06C4FFD616F46DD400EBD9C1 /* libGoogleAnalytics.a in Frameworks */,
 				06C4FFE016F49FFC00EBD9C1 /* StoreKit.framework in Frameworks */,
+				06D28345182F935D00C0CC6E /* libz.dylib in Frameworks */,
+				0629B4B015C6D5A300397737 /* libsqlite3.0.dylib in Frameworks */,
+				06D2833B182F8C7800C0CC6E /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +346,6 @@
 			files = (
 				6577011515CA0D3600A36A85 /* CoreGraphics.framework in Frameworks */,
 				6577011415CA0D1E00A36A85 /* AVFoundation.framework in Frameworks */,
-				6577011315CA0D0D00A36A85 /* libsqlite3.0.dylib in Frameworks */,
 				6577011115CA0D0500A36A85 /* CoreMedia.framework in Frameworks */,
 				6577011215CA0D0500A36A85 /* CoreVideo.framework in Frameworks */,
 				065D435A15C0301500A38E86 /* SenTestingKit.framework in Frameworks */,
@@ -342,7 +355,10 @@
 				06D28273182F891900C0CC6E /* StoreKit.framework in Frameworks */,
 				06D28275182F892700C0CC6E /* CoreData.framework in Frameworks */,
 				06D28274182F892300C0CC6E /* SystemConfiguration.framework in Frameworks */,
-				06D28272182F88F500C0CC6E /* libGoogleAnalytics.a in Frameworks */,
+				06D28349182F93E500C0CC6E /* AdSupport.framework in Frameworks */,
+				6577011315CA0D0D00A36A85 /* libsqlite3.0.dylib in Frameworks */,
+				06D28343182F910000C0CC6E /* libGoogleAnalyticsServices.a in Frameworks */,
+				06D28346182F936B00C0CC6E /* libz.dylib in Frameworks */,
 				E37F5AADD4C64C0180FB72E8 /* libPods-ColorNameTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,8 +420,8 @@
 				063096C3170714B5002420BE /* DMActivityInstagram */,
 				06C4000716F4B62400EBD9C1 /* LINEActivity */,
 				06C4FFE116F4A4A900EBD9C1 /* appirater */,
-				06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */,
-				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
+				06D28276182F8C7700C0CC6E /* GoogleAnalyticsServicesiOS_3.02 */,
+				06D28347182F93D700C0CC6E /* AdSupport.framework */,
 				06C4FFDF16F49FFC00EBD9C1 /* StoreKit.framework */,
 				0681E74F168205010071C5B3 /* CoreData.framework */,
 				0681E750168205010071C5B3 /* SystemConfiguration.framework */,
@@ -419,6 +435,8 @@
 				065D433A15C0301500A38E86 /* Foundation.framework */,
 				065D433C15C0301500A38E86 /* CoreGraphics.framework */,
 				065D435915C0301500A38E86 /* SenTestingKit.framework */,
+				0629B4AF15C6D5A300397737 /* libsqlite3.0.dylib */,
+				06D28344182F935D00C0CC6E /* libz.dylib */,
 				7159B68C2F97424D9B67E866 /* libPods-ColorNameTests.a */,
 			);
 			name = Frameworks;
@@ -628,27 +646,6 @@
 			path = LineActivity/LINEActivity;
 			sourceTree = "<group>";
 		};
-		06C4FF6216F46DD400EBD9C1 /* GoogleAnalyticsiOS_2.0beta4 */ = {
-			isa = PBXGroup;
-			children = (
-				06C4FFA116F46DD400EBD9C1 /* Library */,
-			);
-			path = GoogleAnalyticsiOS_2.0beta4;
-			sourceTree = "<group>";
-		};
-		06C4FFA116F46DD400EBD9C1 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				06C4FFA216F46DD400EBD9C1 /* GAI.h */,
-				06C4FFA316F46DD400EBD9C1 /* GAITrackedViewController.h */,
-				06C4FFA416F46DD400EBD9C1 /* GAITracker.h */,
-				06C4FFA516F46DD400EBD9C1 /* GAITransaction.h */,
-				06C4FFA616F46DD400EBD9C1 /* GAITransactionItem.h */,
-				06C4FFA716F46DD400EBD9C1 /* libGoogleAnalytics.a */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		06C4FFE116F4A4A900EBD9C1 /* appirater */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,6 +685,57 @@
 				0630970017074CB7002420BE /* ColorImageView.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		06D28276182F8C7700C0CC6E /* GoogleAnalyticsServicesiOS_3.02 */ = {
+			isa = PBXGroup;
+			children = (
+				06D28277182F8C7700C0CC6E /* GoogleAnalytics */,
+				06D282AC182F8C7700C0CC6E /* GoogleTagManager */,
+				06D282ED182F8C7800C0CC6E /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalyticsServicesiOS_3.02;
+			sourceTree = "<group>";
+		};
+		06D28277182F8C7700C0CC6E /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				06D282A3182F8C7700C0CC6E /* Library */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		06D282A3182F8C7700C0CC6E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				06D282A4182F8C7700C0CC6E /* GAI.h */,
+				06D282A5182F8C7700C0CC6E /* GAIDictionaryBuilder.h */,
+				06D282A6182F8C7700C0CC6E /* GAIFields.h */,
+				06D282A7182F8C7700C0CC6E /* GAILogger.h */,
+				06D282A8182F8C7700C0CC6E /* GAITrackedViewController.h */,
+				06D282A9182F8C7700C0CC6E /* GAITracker.h */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		06D282AC182F8C7700C0CC6E /* GoogleTagManager */ = {
+			isa = PBXGroup;
+			children = (
+				06D282E6182F8C7800C0CC6E /* Library */,
+			);
+			path = GoogleTagManager;
+			sourceTree = "<group>";
+		};
+		06D282E6182F8C7800C0CC6E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				06D282E7182F8C7800C0CC6E /* TAGContainer.h */,
+				06D282E8182F8C7800C0CC6E /* TAGContainerOpener.h */,
+				06D282E9182F8C7800C0CC6E /* TAGDataLayer.h */,
+				06D282EA182F8C7800C0CC6E /* TAGLogger.h */,
+				06D282EB182F8C7800C0CC6E /* TAGManager.h */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		06D7951B1661FEE3004396FB /* Service */ = {
@@ -1106,7 +1154,8 @@
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
@@ -1126,7 +1175,8 @@
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "01363147-E072-47EE-B3ED-73A5592735CB";
@@ -1150,7 +1200,7 @@
 				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsiOS_2.0beta4/Library,
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1172,7 +1222,7 @@
 				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsiOS_2.0beta4/Library,
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1222,7 +1272,8 @@
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/GoogleAnalyticsiOS_2.0beta4/Library\"",
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02/GoogleAnalytics/Library,
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
@@ -1245,7 +1296,7 @@
 				INFOPLIST_FILE = "ColorNameTests/ColorNameTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsiOS_2.0beta4/Library,
+					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
