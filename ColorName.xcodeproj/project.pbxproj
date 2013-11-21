@@ -795,6 +795,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = atrac613.io;
+				TargetAttributes = {
+					065D433315C0301500A38E86 = {
+						DevelopmentTeam = 89UG59TBNX;
+					};
+				};
 			};
 			buildConfigurationList = 065D432E15C0301400A38E86 /* Build configuration list for PBXProject "ColorName" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1147,7 +1152,7 @@
 		065D436B15C0301500A38E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
@@ -1158,8 +1163,8 @@
 					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA51E37A-8118-46F3-BB12-D4B5A6553D63";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CFF6DC20-738F-4ED4-903C-0DB8F7A7D03A";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1168,8 +1173,8 @@
 		065D436C15C0301500A38E86 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Osamu Noguchi";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi (89UG59TBNX)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
@@ -1179,8 +1184,8 @@
 					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01363147-E072-47EE-B3ED-73A5592735CB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "01363147-E072-47EE-B3ED-73A5592735CB";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A112DF9-BF4F-4C41-919B-167724230F16";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1265,8 +1270,8 @@
 		6577010015CA0C3500A36A85 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Osamu Noguchi (BQY439J4V9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Osamu Noguchi";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ColorName/ColorName-Prefix.pch";
 				INFOPLIST_FILE = "ColorName/ColorName-Info.plist";
@@ -1276,7 +1281,7 @@
 					/Users/Atrac/Documents/workspace/iOS/ColorName/GoogleAnalyticsServicesiOS_3.02,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C97524F-9AFE-41AA-85C5-9D85A78237A4";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

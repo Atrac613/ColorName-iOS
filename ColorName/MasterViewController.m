@@ -260,7 +260,13 @@
 }
 
 - (void)getCenterColor:(UIImage*)image {
-    UIColor *color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.width/2, image.size.height/2)];
+    UIColor *color;
+    
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.height/2 - 5.f, image.size.width/2)];
+    } else {
+        color = [self getRGBPixelColorAtPoint:image point:CGPointMake(image.size.height/2 + 35.f, image.size.width/2)];
+    }
     
     if (!color) {
         return;
@@ -298,7 +304,8 @@
 }
 
 - (void)captureOutput:(AVCaptureOutput*)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection*)connection {
-    CVImageBufferRef buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVImageBufferRef buffer;
+    buffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     
     CVPixelBufferLockBaseAddress(buffer, 0);
     
@@ -309,44 +316,25 @@
     height = CVPixelBufferGetHeight(buffer);
     bytesPerRow = CVPixelBufferGetBytesPerRow(buffer);
     
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef cgContext = CGBitmapContextCreate(base, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    
-    CGImageRef cgImage = CGBitmapContextCreateImage(cgContext);
-    
-    CGContextRelease(cgContext);
+    CGColorSpaceRef colorSpace;
+    CGContextRef cgContext;
+    colorSpace = CGColorSpaceCreateDeviceRGB();
+    cgContext = CGBitmapContextCreate(
+                                      base, width, height, 8, bytesPerRow, colorSpace,
+                                      kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
     CGColorSpaceRelease(colorSpace);
     
-    UIImage *image = [UIImage imageWithCGImage:cgImage scale:2.f orientation:UIImageOrientationRight];
-    
+    CGImageRef cgImage;
+    UIImage *image;
+    cgImage = CGBitmapContextCreateImage(cgContext);
+    image = [UIImage imageWithCGImage:cgImage scale:1.0f
+                          orientation:UIImageOrientationRight];
     CGImageRelease(cgImage);
-    
-    UIImage *lowImage = [self converToLowImage:image];
-    
-    [self getCenterColor:lowImage];
+    CGContextRelease(cgContext);
     
     CVPixelBufferUnlockBaseAddress(buffer, 0);
-}
-
-- (UIImage*)converToLowImage:(UIImage*)image {
-    float oldWidth = image.size.width;
-    float scale = 144 / oldWidth;
     
-    float newHeight = image.size.height * scale;
-    float newWidth = oldWidth * scale;
-    
-    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
-    [image drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    float top = (newImage.size.height / 2) - (96 / 2);
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect(newImage.CGImage, CGRectMake(0, top, 144, 96));
-    newImage = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    
-    return newImage;
+    [self getCenterColor:image];
 }
 
 #pragma mark - VideoController

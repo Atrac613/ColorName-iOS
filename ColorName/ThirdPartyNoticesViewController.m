@@ -14,7 +14,6 @@
 
 @implementation ThirdPartyNoticesViewController
 
-@synthesize navigationItem;
 @synthesize webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

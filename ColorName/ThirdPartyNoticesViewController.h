@@ -10,11 +10,9 @@
 #import "GAITrackedViewController.h"
 
 @interface ThirdPartyNoticesViewController : GAITrackedViewController <UIWebViewDelegate> {
-    IBOutlet UINavigationItem *navigationItem;
     IBOutlet UIWebView *webView;
 }
 
-@property (nonatomic, retain) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 
 - (void)cancelButtonPressed;
